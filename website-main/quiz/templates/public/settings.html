@@ -1,0 +1,139 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="{% static 'public/settings.css' %}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+    integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <style>
+         body{
+        position: relative;
+             flex-direction: column;
+    }
+   
+    .arrow{
+  position: absolute;
+  left: 1rem;
+  top: 48%;
+  font-size: 4rem;
+  color:#298a8a ;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+.arrow:hover{
+  transform: scale(1.2,1.2);
+ 
+}
+    @media(max-width:670px){
+    .arrow{
+      font-size: 3rem;
+    }
+   
+  }
+    @media(max-width:525px){
+    .arrow{
+     left: 0;
+    }
+   
+  }
+  @media(max-width:580px){
+    .arrow{
+      top: 20px;
+      font-size: 3rem;
+      left: 1rem;
+    }
+  }
+        .alert{
+            font-weight: bold;
+    color: #ac0c0c;
+    font-size: 1.2rem;
+    margin: 10px;
+    text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <a href="../" class="arrow"><i class='bx bxs-left-arrow-circle'></i></a>
+
+        <div class="alert">
+    
+    {%for message in messages%}
+    {%if message%}
+    {{message}}
+    {%endif%}
+    {%endfor%}
+    </div>
+    <form method = "POST" class="create_quiz" >
+        {% csrf_token %}
+        <h1><i class='bx bx-cog'></i>Settings</h1>
+        <div class="in">
+            <div class="course">
+                Course Name:
+                <i class='bx bx-library'></i>
+                <input type="text" name='course_name' placeholder="COURSE NAME" Value='{{course}}'>
+            </div>
+            <div class="topic">
+                Topic Name:
+                <i class='bx bxs-book-reader' ></i>
+                <input type="text" name='topic_name' placeholder="TOPIC NAME" Value='{{topic}}'>
+            </div>
+            <div class="start_time">
+                Start Time:
+                <!-- <i class='bx bxs-stopwatch'></i> -->
+                <input type="datetime-local" name='start' id='s' value={{start}}>
+
+            </div>
+            <div class="margin_time">
+
+                Margin Time:
+                <!-- <i class='bx bxs-stopwatch'></i> -->
+                <input type="datetime-local" name='margin' value='{{margin}}'>
+            </div>
+            <div class="result_time">
+
+               Result Time:
+                <!-- <i class='bx bxs-stopwatch'></i> -->
+                <input type="datetime-local" name='result' value='{{result}}'>
+            </div>
+           
+            <div class="Type">
+
+                Timer Settings:
+                {%ifequal ttype "i" %}
+                <select name="ttype" id="ttype">
+                    <option value="i" selected>Individual Question Time</option>
+                    <option value="s">Section Time</option>
+                </select> 
+                {%else%}
+                <select name="ttype" id="ttype">
+                    <option value="i" >Individual Question Time</option>
+                    <option value="s" selected>Section Time</option>
+                </select> 
+                {%endifequal%}
+            </div>
+<!--             <div class="quiz_duration">
+                Quiz Duration:
+                 <i class='bx bxs-stopwatch'></i>
+                <input type="text" name = "ttime" placeholder="HH:MM:SS" > 
+               
+            </div> -->
+            <div class="submit">
+
+                <button class="" type="submit">Save</button>
+                
+            </div>
+            <div class="delete">
+                <i class='bx bx-trash'></i>
+                <a href = "../delete-quiz/">Delete this quiz</a>
+            </div>
+        </div>
+    </form>
+    <script src="{% static 'public/script.js'%}"> </script>  
+</body>
+</html>

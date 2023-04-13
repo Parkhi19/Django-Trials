@@ -1,0 +1,74 @@
+.outer-div {
+    width: 750px;
+    margin: auto;
+  }
+  
+  .container {
+    position: relative;
+    display: block;
+    width: 750px;
+    height: 1000px;
+  }
+  
+  .date {
+    width: 85%;
+    text-align: right;
+    font-size: 17px;
+    font-family: sans-serif;
+    position: absolute;
+    top: 39%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  img {
+    width: 750px;
+    height: 1000px;
+  }
+  .between {
+    width: 85%;
+    text-align: justify;
+    font-family: cursive;
+    font-size: 22px;
+    margin: auto;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .verification {
+    position: absolute;
+    top: 80%;
+    font-size: 14px;
+    font-family: sans-serif;
+    width: 85%;
+    text-align: left;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .verify-link {
+    color: rgb(79, 79, 79);
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .buttons {
+    width: 750px;
+    margin: 50px auto;
+  }
+  
+  button {
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+  }
+  
+  #download-btn {
+    margin-left: 25%;
+    margin-right: 5%;
+  }
+  

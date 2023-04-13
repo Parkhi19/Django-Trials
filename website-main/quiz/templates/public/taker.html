@@ -1,0 +1,889 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aim2Crack-Quiz</title>
+    <link rel="icon" href="{static 'exam/favicon.ico'}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'exam/home.css'%}">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    
+     <script src="https://kit.fontawesome.com/4d0c408dff.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{%static 'exam/navbar.css'%}">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+ body{
+                position: relative;
+            }
+            .go_back{
+                position:fixed;
+                top: 48%;
+                left: 1rem;
+                font-size: 4rem;
+color: #59b4b4;
+transition: all 0.5s ease;
+
+            }
+            .go_back:hover{
+                transform: scale(1.2,1.2);
+
+            }
+      @media(max-width:800px){
+                .go_back{
+                    font-size: 3rem;
+                    left: 0.2rem;
+                }
+            }
+            @media(max-width:550px){
+                .go_back{
+                    font-size: 2rem;
+                    left: 0.1rem;
+                }
+            }
+            @media(max-width:370px){
+                .go_back{
+                    font-size: 2rem;
+                    top:90px;
+                }
+            }
+    .top_container {
+        /* margin-left: 100px; */
+        margin-top: 100px;
+    }
+
+    .section_btn {
+      border-radius: 29px;
+    border: none;
+    font-size: 39px;
+    font-weight: bolder;
+    margin: 0px 10px;
+/*     color: #455251; */
+            background: linear-gradient(
+316deg, #50d8d7 0%, #2a2323 74%);
+    color: white;
+    padding: 5px 1.5rem;
+    }
+
+    .quizsection {
+        margin-top: 20px;
+        justify-content: center;
+    }
+
+    .sections {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #Add {
+        position: absolute;
+        top: 115px;
+        right: 49px;
+        width: 112px;
+        display: none;
+        transition: all 1s ease;
+        font-size: 1.2rem;
+        padding: 8px;
+        background: #298a8a;
+    color: white;
+        box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+        border-radius: 0.5rem;
+    }
+
+    .add_icon:hover+#Add {
+        display: block;
+    }
+
+    .add_icon:hover {
+
+        background:white;
+        color:  #298a8a  ;
+            border-top-left-radius: 17px;
+    border-bottom-left-radius: 17px
+
+    }
+
+    #Delete {
+        position: absolute;
+        top: 161px;
+        right: 49px;
+        width: 130px;
+        display: none;
+        transition: all 1s ease;
+        font-size: 1.2rem;
+    padding: 8px;
+    background: #298a8a;
+    color: white;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    border-radius: 0.5rem;
+    }
+ .delete_icon:hover+#Delete {
+        display: block;
+    }
+
+    .delete_icon:hover {
+
+       background:white;
+        color:  #298a8a  ;
+            border-top-left-radius: 17px;
+    border-bottom-left-radius: 17px
+
+    }
+    .icon-bar {
+        position: fixed;
+        right: 0;
+        top: 35%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+    border-top-left-radius: 17px;
+    border-bottom-left-radius: 17px;
+        /* background-color: #102626; */
+        /* background: #50d8d7; */
+        padding-top: 4px;
+        padding-bottom: 4px;
+        z-index: 10000000000000000;
+       background: #298a8a;
+   
+
+    }
+      .icons a{
+text-decoration: none;
+        }
+    .alert{
+    text-align: center;
+    max-width: 315px;
+    margin: 15px auto 8px;
+    padding: 7px;
+    border: 3px solid;
+    border-radius: 10px;
+}
+    #result {
+    position: absolute;
+    top: 90px;
+    right: 52px;
+    display: none;
+  
+    transition: all 1s ease;
+    font-size: 1.2rem;
+    padding: 8px;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    border-radius: 0.5rem;
+  }
+  .result_icon:hover {
+    background: white;
+    color: #50d8d7;
+  }
+  .result_icon:hover + #result {
+    display: block;
+  }
+.alert-success{
+    color: #00d000;
+    background-color: #d5ffd5;
+    border-color: #00d000;
+}
+.alert-error{
+     color: #ff2121;
+    background: #ffc5c5;
+    border-color: #ff2121;
+}
+    .section_times{
+            text-align: center;
+    margin-top: 7px;
+    }
+    .section_time_input {
+        text-align: center;
+    padding: 8px;
+    background: #f0f0f0;
+    width: 30%;
+    margin: auto;
+    border-radius: 21px;
+    color: black;
+    font-weight: bold;
+    
+    }
+    .section_time_input input{
+        border: none;
+        outline: none;
+        background: none;
+    }
+    #save_btn{
+        border: none;
+        background: none;
+        outline: none;
+        background: #f0f0f0;
+        padding: 8px 1.4rem;
+        font-weight: bold;
+        border-radius: 21px;
+        margin-top: 10px;
+        transition: all 0.5s ease;
+    }
+    #save_btn:hover{
+        transform: scale(1.2,1.2);
+    }
+        .custom_feedback{
+            position: fixed;
+            bottom: 2rem;
+            right: 8%;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            padding: 10px 1.4rem;
+            background: #298a8a;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 21px;
+            transition: all 0.5s ease;
+        }
+        .custom_feedback i{
+            margin-right: 10px;
+        }
+        .custom_feedback:hover{
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        }
+        .instructive_text{
+            position: absolute;
+    top: 150%;
+    left: 0;
+    font-size: 0.8rem;
+    text-align: center;
+    border-radius: 13px;
+    padding: 2px;
+    transition: all 0.5s ease;
+        }
+        .custom_feedback:hover .instructive_text{
+            z-index: 1;
+            top: -118%;
+            color: black;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        #instructions{
+            position: fixed;
+            bottom: 2rem;
+            left: 8%;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            padding: 10px 1.4rem;
+            background: #298a8a;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 21px;
+            transition: all 0.5s ease;
+        }
+        #instructions i{
+            margin-right: 10px;
+        }
+        #instructions:hover{
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        }
+        .instructive_text2{
+            position: absolute;
+    top: 150%;
+    left: 0;
+    font-size: 0.8rem;
+    text-align: center;
+    border-radius: 13px;
+    padding: 2px;
+    transition: all 0.5s ease;
+        }
+       #instructions:hover .instructive_text2{
+            z-index: 1;
+            top: -118%;
+            color: black;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        @media(max-width:1390px){
+            .custom_feedback{
+                font-size: 1rem;
+                right: 4%;
+            }
+            #instructions{
+                font-size: 1rem;
+                left: 4%;
+            }
+        }
+        @media(max-width:1190px){
+            .custom_feedback{
+                font-size: 0.7rem;
+                right: 4%;
+            }
+            #instructions{
+                font-size: 0.7rem;
+                left: 4%;
+            }
+            #instructions i{
+            margin-right: 2px;
+        }
+           .custom_feedback i{
+            margin-right: 2px;
+        }
+        }
+        #feedback_icon{
+            display: none;
+        }
+        #feedback {
+        position: absolute;
+        top: 72%;
+        right: 49px;
+        width: 112px;
+        display: none;
+        transition: all 1s ease;
+        font-size: 1.2rem;
+        padding: 8px;
+         background: #298a8a;
+    color: white;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+        border-radius: 0.5rem;
+    }
+
+    #feedback_icon:hover+#feedback {
+        display: block;
+    }
+
+    #feedback_icon:hover {
+
+        background: white;
+        color: #50d8d7;
+
+    }
+    #instruction_icon{
+        display: none;
+    }
+    #instruct {
+        position: absolute;
+        top: 86%;
+        right: 49px;
+        width: 112px;
+        display: none;
+        transition: all 1s ease;
+        font-size: 1.2rem;
+        padding: 8px;
+         background: #298a8a;
+    color: white;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+        border-radius: 0.5rem;
+    }
+
+    #instruction_icon:hover+#instruct {
+        display: block;
+    }
+
+    #instruction_icon:hover {
+
+        background: white;
+        color: #50d8d7;
+
+    }
+    @media(max-width:1040px){
+        #feedback_icon{
+            display: block;
+        }
+        #instruction_icon{
+            display: block;
+        }
+        .custom_feedback{
+            display: none;
+        }
+        #instructions{
+            display: none;
+        }
+    } 
+</style>
+
+<body>
+<!--    <a href='./feed' class="custom_feedback">
+    <i class='bx bxs-edit-alt'></i>
+    <p>Add Feedback Question</p>
+    <p class="instructive_text">These question will be shown after end of the exam.</p>
+</a> -->
+<a href='./feed' id="instructions">
+    <i class='bx bxs-edit-alt'></i>
+    <p>Add Instruction</p>
+    <p class="instructive_text2">These instructions will be shown to the student before start of exam.</p>
+</a>
+<a href="{%url 'quizzes'%}" class="go_back"><i class='bx bxs-left-arrow-circle'></i></a>
+    <!-- navbar of the site  -->
+      <header>
+        <img class="logo" src="{% static 'exam/Aim2Crack-logo-1.png'%}" alt="logo" title="home" >
+
+        <nav class="main-menu">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+{% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content">
+                        <a href="https://www.aim2crack.in/c/some/">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+ {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content">
+                         <a href="{%url 'placement'%}" >
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                       
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'team'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}">
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="#" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid!</small>
+                        </a>
+                    </div>
+                </li>
+
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+        <div class="click-dropdown profile-dropdown">
+            <button onclick="myFunction()" class="click-dropbtn">
+                <a>
+                    <span class="material-icons md-24">
+                        person
+                    </span>
+                    {% if user.is_authenticated %}
+                    <p class="profile">
+                        Profile
+                    </p>
+                     {%else%}
+                     <p class="profile">
+                        Signup
+                    </p>
+                    {%endif%}
+                    <span class="material-icons-outlined">
+                        expand_more
+                    </span>
+                </a>
+            </button>
+            <div id="myDropdown" class="click-dropdown-content">
+ {% if user.is_authenticated %}
+                <a href="{%url 'profile' request.user.profile.id %}" >
+                    <span class="btn-txt">Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'logout'%}" >
+                    <span class="btn-txt">Logout</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%else%}
+<a href="{%url 'register'%}" >
+                    <span class="btn-txt">Create Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'login'%}" >
+                    <span class="btn-txt">LogIn</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%endif%}
+            </div>
+        </div>
+
+        <span class="ham" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </header>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <nav class="main-menu-1">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+ {% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'quizzes'%}">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+   {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'about'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid</small>
+                        </a>
+                    </div>
+                </li>
+{% if user.is_authenticated %}
+                <li><a href="{%url 'profile' request.user.profile.id %}">Account</a></li>
+                <li><a href="{%url 'logout'%}">Logout</a></li>
+  {%else%}
+                <li><a href="{%url 'register'%}">Create Account</a></li>
+                <li><a href="{%url 'login'%}">LogIn</a></li>
+{%endif%}
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+
+    </div>
+
+
+
+
+    <div class="top_container">
+        <div class="icon-bar"  {%ifequal qtype "p"%} height= 123px {%else%} height= 100px {%endifequal%}>
+            <button onclick=copyurl() class="copy_icon"><i class='bx bxs-copy'></i></button>
+            <div id="copy_link">Copy Link</div>
+            <a href='./settings/' class="set_icon"><i class='bx bx-cog'></i></a>
+            <div id="settings">Settings</div>
+<!--             <a href='./feed' id="feedback_icon"><i class='bx bxs-edit-alt'></i></a>
+            <div id="feedback">Feedback</div> -->
+            <a href='./feed' id="instruction_icon"><i class='bx bxs-edit-alt'></i></a>
+            <div id="instruct">Instruction</div>
+<!--             <a href='./preview/' class="set_icon"><i class='bx bx-cog'></i></a>
+            <div id="settings">Preview</div> -->
+            <a href='./detailed-result' class="result_icon"><i class='bx bx-notepad'></i></a>
+            <div id="result">Result</div>
+            {% ifequal qtype 'p'%}
+            <a href='./add-section' class="add_icon"><i class='bx bx-plus'></i></a>
+            <div id="Add">Add Section</div>
+            <a href='./delete-section' class="delete_icon"><i class='bx bx-trash'></i></a>
+            <div id="Delete">Delete Section</div>
+            
+            {%endifequal%}
+        </div>
+
+        <div class="sections">
+
+            {%for ques in sections%}
+            <button type="button" class="section_btn" style="margin: 10px;">{{ques.section}} </button>
+            {% endfor %}
+        </div>
+
+        {% if messages %}
+        {% for message in messages%}
+        <div class="alert alert-{{message.tags}}">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {%ifequal ttype 's'%}
+        {%for ques in sections%}
+        <form method="post" class="section_times">
+            {%csrf_token%}
+             <div class="section_time_input">
+            {%ifequal qtype 'p' %}Total Section Time(HH:MM:SS):{%else%}Total Quiz Time(HH:MM:SS):{%endifequal%}</div>
+            <div class="section_time_input" style = "width: 150px;  display:inline-block;    margin: 10px auto;">
+            <input type="time" id="ttime" value="{%ifequal ques.time None%}00:20:00{%else%}{{ques.time}}{%endifequal%}" step="2">
+            <input type="text" name="ttime" style = "display: none;">
+             
+            <input type="text" placeholder="HH:MM:SS" id="as" style="display: none;" value="{{ques.section}}">
+            <input type="text" placeholder="HH:MM:SS" name="as" style="display: none;" value="{{ques.section}}">
+            </div>
+            <input type="submit" style ="display : inline-block;" id="save_btn" value="Save" >
+        </form>
+        {%endfor%}
+        {%endifequal%}
+    </div>
+
+    <br>
+    {% for ques in sections%}
+    <section class="quizsection">
+        <div id="question_box1" class="question_box">
+            <a class="btn colorpanel section_new_que" href="./new/{{ques.new_link}}">Add question</a>
+            {% for question in ques.questions %}
+            <div class="qbox">
+                <div class="top colorpanel">
+                    Question {{question.que_num}} <p class=timelevel>
+                        {% ifequal question.level "e"%}
+                        Level: Easy
+                        {%endifequal%}
+                        {% ifequal question.level "m"%}
+                        Level: Medium
+                        {%endifequal%}
+                        {% ifequal question.level "h"%}
+                        Level: Hard
+                        {%endifequal%}
+                        
+                        {% ifequal ttype 's'%}
+                        {%else%}
+                    |
+                        Time:{{question.time}} </p>
+                    {%endifequal%}
+                </div>
+            </div>
+            <div class="main_box" id="main_box{{question.id}}">
+                <p class="question">{{question.question}}</p>
+                <div>
+                    <img class="questionimg" src="./../../../media/{{question.img}}" alt="">
+                </div>
+                <div class="options_section">
+                    {% ifequal 's' question.type %}
+                    {% for key, option in question.options.items %}
+                    <p name='answer_{{question.id}}' class="options"><input type="radio" disabled>{{ option }}</p>
+                    {% endfor %}
+                    {% endifequal %}
+                    {% ifequal 'm' question.type %}
+                    {% for key, option in question.options.items %}
+                     <p name='answer_{{question.id}}' class="options"><input type="radio" disabled>{{ option }}</p>
+                    {% endfor %}
+                    {% endifequal %}
+<!--                     {% ifequal 't' question.type %}
+                    <input type="text" name="answer_{{question.id}}" class="text-box"
+                        placeholder="Write your answer here">
+                    {% endifequal %} -->
+                    {% ifequal 'i' question.type %}
+<!--                     <input type="number" name="answer_{{question.id}}" class="num-box"
+                        placeholder="Write the integer here"> -->
+                    {% endifequal %}
+                    <p class="options" style="background-color: #00d000;color: #f0f0f0;">{{question.correct}}</p>
+                    <details class="explanation">
+                        <summary>Explanation</summary>
+                        <div class="explanation-text">
+                        <p>
+                        {%for eachone in question.explanation%}
+                            {%ifequal eachone ''%}
+                            {%else%}
+                        {{eachone}}<br>
+                            {%endifequal%}
+                        {%endfor%}</p>
+                             </div>
+                    </details>
+                    <a href="https://www.google.com/search?q={{question.search}}" target="_blank"><img
+                            src="{% static 'users/pngwing.com.png'%}" style="width: 30px;" alt="Google Search"></a>
+                    <a href="./delete/{{question.number}}" class="bt boton">Delete</a>
+                    <a href="./edit/{{question.number}}" class="bt boton2">Edit</a>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </section>
+    {%endfor%}
+
+
+
+</body>
+
+<script>
+    {%ifequal ttype 's'%}
+    document.getElementById("save_btn").addEventListener("click",()=>{
+        document.getElementsByName("ttime")[0].value = String(document.getElementById("ttime").value)
+        document.getElementsByName("as")[0].value = String(document.getElementById("as").value).replace(" ","-")
+    })
+     {%endifequal%}
+    
+    window.addEventListener("scroll", function () {
+        var header = document.getElementById("navbar");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    })
+    let sections = document.getElementsByClassName('quizsection');
+    let sectionbtn = document.getElementsByClassName('section_btn');
+    let sectiontime = document.getElementsByClassName('section_times');
+    sectionbtn[0].style="text-shadow: 0px 4px 3px rgb(0 0 0 / 40%), 0px 8px 13px rgb(0 0 0 / 10%), 0px 18px 23px rgb(0 0 0 / 10%);";
+    for (let x = 1; x < sections.length; x++) {
+        sections[x].style.display = "none";
+        try{
+            sectiontime[x].style.display = "none";
+        }catch{}
+    }
+    for(let i=0;i<sections.length;i++)
+    {
+        sectionbtn[i].addEventListener('click',function(e){
+            sections[i].style.display = "block";
+            try{
+                sectiontime[i].style.display = "block";
+            }catch{}
+            for(let x=0;x<sections.length;x++){
+                if(i!=x){
+                    sections[x].style.display = "none";
+                    try{
+                        sectiontime[x].style.display = "none";
+                        sectionbtn[x].style="border:none;";
+                    }catch{}
+            }else{
+                sectionbtn[x].style=" text-shadow: 0px 4px 3px rgb(0 0 0 / 40%), 0px 8px 13px rgb(0 0 0 / 10%), 0px 18px 23px rgb(0 0 0 / 10%);";
+            }            }
+        });
+    }
+</script>
+<script>
+let options_section = document.getElementsByClassName('options_section');
+
+for (let i = 0; i < options_section.length; i++) {
+    let child = options_section[i].children;
+    if (child.length > 5) {
+        child[child.length - 5].style.display = "none";
+        let arr = child[child.length - 5].textContent.split('+');
+        for (let j = 0; j < arr.length; j++) {
+            let idx = arr[j].charCodeAt('a') - 97;
+            child[idx].style.backgroundColor = "rgb(21, 191, 21)";
+            child[idx].style.color = "white";
+        }
+    }
+}
+</script>
+        <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+    
+<script src="{% static 'public/script.js'%}">
+</script>
+
+<script src="{%static 'public/taker.js'%}"></script>
+
+</html>
+</body>
+
+</html>
+
+
+
+
+<!-- <script>
+    x = document.getElementById("ttime")
+    document.getElementById("ttime").addEventListener("change", (x) => {
+        console.log("yes")
+        if (x != document.getElementById("ttime").innerText) {
+            document.getElementById("save_btn").style.display = "inline-block";
+        }
+    })
+</script> -->

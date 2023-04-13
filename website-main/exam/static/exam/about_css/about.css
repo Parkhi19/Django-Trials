@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+.team_head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 5px;
+  margin-top: 45px;
+}
+.marvel {
+  background: #920f0f;
+  /* background:  linear-gradient(316deg,#2a2323  0%, #50d8d7 90%); */
+  padding: 10px;
+  color: white;
+  margin-left: 2%;
+}
+.studios {
+  margin-left: 2%;
+  position: relative;
+}
+.studios::after {
+  content: "";
+  height: 10px;
+  width: 100%;
+  background: #920f0f;
+  /* background: #50d8d7; */
+  /* background:  linear-gradient(316deg,#2a2323  0%, #50d8d7 90%); */
+  left: 0;
+  bottom: -9px;
+
+  position: absolute;
+  transition: 0.5s;
+}
+.studios::before {
+  content: "";
+  height: 10px;
+  width: 100%;
+  background: #920f0f;
+  /* background: #50d8d7; */
+  /* background:  linear-gradient(316deg,#2a2323  0%, #50d8d7 90%); */
+  left: 0;
+  top: -9px;
+
+  position: absolute;
+  transition: 0.5s;
+}
+
+.about-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+}
+.text-center {
+  color: white;
+  display: flex;
+
+  line-height: 30px;
+  flex-direction: column;
+  font-size: 20px;
+  width: 76%;
+  padding: 50px 0px;
+  text-align: left;
+}
+.disc {
+  margin-top: 10px;
+  font-style: italic;
+  font-size: 20px;
+  margin-right: 55px;
+}
+.bold{
+  font-weight: 600;
+}
+.about-wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 650px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 30px 0px;
+  margin-top: 60px;
+  flex-direction: column;
+  color: white;
+
+  background:linear-gradient(to bottom,rgb(42,72,92,0.7),rgba(0,0,0,0.9)), url(/about-bg.jpeg) no-repeat center center/cover;
+ 
+}
+.about-wrapper {
+  width: 100%;
+ 
+  transform: translateY(-90px);
+}
+.swiper-container {
+  width: 650px;
+  height: 650px;
+}
+
+#next-btn,
+#prev-btn {
+  width: 20px;
+  height: 20px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  border-radius: 50%;
+}
+#next-btn::after {
+  font-size: 1rem;
+  color: white;
+}
+#prev-btn::after {
+  font-size: 1rem;
+  color: white;
+}
+.about-box {
+  position: relative;
+  height: 100%;
+}
+.marvel-img {
+  width: 650px;
+  height: 400px;
+  position: relative;
+}
+.my-img {
+  height: 150px;
+  width: 150px;
+  margin: 0px 20px 0px 30px;
+  flex-shrink: 0;
+}
+.my-img img {
+  border-radius: 50%;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-img-text {
+  display: flex;
+  background: linear-gradient(#2a485c, #000000);
+ 
+  height: 200px;
+  align-items: center;
+}
+.about-text {
+  height: 200px;
+  /* width: 500px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0px 30px;
+}
+.about-text h1,
+.about-text p {
+  margin-bottom: 10px;
+}
+.about-social a {
+  color: white;
+  font-size: 25px;
+  padding: 7px;
+}
+
+
+/* media queries */
+@media(max-width:1000px){
+  .about-wrap{
+    margin-top: 85px;
+  }
+}
+@media screen and (max-width:900px) {
+  .text-center{
+    width: 90%;
+    font-size: 16px;
+  }
+  .disc{
+    font-size: 16px;
+  }
+}
+@media screen and (max-width:700px) {
+  .swiper-container{
+    width: 90%;
+  }
+  .marvel-img{
+    width: 100%;
+  }
+  .team_head{
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width:580px) {
+  .team_head{
+    margin-top: 0;
+  }
+  .text-center{
+    padding: 30px 0px;
+    line-height: 25px;
+  }
+}
+@media screen and (max-width:470px) {
+  .team_head{
+    font-size: 1.5rem;
+  }
+  .marvel-img{
+    display: none;
+  }
+  .about-img-text{
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .swiper-container{
+    height: 400px;
+  }
+}
+@media screen and (max-width:410px) {
+  .team_head{
+    font-size: 1rem;
+  }
+  .about-wrapper{
+    transform: translateY(-50px);
+  }
+}
+@media(max-width:390px){
+  .about-wrap{
+    margin-top: 75px;
+  }
+}
+

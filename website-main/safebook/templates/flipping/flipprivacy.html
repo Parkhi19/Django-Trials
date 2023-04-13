@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{%load static%}
+
+<body>  
+<form method="POST" enctype="multipart/form-data" >  
+        {% csrf_token %}  
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        <p>Please select your Privacy settings</p>
+        <input type="radio" id="1" name="fprivacy" value="a" {% if qp.fprivacy == "a" %}checked="checked"{% endif %}/>
+         <label for="a">Public</label><br>
+         <input type="radio" id="2" name="fprivacy" value="b" {% if qp.fprivacy == none %}checked="checked"{% endif %}/>
+         <label for="b">A2c login required</label><br>
+         <input type="radio" id="3" name="fprivacy" value="c" {% if qp.fprivacy == "c" %}checked="checked"{% endif %}/>
+         <label for="c">Institute Domain login required</label><br>
+         <input type="radio" id="4" name="fprivacy" value="d" {% if qp.fprivacy == "d" %}checked="checked"{% endif %}/>
+         <label for="d">Password protected</label><br>
+         <input type="radio" id="5" name="fprivacy" value="e" {% if qp.fprivacy == "e" %}checked="checked"{% endif %}/>
+         <label for="e">Private</label>
+          <br>
+          <tr>
+            <td>Domain Name</td>
+            <td><input name="fdomain" type="text" class="question" id="question" placeholder="@domain.ac.in"
+        rows="1" cols="10" value="{{qp.fdomain}}"></td>
+        </tr>
+        <br>
+        <tr>
+            <td>Enter the password</td>
+            <td><input name="fpass" type="text" class="question" id="question" placeholder="Enter your password here"
+        rows="1" cols="10" value="{{qp.fpass}}"></td>
+        </tr>
+        <br>
+          <button type="submit" class="save btn btn-default">Save</button>  
+          <a class="btc botonc" id = "back_btn" href="../"><i class='bx bx-x'></i> Back</a>
+</form>  
+
+
+
+</body>  
+</html>
+
+
+
+
+

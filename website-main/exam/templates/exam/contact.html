@@ -1,0 +1,823 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact-Aim2Crack</title>
+  <link rel="icon" href="{%static 'exam/favicon.ico'%}" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="mobile.css">
+    
+    
+    <script src="https://kit.fontawesome.com/4d0c408dff.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{%static 'exam/navbar.css'%}">
+  
+    <style>
+          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600&family=Roboto:wght@300&display=swap');
+        /* navbar of site  */
+
+
+
+
+
+
+       
+
+
+
+
+
+
+
+        .image {
+            background: url("/static/exam/c1.png") no-repeat center center / cover;
+            width: 100%;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .love {
+            font-size: 2rem;
+            font-weight: bold;
+
+
+            color: white;
+
+
+        }
+
+        .subtext {
+            font-family: 'Baloo Bhai 2', cursive;
+            text-align: center;
+            color: white;
+            width: 60%;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0;
+        }
+
+        body {
+            background: white;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            width: 95%;
+            margin: 50px auto;
+            color: #2eb7b6;
+            
+        }
+
+        .contact-box {
+            background: #fff;
+            display: flex;
+        }
+
+        .contact-left {
+            flex-basis: 30%;
+            padding: 40px 20px ;
+            margin: 0px 30px 20px 10px;
+        
+        }
+        .contact-new{
+            flex-basis: 30%;
+            padding: 40px 0px;
+            margin: 0px 10px 20px 30px;
+        }
+        .contact-right {
+            flex-basis: 40%;
+            padding: 30px;
+            background: #2eb7b6;
+            color: #fff;
+          border-radius: 10px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+          
+
+        }
+        .h11{
+            margin-bottom: 0;
+        }
+        
+
+        .container p {
+            margin-bottom:10px;
+            font-size:15px;
+        }
+
+        .input-row {
+           
+            justify-content: space-between;
+           display: flex;
+            font-size:20px ;
+            font-weight: 400;
+            margin-top: 16px;
+        }
+
+        .input-row .input-group {
+            flex-basis: 45%;
+        }
+
+        input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            outline: none;
+            padding-bottom: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            outline: none;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .textt{
+            width: 70%;
+            border: 1px solid #ccc;
+            outline: none;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        
+
+        label {
+            margin-bottom: 6px;
+            display: block;
+            /* color: #1c00b5; */
+        }
+
+        .button {
+            background: #2eb7b6;
+            width: 100px;
+            border: none;
+            outline: none;
+            color: #fff;
+            height: 35px;
+            border-radius: 30px;
+            margin-top: 20px;
+            box-shadow: 0px 5px 15px 0px rgba(28, 0, 181, 0.3);
+        }
+
+        .button:hover {
+            background: white;
+            color: #2eb7b6;
+        }
+
+        .contact-left h3.contact-new h2{
+            color: #2eb7b6;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        .contact-right h3 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .contact-right label {
+            margin-top: 2px;
+            margin-bottom: 0;
+            display: block;
+            color: white;
+        }
+
+        .contact-right input,
+        select {
+            padding: 2px 2px;
+            width: 70%;
+        }
+   
+        .contact-right {
+          
+            flex-wrap: wrap;
+        }
+
+        .left {
+            flex-basis: 60%;
+            font-size:18px;
+        }
+         
+        .right {
+            flex-basis: 40%;
+            display: flex;
+            flex-direction: column;
+            font-size:18px
+        }
+
+        .btn {
+            margin-left: 180px;
+            background: #fff;
+            width: 100px;
+            border: none;
+            outline: none;
+            color: #2eb7b6;
+            height: 35px;
+            border-radius: 30px;
+            margin-top: 33px;
+            box-shadow: 0px 5px 15px 0px rgba(247, 246, 252, 0.3);
+        }
+
+        .btn:hover {
+            background: #2eb7b6;
+            color: white;
+            border: 2px solid white;
+        }
+        .btnr{
+            margin-left:120px ;
+           
+        }
+        .button{
+            margin-top: 25px;
+            margin-left: 120px;
+        }
+        .containerhi {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 98%;
+            margin: auto;
+            margin-bottom: 35px;
+            background: linear-gradient(316deg, #50d8d7 20%, #2a2323 140%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hi {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .email {
+            font-size: 1rem;
+        }
+
+        .icons_contact {
+            font-size: 30px;
+        }
+
+        @media screen and (max-width:1200px) {
+            .image {
+                height: 250px;
+            }
+
+            .love {
+                font-size: 35px;
+                text-align: center;
+            }
+
+            .subtext {
+                top: 75%;
+                text-align: center;
+            }
+
+            .contact-box {
+                flex-direction: column;
+            }
+
+        }
+
+        @media screen and (max-width:500px) {
+            .love {
+                font-size: 25px;
+                width: 70%;
+            }
+
+            .subtext {
+                width: 90%;
+                left: 50%;
+            }
+
+            .hi {
+                font-size: 0.9rem;
+            }
+
+            .email {
+                font-size: 16px;
+            }
+
+            .left {
+                flex-basis: 92%;
+            }
+
+            .right {
+                flex-basis: 82%;
+            }
+        }
+        .alert{
+            text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+    font-weight: bold;
+}
+        .alert-success{
+color:green;
+}
+.alert-error{
+color:red
+}
+        
+        @media (max-width:1000px) {
+            
+    #navbar{
+        height: 75px;
+    }
+   
+}
+@media (max-width:460px) {
+    #navbar{
+        height: 70px;
+    }
+    .image{
+        height: 276px;
+    }
+    .love{
+        font-size: 20px;
+    }
+    
+}
+@media(max-width:1200px){
+    .container{
+        width: 60%;
+    }
+}
+    
+@media(max-width:650px){
+    .container{
+        width: 80%;
+    }
+}
+@media(max-width:450px){
+    .container{
+        width: 90%;
+    }
+}
+@media(max-width:390px){
+    .contact-new{
+    padding: 40px 0px;
+    }
+    .contact-left{
+    padding: 40px 0px;
+    }
+}
+    </style>
+</head>
+
+
+            
+
+<body>
+    <!-- navbar of the site  -->
+      <header style="background: #567475;">
+        <img class="logo" src="{% static 'exam/Aim2Crack-logo-1.png'%}" alt="logo" title="home" >
+
+        <nav class="main-menu">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+{% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content" style="background: #567475;">
+                        <a href="https://www.aim2crack.in/c/some/">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+ {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content" style="background: #567475;">
+                         <a href="{%url 'placement'%}" >
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                       
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content" style="background: #567475;">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'team'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}">
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="#" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid!</small>
+                        </a>
+                    </div>
+                </li>
+
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+        <div class="click-dropdown profile-dropdown">
+            <button onclick="myFunction()" class="click-dropbtn">
+                <a style="background: #567475;">
+                    <span class="material-icons md-24">
+                        person
+                    </span>
+                    {% if user.is_authenticated %}
+                    <p class="profile">
+                        Profile
+                    </p>
+                     {%else%}
+                     <p class="profile">
+                        Signup
+                    </p>
+                    {%endif%}
+                    <span class="material-icons-outlined">
+                        expand_more
+                    </span>
+                </a>
+            </button>
+            <div id="myDropdown" class="click-dropdown-content" style="background: #567475;">
+ {% if user.is_authenticated %}
+                <a href="{%url 'profile' request.user.profile.id %}" >
+                    <span class="btn-txt">Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'logout'%}" >
+                    <span class="btn-txt">Logout</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%else%}
+<a href="{%url 'register'%}" >
+                    <span class="btn-txt">Create Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'login'%}" >
+                    <span class="btn-txt">LogIn</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%endif%}
+            </div>
+        </div>
+
+        <span class="ham" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </header>
+
+    <div id="mySidenav" class="sidenav" style="background: #567475;">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <nav class="main-menu-1">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+ {% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'quizzes'%}">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+   {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'about'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid</small>
+                        </a>
+                    </div>
+                </li>
+{% if user.is_authenticated %}
+                <li><a href="{%url 'profile' request.user.profile.id %}">Account</a></li>
+                <li><a href="{%url 'logout'%}">Logout</a></li>
+  {%else%}
+                <li><a href="{%url 'register'%}">Create Account</a></li>
+                <li><a href="{%url 'login'%}">LogIn</a></li>
+{%endif%}
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+
+    </div>
+
+
+
+    <div class="image">
+
+        <h1 class="love">
+            We are lovable Owls who would love to hear from you!!
+
+
+
+        </h1>
+        <h3 class="subtext">
+
+            Change is the only constant thing in life. We are constantly looking for improvements and always pushing our
+            limits to give the best experience. If you have any feedback, suggestions and queries, use the form below!
+    </div>
+    </h3>
+    </div>
+    <div class="container">
+        <div class="containerhi">
+            <div class="hi">
+                <h1>
+                    Say Hi!!
+                </h1>
+            </div>
+            <div class="email">
+                <h3>
+                     <a href="mailto: aim2crack@gmail.com">aim2crack@gmail.com</a>
+   
+
+                </h3>
+            </div>
+            <div class="icons_contact">
+                 <a href="https://youtube.com/channel/UC5RXgwwRVcJDCdxRLD-69kg">
+
+                    <i class='bx bxl-youtube'></i>
+                </a>
+                <a href="https://www.linkedin.com/company/aim2crack">
+
+                    <i class='bx bxl-linkedin' ></i>
+                </a>
+                <a href="https://instagram.com/aim2crack?utm_medium=copy_link">
+
+                    <i class='bx bxl-instagram-alt' ></i>
+                </a>
+                <a href="https://www.facebook.com/Aim2Crack-106726185067538/">
+
+                    <i class='bx bxl-facebook-square'></i>
+                </a>
+            </div>
+        </div>
+        {% if messages %}
+        {% for message in messages%}
+        <div class="alert alert-{{message.tags}}">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="contact-box">
+
+            <div class="contact-left">
+                <h1>Send your request</h1>
+                 <p>Any queries related to our services, one may reach us by filling the details below! We will respond to your mail within 48hrs!</p>
+                <form action="./save" method="POST">
+                    {%csrf_token%}
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Your Name">
+                        </div>
+                        <div class="input-group"> <label>Phone</label>
+                            <input type="text" name="phone" placeholder="+1234567890">
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="abc@gmail.com">
+                        </div>
+                        <div class="input-group">
+                            <label>Subject</label>
+                            <input type="text" name="Subject" placeholder="subject">
+                        </div>
+                    </div>
+                    <label style="font-size: 20px;
+                    font-weight: 400;
+                    margin-top: 17px;"> Message</label>
+                    <textarea rows="5" name="msg" placeholder="Your Message"></textarea>
+                    <button class="button" type="submit">SEND </button>
+                </form>
+            </div>
+            <div class="contact-right">
+                <h1>Join Us</h1>
+               <p>We are looking forward to welcome new minds with the passion to learn and passion to contribute to the society </p>
+                <div class="left">
+                    <form action="./join" method="POST">
+                        {%csrf_token%}
+                        <label>Name</label>
+                        <input type="text" name="name" placeholder="Your Name">
+                        <label>Phone</label>
+                        <input type="text" name="phone" placeholder="+1234567890">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="abc@gmail.com">
+                        <label>Interested areas to work</label>
+                        <select name="Interests" id="work" style="
+    outline: none;"
+>
+
+                             <option value="Brand Ambassador">Brand Ambassador</option>
+                            <option value=" Front end developer"> Front end developer</option>
+                            <option value="Back end developer">Back end developer</option>
+                            <option value="Full stack developer">Full stack developer</option>
+                            <option value="Aptitude content developer">Aptitude content developer</option>
+                            <option value="Nitpicker">Nitpicker</option>
+                             <option value="Placement trainer">Placement trainer</option>
+                             <option value="Competitive exams trainer">Competitive exams trainer</option>
+                             <option value="Video and Animation specialist">Video and Animation specialist</option>
+                             <option value="others">others</option>
+                        </select>
+                </div>
+                <div class="right">
+                    <label> Why are you interested to join us?</label>
+                    <textarea class="textt" rows="4" name="Why" placeholder="Your Message"></textarea>
+                    <button class=" btn" type="submit">SEND </button>
+                    </form>
+                </div>
+            </div>
+             <div class="contact-new ">
+              <h1 class="h11">Share Your Experience</h1>
+              <p class="pp">If you are interested in sharing your interview experience(for Youtube channel), fill up the details given below.Let's help our community together!</p>
+                <form class="formm" action="./save" method="POST">
+                     {%csrf_token%}
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Your Name">
+                        </div>
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="abc@gmail.com">
+                        </div>
+                    </div>
+                    <div class="input-row">
+                         <div class="input-group">
+                            <label>Institute</label>
+                            <input type="text" name="institute" placeholder="Institute">
+                        </div>
+                        <div class="input-group">
+                            <label>Department</label>
+                            <input type="text" name="Department" placeholder="Department">
+                        </div>
+                       
+                       
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Company</label>
+                            <input type="text" name="Company" placeholder="company">
+                        </div>
+                        
+                         <div class="input-group phone"> <label>Phone</label>
+                            <input type="text" name="phone" placeholder="+1234567890">
+                        </div>
+                    </div>
+                    <label style="font-size: 20px;
+                    font-weight: 400;
+                    margin-top: 17px;">CTC</label>
+                    <input type="text" name="CTC" placeholder="CTC">
+                    <button class="button" type="submit">SEND </button>
+                </form>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+        <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+.team_head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 5px;
+    margin-top: 45px;
+  }
+  .marvel {
+    background: #920f0f;
+    /* background:  linear-gradient(316deg,#2a2323  0%, #50d8d7 90%); */
+    padding: 10px;
+    color: white;
+    margin-left: 2%;
+  }
+  .studios {
+    margin-left: 2%;
+    position: relative;
+  }
+  .studios::after {
+    content: "";
+    height: 10px;
+    width: 100%;
+    background: #920f0f;
+    /* background: #50d8d7; */
+    /* background:  linear-gradient(316deg,#2a2323  0%, #50d8d7 90%); */
+    left: 0;
+    bottom: -9px;
+  
+    position: absolute;
+    transition: 0.5s;
+  }
+  .studios::before {
+    content: "";
+    height: 10px;
+    width: 100%;
+    background: #920f0f;
+    /* background: #50d8d7; */
+    /* background:  linear-gradient(316deg,#2a2323  0%, #50d8d7 90%); */
+    left: 0;
+    top: -9px;
+  
+    position: absolute;
+    transition: 0.5s;
+  }
+.box{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin: auto;
+    width: 80%;
+    height: 300px;
+}
+.about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    width: 250px;
+    background: linear-gradient(#2a485c, #000000);;
+    margin: 10px;
+    border: 1px solid black;
+}
+#bhavya{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background: url("{% static 'about_imgs/bhavya mittal.jpeg'%}");
+    background-size: cover;
+    background-position-x:center ;
+    background-position-y: 11%;
+}
+#bhavika{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-image: url("{% static 'about_imgs/bhavika.jpeg'%}");
+    background-size: cover;
+    background-position-x:center ;
+    background-position-y: 11%;
+}
+#sourabh{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-image:  url("{% static 'about_imgs/sourabh.jpeg'%}");
+    background-size: cover;
+    background-position-x:center ;
+    background-position-y: 11%;
+}
+.name{
+    color: white;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.links i{
+    color: white;
+    padding: 5px;
+    font-size: 25px;
+
+}
+
+/* media querries */
+@media  (max-width:700px) {
+    .team_head{
+        font-size: 2rem;
+      }
+}
+
+@media (max-width:580){
+    .team_head{
+        margin-top: 0;
+      }
+}
+
+@media (max-width:480){
+    .team_head{
+        font-size: 1.5rem;
+      }
+}
+
+@media (max-width:410){
+    .team_head{
+        font-size: 1rem;
+      }
+}

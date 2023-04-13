@@ -1,0 +1,126 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+<head>
+   
+    <title>Assignment Instructions</title>
+    <link rel="icon" href="{static 'exam/favicon.ico'}" type="image/x-icon">
+     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+     <link rel="stylesheet" href="{%static 'instructions/index.css'%}">
+      <style>
+         #start_2{
+             display: none;
+         }
+         #end_2{
+             display: none;
+         }
+          #bnd{
+          display:none;
+          }
+          .btn-back{
+               background-color: #248162;
+             border: none;
+             color: white;
+             padding: 15px 32px;
+             text-align: center;
+             text-decoration: none;
+             display: inline-block;
+             font-size: 16px;
+             margin-bottom: 40px;
+             cursor: pointer;
+             -webkit-transition-duration: 0.4s;
+             transition-duration: 0.4s;
+             border-radius: 8px;
+          }
+          .btn-back:hover{
+             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+         }
+     </style>
+    
+</head>
+<body>
+  
+    <div class="instructions">
+      <img src="{% static 'instructions/Logo.png'%}" alt="" id="logo2">       
+
+
+    <h1>{{assign.assignment_name}}</h1><br>
+    <h3 class="lines"  style="color:rgb(8, 94, 54);"  >Start time: {{assign.start}}</h3><br>
+        <h2>
+            Instructions to the students
+        </h2>
+        <p class="lines">
+            <i class='bx bxs-right-arrow'></i>
+            Each question has two or more random numbers associated with it
+        </p>
+              
+        <p class="lines">
+            <i class='bx bxs-right-arrow'></i>
+            Enter the numericals in the space provided below without unit 
+        </p>
+        <p class="lines">
+            <i class='bx bxs-right-arrow'></i>
+            Students can save their answer and edit the answer till the submission time
+        </p>
+        
+        {%for each in inst%}
+        <p class="lines" >
+            <i class='bx bxs-right-arrow'></i>
+            {{each}}
+        </p>
+        {%endfor%} 
+        <h3 class="lines"  style="color:rgb(8, 94, 54);"  >{{msg}}</h3><br>
+    {%if time%}
+    <br>
+    <div style = "display:flex;" class="lines" style="color:rgb(8, 94, 54);" id = "start_timer">
+    
+    </div>
+    {%endif%}
+   
+    {%if endtime%}
+        <!-- <p class="lines" id = "bnd" style="color: #c71212;">
+        <i class='bx bxs-right-arrow' ></i> -->
+        <span id = "the_timer" class="lines" style="color:rgb(233, 20, 20);"></span>
+        {%ifequal request.user.profile.type 's'%}
+            <form method=POST class="btn">            
+                {%csrf_token%}
+                <a href="./view" class="btn-back" id="start_btn">Go to Assignment</a>
+            </form>
+        {%else%}
+            <a href="./"  class="btn-back" >Go Back</a>
+        {%endifequal%}
+{%endif%}
+<!--     
+    <div style="text-align:center">
+        <a href="assignment/">Start Assignment</a>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+    </div> -->
+</div>
+</body>
+<script>
+    var dest2 = new Date("{{time}}{{endtime}}").getTime();
+    var x2 = setInterval(function() {
+    var now2 = new Date().getTime();
+
+    var diff2 = dest2 - now2 ;
+        
+    var days2 = Math.floor(diff2 / (1000*60*60*24));
+    var hours2 = Math.floor((diff2 % (1000*60*60*24))/(1000*60*60));
+    var minutes2 = Math.floor((diff2 % (1000*60*60))/(1000*60));
+    var seconds2 = Math.floor((diff2 % (1000*60))/1000);
+    console.log(days2)
+        
+    {%if endtime%}
+    // if(diff2 < 432000000 ){
+        document.getElementById("the_timer").innerHTML=  "This assignment link will close in : "+ days2 +"d: " + hours2 + "h: " + minutes2 + "m: " + seconds2 + "s"
+        // document.getElementById("bnd").style.display = "block";                                      
+        // }
+    {%endif%}
+    {%if time%}
+         document.getElementById("start_timer").innerHTML="This assignment will start in : "+ days2 +"d: " + hours2 + "h: " + minutes2 + "m: " + seconds2 + "s"
+    {%endif%}
+  if(Math.floor(diff2/1000)<=0){
+         clearInterval(x2);
+        location.reload();
+           }
+},1000);
+    </script>
+{% endblock %}

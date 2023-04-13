@@ -1,0 +1,14 @@
+{% extends "exam/base.html" %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="create quiz" >
+    </form>
+    <textarea type='text' id="link_box" onkeyup=gotolink() placeholder="Write the code here"></textarea>
+    <a id='botton1' >Go to quiz</a>
+    {%else%}
+    <p>Login to join a quiz</p>
+    {%endif%}
+    
+{% endblock content %}

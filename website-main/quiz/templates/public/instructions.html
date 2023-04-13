@@ -1,0 +1,229 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <title>Aim2Crack-Instructions</title>
+    <link rel="icon" href="{static 'exam/favicon.ico'}" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{%static 'instructions/index.css'%}">
+     <style>
+        #start_2{
+            display: none;
+        }
+        #end_2{
+            display: none;
+        }
+         #bnd{
+         display:none;
+         }
+         .btn-back{
+              background-color: #248162;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            border-radius: 8px;
+         }
+         .btn-back:hover{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+    </style>
+</head>
+<body onload="myfunction()">
+    <div class="fresh">
+        <img id="left" src="{% static 'instructions/undraw_candidate_ubwv.svg'%}" alt="">
+         
+        <img id="right" src="{% static 'instructions/undraw_Fresh_notification_re_whq4.svg'%}" alt="">
+    </div>
+    <div class="instructions">
+      <img src="{% static 'instructions/Logo enlarged-03.png'%}" alt="" id="logo">
+                <h2>
+                    Instructions to the candidates
+                </h2>
+{% for each in given%}
+        {%ifequal link each%}
+        
+        
+    {% if messages %}
+            {% for message in messages%}
+        <p class="line">{{message}}</p>
+            {% endfor %}
+            {% endif %}        
+        
+<p class="line">
+    <i class='bx bxs-right-arrow'></i>
+    Subscribe to our youtube channel and follow us on instagram, facebook, and linkedIn. The results will be announced in all these spaces!
+</p> 
+<p class="line">
+    <i class='bx bxs-right-arrow'></i>
+    We are only interested in your innovative cheating methodology .(not your knowledge on subject)
+</p>
+<p class="line">
+    <i class='bx bxs-right-arrow'></i>
+    Filling the form after the quiz is a mandatory criteria for participation in this contest.
+</p>
+<p class="line">
+    <i class='bx bxs-right-arrow'></i>
+    Take all three quizzes and cheating methods you have suggested will carry more weightage compared to quiz marks  for prize money.
+</p>
+<p class="line">
+    <i class='bx bxs-right-arrow'></i>
+    More than one idea can be explained, take your time and write your own story!
+</p>
+<p class="line">
+    <i class='bx bxs-right-arrow'></i>
+    If you have a method to prevent your own cheating technique, share it with us!
+</p>
+<h2>
+    Things you must know
+</h2>
+        {%endifequal%}
+{%endfor%}
+<p class="lines">
+    <i class='bx bxs-right-arrow'></i>
+    Do not try to refresh your tab while taking the exam! Test will be submitted automatically !
+</p>
+      
+<p class="lines">
+    <i class='bx bxs-right-arrow'></i>
+    Do not attempt to change the tab while taking the exam! Test will be submitted automatically !
+</p>
+<p class="lines">
+    <i class='bx bxs-right-arrow'></i>
+    Individual questions are timed, you don't have any chance to answer it later!
+</p>
+<p class="lines" >
+    <i class='bx bxs-right-arrow'></i>
+    Do not attempt to google search on a secondary device, the timer has been set appropriately!
+</p>
+      {%for each in inst%}
+<p class="lines">
+    <i class='bx bxs-right-arrow'></i>
+    {{each}}
+</p>
+{%endfor%}  
+        {%if time%}
+        <br>
+        <div style = "display:flex;" id = "start_timer">
+        
+        </div>
+        {%endif%}
+        
+        {%if endtime%}
+        <p class="lines" id = "bnd" style="color: #c71212;">
+        <i class='bx bxs-right-arrow' ></i>
+        Your chance to take this quiz will end in: <span id = "the_timer" style="display:inline-block;"></span></p>
+        {%ifequal request.user.profile.type 's'%}
+            <form method=POST class="btn">            
+                {%csrf_token%}
+                <button type="submit" id="start_btn">Start Test</button>
+            </form>
+        {%else%}
+            <a href="./feed"  class="btn-back" >Go Back</a>
+        {%endifequal%}
+{%endif%}
+    
+    
+    </div>
+    <script>
+     
+
+var left = document.getElementById("left");
+var right = document.getElementById("right");
+        {% for each in given%}
+        {%ifequal each link%}
+var nameh = document.getElementById("name");
+var info = document.getElementById("information");
+{%endifequal%}
+         {%endfor%}
+function myfunction() {
+ 
+    left.classList.toggle("active");
+    right.classList.toggle("active");
+    {% for each in given%}
+        {%ifequal each link%}
+    nameh.classList.toggle("active");
+    info.classList.toggle("active");
+   {%endifequal%}
+         {%endfor%}
+
+}
+        {% for each in given%}
+        {%ifequal each link%}
+var dest = new Date("sep 5, 2021 00:01:00").getTime();
+        var x = setInterval(function() {
+        var now = new Date().getTime();
+        var diff = dest - now ;
+    
+        var days = Math.floor(diff / (1000*60*60*24));
+        var hours = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+        var minutes = Math.floor((diff % (1000*60*60))/(1000*60));
+        var seconds = Math.floor((diff % (1000*60))/1000);
+        document.getElementById("start_date").innerHTML= days +"d: " + hours + "h: " + minutes + "m: " + seconds + "s"
+       
+
+      if(Math.floor(diff/1000)<=0){
+            document.getElementById("start_1").style.display = "none";
+            document.getElementById("start_2").style.display = "inline-block";
+             clearInterval(x);
+               }
+    },1000);
+var dest1 = new Date("sep 30, 2021 23:59:00").getTime();
+        var x1 = setInterval(function() {
+        var now1 = new Date().getTime();
+        var diff1 = dest1 - now1 ;
+      
+        var days1 = Math.floor(diff1/ (1000*60*60*24));
+        var hours1 = Math.floor((diff1 % (1000*60*60*24))/(1000*60*60));
+        var minutes1 = Math.floor((diff1 % (1000*60*60))/(1000*60));
+        var seconds1 = Math.floor((diff1 % (1000*60))/1000);
+        document.getElementById("end_date").innerHTML= days1 +"d: " + hours1 + "h: " + minutes1 + "m: " + seconds1 + "s"
+       
+
+       if(Math.floor(diff1/1000)<=0){
+            document.getElementById("end_1").style.display = "none";
+            document.getElementById("end_2").style.display = "inline-block";
+
+            clearInterval(x1);
+               }
+    },1000);
+         {%endifequal%}
+         {%endfor%}
+         
+    var dest2 = new Date("{{time}}{{endtime}}").getTime();
+    var x2 = setInterval(function() {
+    var now2 = new Date().getTime();
+
+    var diff2 = dest2 - now2 ;
+        
+    var days2 = Math.floor(diff2 / (1000*60*60*24));
+    var hours2 = Math.floor((diff2 % (1000*60*60*24))/(1000*60*60));
+    var minutes2 = Math.floor((diff2 % (1000*60*60))/(1000*60));
+    var seconds2 = Math.floor((diff2 % (1000*60))/1000);
+        
+        {%if endtime%}
+        if(diff2 < 432000000){
+    document.getElementById("the_timer").innerHTML= days2 +"d: " + hours2 + "h: " + minutes2 + "m: " + seconds2 + "s"
+    document.getElementById("bnd").style.display = "block";                                      
+                                                               }
+         {%endif%}
+         {%if time%}
+         document.getElementById("start_timer").innerHTML= days2 +"d: " + hours2 + "h: " + minutes2 + "m: " + seconds2 + "s"
+         {%endif%}
+  if(Math.floor(diff2/1000)<=0){
+         clearInterval(x2);
+        location.reload();
+           }
+},1000);
+    </script>
+</body>
+</html>

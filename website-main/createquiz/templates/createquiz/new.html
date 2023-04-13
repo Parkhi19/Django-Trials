@@ -1,0 +1,36 @@
+{% extends "public/base.html" %}
+<title>Add Question</title>
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="main_box">
+        Type:
+        <select id="type" name = "type">
+            <option id="S" value="s" selected >Single Correct Question</option>
+            <option id="M" value="m">Multiple Correct Question</option>
+            <option id="I" value="i">Integer Type Question</option>
+        </select>
+        Level:
+        <input type="text" name="level" required="">
+        Time:
+        <input type="number" id="quantity" name="time" min="1" max="200"><br>
+        <textarea name="question" type="text" class="question" placeholder="Write the question here"></textarea><br>
+        <div id='options_doing'>
+            options:
+            <textarea data-row=0 name="options" class="options" id="options_1" placeholder="Options"></textarea><br>
+            <!-- <button class = "boton2" onclick = addingoption(x) >
+                Add option
+            </button><br><br> -->
+        </div>
+        Correct:
+        <textarea type="number" id="quantity" name="correct" min="1" max="200"></textarea><br>
+
+        <div class="last">
+            <input class="btn" type="submit" value="submit" placeholder="save">
+        </div>
+
+</form>
+
+</div>
+
+{% endblock content %}

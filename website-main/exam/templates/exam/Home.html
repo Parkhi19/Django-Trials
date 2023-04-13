@@ -1,0 +1,1121 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="aim2crack">
+  <meta name="description" content="Aim2crack is a quizzing platform where you can do quizzing practice for placement and aptitude test">
+ <link rel="icon" href="{%static 'exam/favicon.ico'%}" type="image/x-icon">
+    <!-- navbar icons link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <!-- ******* -->
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+ <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+  />
+ 
+    <title>Aim2Crack</title>
+<!--     new navbar links -->
+    <script src="https://kit.fontawesome.com/4d0c408dff.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="{% static 'exam/homepage1.css'%}">
+</head>
+<style>
+    *{
+    scroll-behaviour:smooth;
+    }
+    .quiz_section{
+
+        background-image: linear-gradient( rgba(4, 9, 30,0.7),rgba(4, 9, 30,0.7) ),url("{%static 'exam/quiz_section.jpeg'%}");
+        background-size: cover;
+        background-position: center;
+    }
+    .electric{
+        background: linear-gradient(
+        316deg
+        , rgb(80 216 215 / 25%) 0%, rgb(42 35 35 / 55%) 74%), url("{% static 'exam/bulb.jpg'%}") center center / cover;
+
+    }
+    #selected_btn{
+        
+        color: #50d8d7;
+    }
+    
+        .icons a{
+text-decoration: none;
+        }
+   
+    .single-info a{
+    padding: 1px 18px;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    border: 2px solid black;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.single-info a:hover{
+    color: white;
+  background-color: black;
+}
+
+</style>
+<body onload="myfunction()">
+
+
+
+
+    <!-- loader of site  -->
+<!--     <div id="loader_container">
+        {%ifequal check 'y'%}
+        <div class="logo_comp">
+
+            <div class="name">
+               <img src="{% static 'exam/our_logo.png'%}" alt="">
+            </div>
+            <div class="logo">
+                <span></span>
+
+            </div>
+        </div>
+        {%endifequal%}
+    </div> -->
+
+
+    <!-- left bar of site  -->
+    <div class="icon-bar">
+        <a  class="facebook" href="https://www.facebook.com/Aim2Crack-106726185067538/"><i class='bx bxl-facebook'></i></a>
+        <a class="youtube" href="https://youtube.com/channel/UC5RXgwwRVcJDCdxRLD-69kg"><i class='bx bxl-youtube'></i></a>
+        <a class="linkedin" href="https://www.linkedin.com/company/aim2crack"><i class='bx bxl-linkedin'></i></a>
+        <a class="instagram" href="https://www.instagram.com/aim2crack/"><i class='bx bxl-instagram-alt'></i></a>
+    </div>
+
+
+
+
+
+
+
+    <!-- navbar of the site  -->
+     <header>
+        <img class="logo" src="{% static 'exam/Aim2Crack-logo-1.png'%}" alt="logo" title="home" >
+
+        <nav class="main-menu">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+{% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content">
+                        <a href="./c/some">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+ {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content">
+                         <a href="{%url 'placement'%}" >
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                       
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'team'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}">
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="#" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid!</small>
+                        </a>
+                    </div>
+                </li>
+
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+        <div class="click-dropdown profile-dropdown">
+            <button onclick="myFunction()" class="click-dropbtn">
+                <a>
+                    <span class="material-icons md-24">
+                        person
+                    </span>
+                    {% if user.is_authenticated %}
+                    <p class="profile">
+                        Profile
+                    </p>
+                     {%else%}
+                     <p class="profile">
+                        Signup
+                    </p>
+                    {%endif%}
+                    <span class="material-icons-outlined">
+                        expand_more
+                    </span>
+                </a>
+            </button>
+            <div id="myDropdown" class="click-dropdown-content">
+ {% if user.is_authenticated %}
+                <a href="{%url 'profile' request.user.profile.id %}" >
+                    <span class="btn-txt">Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'logout'%}" >
+                    <span class="btn-txt">Logout</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%else%}
+<a href="{%url 'register'%}" >
+                    <span class="btn-txt">Create Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'login'%}" >
+                    <span class="btn-txt">LogIn</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%endif%}
+            </div>
+        </div>
+
+        <span class="ham" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </header>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <nav class="main-menu-1">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+ {% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'quizzes'%}">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+   {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'about'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid</small>
+                        </a>
+                    </div>
+                </li>
+{% if user.is_authenticated %}
+                <li><a href="{%url 'profile' request.user.profile.id %}">Account</a></li>
+                <li><a href="{%url 'logout'%}">Logout</a></li>
+  {%else%}
+                <li><a href="{%url 'register'%}">Create Account</a></li>
+                <li><a href="{%url 'login'%}">LogIn</a></li>
+{%endif%}
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+        <!-- <div class="click-dropdown">
+            <button onclick="myFunction()" class="click-dropbtn">
+                <a class="click-dropbtn-a" style="display: flex;">
+                    <span class="material-icons md-24">
+                        person
+                    </span>
+                    <p class="profile">
+                        Profile
+                    </p>
+                    <span class="material-icons-outlined">
+                        expand_more
+                    </span>
+                </a>
+            </button>
+            <div id="myDropdown" class="click-dropdown-content">
+                <a class="click-dropdown-content-a" href="https://www.instagram.com/" target="_blank">
+                    <span class="btn-txt">Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a class="click-dropdown-content-a" href="https://www.instagram.com/" target="_blank">
+                    <span class="btn-txt">Logout</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+            </div>
+        </div> -->
+
+    </div>
+
+    
+
+
+
+
+
+
+    <!-- top slider of site  -->
+
+    <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <div class="slide">
+                    <img src="{% static 'Images/5.jpeg'%}" alt="" class="image">
+                    <div class="first" id="dhoni">
+                        <div class="quote">
+                        <div class="theirs">
+                            <div class="write">
+                                “If you’ll keep winning, you won’t know the areas you’ve to work upon.”
+            
+                            </div>
+                            <div class="by">
+                                ~ MS Dhoni
+                            </div>
+                        </div>
+                        <hr id="top_slider_hr">
+                        <div class="ours">
+                            <span class="site_nameo">
+                                Aim2Crack
+                            </span>
+                            is a lot more challenging and shows you the areas you need to improve!
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide">
+                    <img src="{% static 'Images/1.jpeg'%}" alt="" class="image">
+                    <div class=" second" id="mandela">
+                        <div class="quote">
+                        <div class="theirs">
+                            <div class="write">
+                                “Education is the most powerful weapon which you can use to change the world”
+            
+                            </div>
+                            <div class="by">
+                                ~ Nelson Mandela
+                            </div>
+                        </div>
+                        <hr id="top_slider_hr">
+                        <div class="ours">
+                            <span class="site_nameo">
+                                Aim2Crack
+                            </span>
+                            is aimed at producing the most destructive weapon free of cost!
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide">
+                    <img src="{% static 'Images/7 (3).jpeg'%}" alt="" class="image">
+                    <div class=" first" id="sindhu">
+                        <div class="quote">
+                        <div class="theirs">
+                            <div class="write">
+                                "The goal isn’t a medal, the goal is to beat the best" 
+            
+                            </div>
+                            <div class="by">
+                                ~P V Sindhu
+                            </div>
+                        </div>
+                        <hr id="top_slider_hr">
+                        <div class="ours">
+                            <span class="site_nameo">
+                                Aim2Crack
+                            </span>
+                            assures you to beat the best in any multiverse!
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide">
+                    <img src="{% static 'Images/3.jpeg'%}" alt="" class="image">
+                    <div class=" second" id="ein">
+                        <div class="quote">
+                        <div class="theirs">
+                            <div class="write">
+                                “It’s not that I’m so smart, it’s just that I stay with the problems longer”
+            
+                            </div>
+                            <div class="by">
+                                ~ Albert Einstein
+                            </div>
+                        </div>
+                        <hr id="top_slider_hr">
+                        <div class="ours">
+                            <span class="site_nameo">
+                                Aim2Crack
+                            </span>
+                            provides a platform that enables you to spend more time with more intense problems!
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide">
+                    <img src="{% static 'Images/4.jpeg'%}" alt="" class="image">
+                    <div class=" second" id="moneyheist">
+                        <div class="quote">
+                        <div class="theirs">
+                            <div class="write">
+                                “Weakness is not in us, it is in what we have outside.”
+            
+                            </div>
+                            <div class="by">
+                                ~ The professor
+                            </div>
+                        </div>
+                        <hr id="top_slider_hr">
+                        <div class="ours">
+                            <span class="site_nameo">
+                                Aim2Crack
+                            </span>
+                            will help you overcome the weakness!!
+                            If you are in love with nairobi.. <a href="{%url 'register'%}">signup</a> !!
+                            <p> Bela ciao! ciao! ciao!</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+              <div class="swiper-slide"> <div class="slide">
+                <img src="{% static 'Images/6 (1).png'%}" alt="" class="image">
+                <div class=" second" id="APJ">
+                    <div class="quote">
+                    <div class="theirs">
+                        <div class="write">
+                            Problems are common, but it is the attitude that makes the difference!!
+        
+                        </div>
+                        <div class="by">
+                            ~ APJ Abdul kalam
+                        </div>
+                    </div>
+                    <hr id="top_slider_hr">
+                    <div class="ours">
+                        <span class="site_nameo">
+                            Aim2Crack
+                        </span>
+                        will help you achieve a positive attitude by improving your interpersonal skills.
+                    </div>
+                </div>
+                </div>
+            </div></div>
+              <div class="swiper-slide">
+                <div class="slide">
+                    <img src="{% static 'Images/7 (2).jpeg'%}" alt="" class="image">
+                    <div class=" first" id="ben">
+                        <div class="quote">
+                        <div class="theirs">
+                            <div class="write">
+                                “An investment in knowledge pays the best interest” 
+            
+                            </div>
+                            <div class="by">
+                                ~ Benjamin Franklin
+                            </div>
+                        </div>
+                        <hr id="top_slider_hr">
+                        <div class="ours">
+                            <span class="site_nameo">
+                                Aim2Crack
+                            </span>
+                            needs your investment only in time. All our services are absolutely free!
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide">
+                    <img src="{% static 'Images/6 (3).jpeg'%}" alt="" class="image">
+                    <div class="second" id="kirk">
+                        <div class="quote">
+                        <div class="theirs">
+                            <div class="write">
+                                "Learning process continues until the day you die"
+            
+                               
+                            </div>
+                            <div class="by">
+                                ~ Kirk Douglas
+                            </div>
+                        </div>
+                        <hr id="top_slider_hr">
+                        <div class="ours">
+                            <span class="site_nameo">
+                                Aim2Crack
+                            </span>
+                            will help in aftermath too! End is the beginning and beginning is the end! 
+                            <p> Tik Tok! Tik Tok! </p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+             
+              <div class="swiper-slide">
+                <div class="slide">
+                    <img src="{% static 'Images/7 (1).png'%}" alt="" class="image">
+                    <div class=" second" id="Neeraj">
+                        <div class="quote">
+                        <div class="theirs">
+                            <div class="write">
+                                The journey to the Gold Medal is quite a long one! 
+            
+                               
+                            </div>
+                            <div class="by">
+                                ~ Neeraj Chopra
+                            </div>
+                        </div>
+                        <hr id="top_slider_hr">
+                        <div class="ours">
+                            <span class="site_nameo">
+                                Aim2Crack
+                            </span>
+                            will navigate you in a precise path to reach the gold!
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+         
+             
+            </div>
+        
+          
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev" id="prev-btn"></div>
+            <div class="swiper-button-next" id="next-btn"></div>
+          
+        </div>
+                        
+                 
+
+
+          
+
+
+              
+
+                       
+              
+                     
+
+
+
+    <!-- Latest update section  -->
+   
+<section class="latest_update">
+    <div class="eve">
+        <a href="#Tutorial-videos" style="text-decoration:none; color:white;   display: flex; align-items: center;">
+        <h3 style="color:white;">
+            Quizzing Module
+
+        </h3>
+<!--              <p>(End date extended to 30th)</p> -->
+         </a>
+    </div>
+
+    {%ifequal id 't'%}
+    <div class="create_your_own_quiz">
+        <a href="./c/some">Create Quiz</a>
+    </div>
+    {%else%}
+    <style>
+        .eve{
+            width:100%
+        }
+    </style>
+    {%endifequal%}
+
+</section>
+
+
+
+<!-- Announcement and videos  -->
+
+ <section>
+    <div class="video-announce">
+        <div class="only_video">
+
+        
+             <a href="https://youtu.be/ydlcpZ4yIDM">
+        <div class="video_name">
+           <h1> Our youtube videos </h1>
+        </div>
+    </a>
+        <div class="video">
+                {{embed_link|safe}}
+            </div>
+             <a href="{% url 'placement-talks'%}">
+        <div class="video_name">
+            <h1> Placement Talks </h1>
+            <p> Learn from experts</p>
+         </div>
+        </a>
+        </div>
+        <div class="only_announcement">
+            <div class="announcement_namee">
+
+          
+        <h1 class="announce-heading">Announcements</h1>
+    </div>
+        <div class="announce-wrapper">
+            <div class="announce">
+              
+               
+                 <a class="single" href="{%url 'placement'%}">
+                  
+                    <div class="single-info">
+                        <h3 class="single-heading">Games and Races</h3>
+                        <p class="single-text">Check your knowledge on Games and Races. Take this mock test and know where you stand among your peers.</p>
+                      
+                    </div>
+               </a>
+                 <a class="single" href="{% url 'placement-talks'%}">
+                   
+                    <div class="single-info">
+                        <h3 class="single-heading">Cognizant Interview Experience</h3>
+                        <p class="single-text">
+                          Mr.Shridatha Hegde who recently got placed in Cognizant is sharing his interview experience. He grabbed package of 6.75 lakh CTC.</p>
+                    </div>
+               </a>
+               
+               
+                 <a class="single" href="{%url 'placement'%}">
+                  
+                    <div class="single-info">
+                        <h3 class="single-heading">Speed and Distance
+                           </h3>
+                                              <p class="single-text">Take this test on Speed and Distance aptitude problems and know where you stand among your peers.</p>
+                    </div>
+               </a>
+               <a class="single" href="{% url 'placement-talks'%}">
+                   
+                    <div class="single-info">
+                        <h3 class="single-heading">Amazon Web Services Interview Experience</h3>
+                         <p class="single-text">Mr. Srinivas Hegde who recently got placed in Amazon Web Services is sharing his interview experience. He grabbed package of 21.5 lakhs CTC.</p>
+ 
+                    </div>
+              </a>
+  <a class="single" href="{%url 'placement'%}">
+                  
+                    <div class="single-info">
+                        <h3 class="single-heading">Data Interpretation</h3>
+                        <p class="single-text">Take this test and compete with more challenging problems on Data Interpretation .</p>
+                    </div>
+             </a>
+  <a class="single" href="{% url 'placement-talks'%}">
+                   
+                    <div class="single-info">
+                        <h3 class="single-heading">Deloitte Interview Experience </h3>
+                        <p class="single-text"> 
+                
+                         Mr.Tuneer Khargonkar who recently got placed in Deloitte with a starting package of 7.6 Lakhs CTC is sharing his interview experience. Watch it now!</p>
+                    </div>
+               </a>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- Tutorial -->
+<section class="tutorial_videos" id="Tutorial-videos">
+        <h1>Quizzing Module</h1>
+    <div class="tut_video-box">
+      
+        <div class="tut_video" id="video-1">
+            <h1>Introduction</h1>
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/nlxQOlroLT4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="details_tut_video">
+
+<a href="{%static 'exam/introduction.pdf'%}" download><i class='bx bx-download' ></i><span>Download pdf</span></a>
+          </div>
+      
+        </div>
+        <div class="tut_video" id="video-2">
+            <h1>Create Quiz</h1> 
+           
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/ooTwxOjjyOY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="details_tut_video">
+<a href="{% static 'exam/How to create quiz- Faculty tutorial.pdf'%}" download><i class='bx bx-download' ></i><span>Download pdf</span></a>
+                      </div>
+        </div>
+        <div class="tut_video" id="video-3">
+            <h1 style="font-size: 2rem">Do's and Dont's for students</h1>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/6TojcCLKw14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="details_tut_video">
+           
+            <a href="{% static 'exam/How to give a quiz_student_tutorial_aim2crack.pdf'%}" download><i class='bx bx-download' ></i><span>Download pdf</span></a>
+                      </div>
+        </div>
+      </div>
+
+</section>
+
+
+
+ <!-- Why us  -->
+    <section class="why-a2c">
+        <h2>WHY AIM2CRACK?</h2>
+        <div class="why-us-owner">
+            <div class="why-us-employee">
+                <img src="{% static 'Images/undraw_pending_approval_xuu9.svg'%}" alt="" class="undraw-why-us">
+                 <div class="circle"></div>
+                 <div class="heading-para">
+                     <h3>No explanation to the answers?</h3>
+                     <p><span>Aim2crack</span>provides you detailed explanation of the concept.
+                    </p>
+                 </div>
+            </div>
+            <div class="why-us-employee">
+                <img src="{% static 'Images/undraw_real_time_collaboration_c62i.svg'%}" alt="" class="undraw-why-us">
+                 <div class="circle"></div>
+                 <div class="heading-para">
+                     <h3>Calling a friend in last two minutes and getting the answers?</h3>
+                     <p><span>Aim2crack</span>questions are timed and random, answers can't be easily copied.
+                    </p>
+                 </div>
+            </div>
+            <div class="why-us-employee">
+                <img src="{% static 'Images/undraw_web_search_re_efla.svg'%}" alt="" class="undraw-why-us">
+                 <div class="circle"></div>
+                 <div class="heading-para">
+                     <h3>Searching the question in google?</h3>
+                     <p><span>Aim2crack</span> prevents changing of tabs and test will be submitted once the tab is changed
+                    </p>
+                 </div>
+            </div>
+            <div class="why-us-employee">
+                <img src="{% static 'Images/undraw_mobile_devices_k1ok.svg'%}" alt="" class="undraw-why-us">
+                 <div class="circle"></div>
+                 <div class="heading-para">
+                     <h3>Searching in a second device</h3>
+                     <p><span>Aim2crack</span>aids the faculty to find the time taken to get the answer in google. Faculty can set the timer accordingly.
+                    </p>
+                 </div>
+            </div>
+            <div class="why-us-employee">
+                <img src="{% static 'Images/undraw_speech_to_text_re_rw02.svg'%}" alt="" class="undraw-why-us">
+                 <div class="circle"></div>
+                 <div class="heading-para">
+                     <h3>Filling the numerical easily with the help of a friend?</h3>
+                     <p><span>Aim2crack</span>questions involve random number generation which gives different numerical value for different students.
+                    </p>
+                 </div>
+            </div>
+            <div class="why-us-employee">
+                <img src="{% static 'Images/undraw_programming_re_kg9v.svg'%}" alt="" class="undraw-why-us">
+                 <div class="circle"></div>
+                 <div class="heading-para">
+                     <h3>Log in through a friend</h3>
+                     <p><span>Aim2crack</span> detects multiple login and notification will be sent to faculty. 
+                    </p>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Quiz Section  -->
+
+<section class="quiz_section">
+    <H1 style="color: white;">Apti-Crack</H1>
+    <div class="containerM">
+        <div data-aos="flip-up" class="cardM">
+            <div class="boxM">
+                <div class="contentM">
+                    <h2>01</h2>
+                    <h3>Fractions</h3>
+                    <p>Check your knowledge on Fractions. Take this mock test and know where you stand among your peers.</p>
+                    <a href="../c/qcd-arqk-vbs/test">LINK</a>
+                </div>
+            </div>
+        </div>
+        <div data-aos="flip-up" class="cardM">
+            <div class="boxM">
+                <div class="contentM">
+                    <h2>02</h2>
+                    <h3>Compound interest</h3>
+                    <p>Take this test on Compound interest aptitude problems and know where you stand among your peers.</p>
+                    <a href="../c/vqb-cetu-lpz/test">LINK</a>
+                </div>
+            </div>
+        </div>
+        <div data-aos="flip-up" class="cardM">
+            <div class="boxM">
+                <div class="contentM">
+                    <h2>03</h2>
+                    <h3>Simple interest</h3>
+                    <p>Take this test and compete with more challenging problems on Simple interest .</p>
+                        <a href="../c/vim-vzle-scr/test">LINK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+   
+    
+    
+    
+    <!-- services of site  -->
+    <section class="services">
+        <h1>Services</h1>
+        
+        <div class="info">
+            <div data-aos="fade-right" data-aos-duration="500" class="aos" >
+                <div class="sinser ">
+
+                <img src="{% static 'Images/first.png'%}" alt="Question">
+                
+                <div class="overlay"></div>
+                <div class="desc">
+                 
+                    <p>Do you know what the testing effect is? It is believed that the more you test your knowledge, the more you will learn and remember. Isn't it important for you, as an online educator, that your students remember what you've taught them? Don't take a chance, take a quiz! Create your quiz now!
+                    </p>
+                            <a href="./c/some">Create Quiz</a>
+
+                </div>
+
+            </div>
+        </div>
+        <div data-aos="fade-left" data-aos-duration="500" class="  aos">
+            <div class="sinser " >
+                <img src="{% static 'Images/second.png'%}" alt="">
+
+                <div class="overlay"></div>
+                <div class="desc">
+                  
+                    <p>Make placement training and preparation more effective and interesting for the  students with Aim2Crack. It's a great way to train students for placement rounds and prepare them for the final battle. Our modules are inline with the recent methodologies and are constantly updated based on the student feedback.
+
+                    </p>
+                   
+                    <a href="{%url 'placement'%}">Placement Quiz</a>
+                </div>
+
+            </div>
+        </div>
+        <div data-aos="fade-right" data-aos-duration="500" class="aos" >
+            <div class="sinser" >
+                <img src="{% static 'Images/third.png'%}" alt="">
+                
+                <div class="overlay"></div>
+                <div class="desc">
+                   
+                    <p> In order to improve your skills and  to be both successful and effective, you want to learn as much as possible from experts! Aim2crack provides experience of recently placed students and their insights! Don't forget to subscribe to our YouTube channel to get timely updates!
+
+                    </p>
+                    
+                    <a href="{% url 'placement-talks'%}">Placement Talks</a>
+                </div>
+                
+            </div>
+        </div>
+        <div data-aos="fade-left" data-aos-duration="500" class="  aos">
+            <div class="sinser" >
+                <img src="{% static 'Images/fourth.png'%}" alt="">
+                
+                <div class="overlay"></div>
+                <div class="desc">
+                  
+                    <p>Preparing for competitive exams requires consistency and practice. Aim2Crack will help you to understand where you are lagging and will provide you in depth analysis. Manage all your quizzes at one place.
+
+                    </p>
+                   
+                    <a href="#">Coming Soon</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+</section>  
+
+
+
+
+
+
+<!-- create you quiz section  -->
+    {%if user.is_authenticated%}
+{%ifequal request.user.profile.type "t"%}
+<section class="create_your_quiz">
+    <div class="my_quiz">
+        <img src="{% static 'exam/Quiz_for_free.png'%}" alt="">
+    </div>
+    <div class="electric">
+        <h3>create your quiz now!!</h3>
+            <a href="./c/some">create quiz</a>
+    </div>
+</section>
+    {%endifequal%}
+    {%endif%}
+    
+ <!-- footer of the page -->
+<footer class="footer-distributed">
+    
+    <div class="footer-left">
+
+        <h3>AIM<SPAN>2</SPAN>CRACK</h3>
+
+        <p class="footer-links">
+            <a href="{%url 'exam-home'%}" class="link-1">Home</a>
+            
+            <a href="{%url 'placement'%}">Placement</a>
+                
+            <a href="{%url 'about'%}">About</a>
+            
+            
+            <a href="{%url 'contact'%}">Contact</a>
+        </p>
+
+        <p class="footer-company-name">Aim2Crack © 2021</p>
+    </div>
+
+    <div class="footer-center">
+
+        <div>
+            <a href="mailto:support@aim2crack.com"><i class="fa fa-envelope"></i></a>
+            <p class="mailto"><a href="mailto: aim2crack@gmail.com">aim2crack@gmail.com</a></p>
+        </div>
+        <div class="footer-icons">
+
+            <div class="social">
+                <a href="https://youtube.com/channel/UC5RXgwwRVcJDCdxRLD-69kg"><i class="icon bx bxl-youtube"></i></a>
+                <a href="https://instagram.com/aim2crack?utm_medium=copy_link"><i class="icon bx bxl-instagram-alt"></i></a>
+                <a href="https://www.linkedin.com/company/aim2crack"><i class="icon bx bxl-linkedin"></i></a>
+                <a href="https://www.facebook.com/Aim2Crack-106726185067538/"><i class="icon bx bxl-facebook-circle"></i></a>
+            </div>
+                    </div>
+            
+    </div>
+    
+
+    <div class="footer-right">
+        <p class="footer-company-about">
+            <span>About the company</span>
+            Aim2crack is a non-profit, crowd sourced organization that provides free services to students and faculty.          
+        </p>
+
+
+    </div>
+
+</footer>
+
+
+
+
+
+
+
+<!--     <script src="{% static 'exam/home1.js'%}"></script> -->
+    <script>
+        AOS.init();
+    </script>
+      <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+     <script>
+       var swiper = new Swiper(".swiper", {
+          
+           loop: true,
+           navigation: {
+             nextEl: ".swiper-button-next",
+             prevEl: ".swiper-button-prev",
+           },
+         });
+         var swiper = new Swiper(".swiper", {
+           spaceBetween: 0,
+           centeredSlides: true,
+           autoplay: {
+             delay: 8000,
+             disableOnInteraction: false,
+           },
+           loop: true,
+          
+           navigation: {
+             nextEl: ".swiper-button-next",
+             prevEl: ".swiper-button-prev",
+           },
+         });
+       
+       </script>
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        
+        
+    </script>
+    <script src="{% static 'Images/vanilla-tilt.min.js'%}"></script>
+       <script type="text/javascript">
+        VanillaTilt.init(document.querySelectorAll(".why-us-employee"), {
+            max: 25,
+            speed: 400
+        });
+        </script>
+</body>
+</html>

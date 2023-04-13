@@ -1,0 +1,799 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Our Team</title>
+    <link rel="stylesheet" href="{% static 'exam/about_css/team.css'%}">
+    <script src="https://kit.fontawesome.com/4d0c408dff.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'exam/about_css/icons-styles-linea.css'%}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4d0c408dff.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{%static 'exam/navbar.css'%}">
+    <script src="https://kit.fontawesome.com/4d0c408dff.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+ <!-- navbar of the site  -->
+      <header>
+        <img class="logo" src="{% static 'exam/Aim2Crack-logo-1.png'%}" alt="logo" title="home" >
+
+        <nav class="main-menu">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+{% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content">
+                        <a href="./c/some">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+ {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content">
+                         <a href="{%url 'placement'%}" >
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                       
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'team'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}">
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="#" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid!</small>
+                        </a>
+                    </div>
+                </li>
+
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+        <div class="click-dropdown profile-dropdown">
+            <button onclick="myFunction()" class="click-dropbtn">
+                <a>
+                    <span class="material-icons md-24">
+                        person
+                    </span>
+                    {% if user.is_authenticated %}
+                    <p class="profile">
+                        Profile
+                    </p>
+                     {%else%}
+                     <p class="profile">
+                        Signup
+                    </p>
+                    {%endif%}
+                    <span class="material-icons-outlined">
+                        expand_more
+                    </span>
+                </a>
+            </button>
+            <div id="myDropdown" class="click-dropdown-content">
+ {% if user.is_authenticated %}
+                <a href="{%url 'profile' request.user.profile.id %}" >
+                    <span class="btn-txt">Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'logout'%}" >
+                    <span class="btn-txt">Logout</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%else%}
+<a href="{%url 'register'%}" >
+                    <span class="btn-txt">Create Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'login'%}" >
+                    <span class="btn-txt">LogIn</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%endif%}
+            </div>
+        </div>
+
+        <span class="ham" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </header>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <nav class="main-menu-1">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+ {% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'quizzes'%}">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+   {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'about'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid</small>
+                        </a>
+                    </div>
+                </li>
+{% if user.is_authenticated %}
+                <li><a href="{%url 'profile' request.user.profile.id %}">Account</a></li>
+                <li><a href="{%url 'logout'%}">Logout</a></li>
+  {%else%}
+                <li><a href="{%url 'register'%}">Create Account</a></li>
+                <li><a href="{%url 'login'%}">LogIn</a></li>
+{%endif%}
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+
+    </div>
+
+
+   
+    <div class="page-head">
+        <h1>Meet Our Team</h1>
+        <p>Meet wonderful people behind Aim2Crack.in and their roles in shaping the website.</p>
+    </div>
+
+    <!-- CORE TEAM -->
+
+    <div class="page-head">
+        <h2 style="font-size: 35px; margin: 65px auto 35px; font-weight: 800;">Core Team</h2>
+    </div>
+
+    <section class="name-cards">
+        <div class="container">
+            <div class="item item-1">
+                <div class="card-img hari"></div>
+                <div class="card-text">
+                    <h2>Dr Harimurugan</h2>
+                    <span>Director</span>
+                    <p>"Passionate towards dissimation of knowledge and enhancing skills."</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/harimurugannitk"><i class="fab fa-facebook-square card-icon"
+                            style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/hari__murugan/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/harimurugan-devarajan-31475215/"><i
+                            class="fab fa-linkedin card-icon" style="color: #2867B2;"></i></a>
+                    <a href="https://www.nitj.ac.in/index.php/nitj_cinfo/Faculty/194"><i
+                            class="far fa-envelope card-icon" style="color: red;"></i></a>
+                </div>
+            </div>
+            <div class="item item-1">
+                <div class="card-img love"></div>
+                <div class="card-text">
+                    <h2>Love Bansal</h2>
+                    <span>Front-end Lead</span>
+                    <p>"Frontend developer who loves to design beautiful interfaces for a better UX"</p>
+                </div>
+                <div class="social">
+                    <a href="https://m.facebook.com/lavish.bansal.330"><i class="fab fa-facebook-square card-icon"
+                            style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/lavish.bansal.330/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                </div>
+            </div>
+            <div class="item item-1">
+                <div class="card-img manish"></div>
+                <div class="card-text">
+                    <h2>Manish Kumar</h2>
+                    <span>Back-end Lead</span>
+
+                    <p>"A passionate engineer, eager to develop great things for society."</p>
+
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/manishsu1001"><i class="fab fa-facebook-square card-icon"
+                            style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/manish___1001/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://github.com/Manishsu1001"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://www.linkedin.com/in/manish-kumar-60a443197/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+            <div class="item item-1">
+                <div class="card-img muskaan"></div>
+                <div class="card-text">
+                    <h2>Muskaan Chaturvedi</h2>
+                    <span>Design Lead</span>
+
+                    <p>"I always believe that the only limits in life are the ones we make"</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.instagram.com/muskaanchaturvedi/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://github.com/Muskaanchaturvedi"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://www.linkedin.com/in/muskaan-chaturvedi-3089291a7/"><i
+                            class="fab fa-linkedin card-icon" style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="name-cards">
+        <div class="container-2">
+            <div class="item item-2">
+                <div class="card-img priyanshu"></div>
+                <div class="card-text">
+                    <h2>Priyanshu Sahu</h2>
+                    <span>Design Lead</span>
+                    <p>"A creative engineer, entrepreneurial, savvy and a fast learner"</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/priyanshu.sahu.555"><i class="fab fa-facebook-square card-icon"
+                            style="color: #4267B3;"></i></a>
+                    <a href="https://instagram.com/sahu._.priyanshu?utm_medium=copy_link"><i
+                            class="fab fa-instagram card-icon" style="color: #E1306C;"></i></a>
+                    <a href="https://github.com/HADES717"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://www.linkedin.com/in/priyanshu-sahu"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+            <div class="item item-3">
+                <div class="card-img tanvi"></div>
+                <div class="card-text">
+                    <h2>Tanvi Singla</h2>
+                    <span>Back-end Lead</span>
+                    <p>"Perseverance and Tactfulness are the superpowers that will serve you well."</p>
+                </div>
+
+                <div class="social">
+                    <a href="https://www.facebook.com/profile.php?id=100012368741111"><i
+                            class="fab fa-facebook-square card-icon" style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/tunewdtanu/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://github.com/TheStar-Tanvi"><i class="fab fa-github card-icon" style="color: black;"></i></a>
+                    <a href="https://www.linkedin.com/in/tanvi-singla-04a5811b2/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-4">
+                <div class="card-img vaibhav"></div>
+                <div class="card-text">
+                    <h2>Vaibhav Verma</h2>
+                    <span>Front-end Lead</span>
+                    <p>"There is no shame in falling down! True shame is to not stand up again."</p>
+                </div>
+                <div class="social">
+                    <a href="www.instagram.com/lucky__vaibhav"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="http://www.github.com/VaibhavKVerma"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="www.linkedin.com/in/vaibhav-kr-verma/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="page-head">
+        <h2 style="font-size: 35px; margin: 65px auto 35px; font-weight: 800;">Developers at aim2crack</h2>
+    </div>
+
+    <section class="name-cards">
+        <div class="container">
+
+
+            <div class="item item-1">
+                <div class="card-img bhavya"></div>
+                <div class="card-text">
+                    <h2>Bhavya Mittal</h2>
+                    <p>"Passionate developer, <br> Learning finance <br> Entropized like Universe!"</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.instagram.com/mbhavya9/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/mbhavya09/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://github.com/dev-bhavya"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://twitter.com/theExecutor09"><i class="fab fa-twitter card-icon"
+                            style="color: #1DA1F2;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-1">
+                <div class="card-img parihar"></div>
+                <div class="card-text">
+                    <h2>Sourabh Parihar</h2>
+                    <p>"Stops only when I find the solution, loves coding and crypto."</p>
+                </div>
+
+                <div class="social">
+                    <a href="https://www.instagram.com/nuck.ing_futz/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/sourabh-parihar-76061820"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://github.com/sourabhparihar002"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-1">
+                <div class="card-img paras"></div>
+                <div class="card-text">
+                    <h2>Paras Jaggi</h2>
+                    <p>"I have promises(to myself) to keep and miles to go before I sleep."</p>
+                </div>
+                <div class="social">
+
+                    <a href="https://www.instagram.com/rajput_parasjaggi/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/parasjaggi/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://github.com/parasjaggi"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-1">
+                <div class="card-img mohit"></div>
+                <div class="card-text">
+                    <h2>Mohit Gupta</h2>
+                    <p>"I am optimistic, committed to work, quick learner and a team player."</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/profile.php?id=100040280000102"><i
+                            class="fab fa-facebook-square card-icon" style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/mohitgupt07/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/mohitgupta2001/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://github.com/mohitg07"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://twitter.com/MohitGu75291167"><i class="fab fa-twitter card-icon"
+                            style="color: #1DA1F2;"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="name-cards">
+        <div class="container-3">
+
+            <div class="item item-one">
+                <div class="card-img parkhi"></div>
+                <div class="card-text">
+                    <h2>Parkhi</h2>
+                    <p>"A Sanguine and serene person lining to level up in everything"</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.instagram.com/_parkhi_goyal_/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://github.com/Parkhi19"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://www.linkedin.com/in/parkhi-goyal-b90560224/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+            
+            <div class="item item-two">
+                <div class="card-img manan"></div>
+                <div class="card-text">
+                    <h2>Manan </h2>
+                    <p>"A highly curious engineering student,<br> exploring various domains <br> of programming and development"</p>
+                </div>
+                <div class="social">
+                    <a href=" https://instagram.com/heyy_its_manan?igshid=NTA5ZTk1NTc="><i
+                            class="fab fa-instagram card-icon" style="color: #E1306C;"></i></a>
+                      <a href="https://github.com/manan0104"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://www.linkedin.com/in/manan-bhargava-373538229"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+
+                
+                
+        </div>
+    </section>
+
+
+    <div class="page-head team-heading">
+        <h2 style="font-size: 35px; margin: 65px auto 35px; font-weight: 800;">Designers at aim2crack </h2>
+    </div>
+
+    <section class="name-cards">
+        <div class="container-2">
+
+
+            <div class="item item-2">
+                <div class="card-img vanshika"></div>
+                <div class="card-text">
+                    <h2>Vanshika Singh</h2>
+                    <p>"Engineer turned designer passionate about creating better User Experiences through meaningful
+                        aesthetics"</p>
+                </div>
+                <div class="social">
+                    <a href="https://instagram.com/vanshika_singh21?utm_medium=copy_link"><i
+                            class="fab fa-instagram card-icon" style="color: #E1306C;"></i></a>
+                    <a href="https://github.com/vany2102"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://www.linkedin.com/in/vanshika-singh21"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://twitter.com/Vanshik48675605"><i class="fab fa-twitter card-icon"
+                            style="color: #1DA1F2;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-3">
+                <div class="card-img manik"></div>
+                <div class="card-text">
+                    <h2>Manik Jindal</h2>
+                    <p>"Constant creativity is what makes my life fascinating. <br> <br> Currently saying YES to new
+                        adventures."</p>
+
+
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/elberto.smith.9"><i class="fab fa-facebook-square card-icon"
+                            style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/manik.jindal.20?r=nametag"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/manik-jindal-b963761bb"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://github.com/manik-jindal20/"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://twitter.com/ManikJindal20?s=08"><i class="fab fa-twitter card-icon"
+                            style="color: #1DA1F2;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-4">
+                <div class="card-img aditi"></div>
+                <div class="card-text">
+                    <h2>Aditi Jain</h2>
+                    <p>"A multitasking and creative person whose goal is to observe, empathize and glean insights to
+                        make the invisible visible."</p>
+
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/people/Aditi-Jain/100065091081854/"><i
+                            class="fab fa-facebook-square card-icon" style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/aditi_.1008/?utm_medium=copy_link"><i
+                            class="fab fa-instagram card-icon" style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/aditi-jain-98a778202/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://github.com/aditijain-1008/"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://twitter.com/aditi_jain_1008?s=08"><i class="fab fa-twitter card-icon"
+                            style="color: #1DA1F2;"></i></a>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <div class="page-head">
+        <h2 style="font-size: 35px; margin: 65px auto 35px; font-weight: 800;">Creators at aim2crack</h2>
+    </div>
+
+    <section class="name-cards">
+        <div class="container">
+
+
+            <div class="item item-1">
+                <div class="card-img anjali"></div>
+                <div class="card-text">
+                    <h2>Anjali Gupta</h2>
+                    <p>"I always try to be productive and enjoy every moment."</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.instagram.com/invites/contact/?i=1lahiedrjr30l&utm_content=gbuy7j4"><i
+                            class="fab fa-instagram card-icon" style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/anjali-gupta-4b9889213"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://twitter.com/Anjalgupta16?t=pnjmcbE22aRaetXo5UihAA&s=08"><i
+                            class="fab fa-twitter card-icon" style="color: #1DA1F2;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-1">
+                <div class="card-img akshika"></div>
+                <div class="card-text">
+                    <h2>Akshika Garg</h2>
+                    <p>"An engineer who looks for perfection in everything."</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.instagram.com/invites/contact/?i=1hchl6u7yqglj&utm_content=espo19b"><i
+                            class="fab fa-instagram card-icon" style="color: #E1306C;"></i></a>
+                    <a href="http://linkedin.com/in/akshika-garg-1a878229"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://twitter.com/GargAkshika"><i class="fab fa-twitter card-icon"
+                            style="color: #1DA1F2;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-1">
+                <div class="card-img dhruv"></div>
+                <div class="card-text">
+                    <h2>Dhruv Bhardwaj</h2>
+                    <p>"A hard-working person, ready for all the challenges in life"</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/dhruv.bhardwaj.1840"><i class="fab fa-facebook-square card-icon"
+                            style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/bhardwaj_1310?r=nametag"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/dhruv-bhardwaj-6b28661bb"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://twitter.com/Dhruv_Bhardwaj_?t=CjIJ_dF-v8MPRUQ91kI65Q&s=09"><i
+                            class="fab fa-twitter card-icon" style="color: #1DA1F2;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-1">
+                <div class="card-img gautam"></div>
+                <div class="card-text">
+                    <h2>Gautam Aggarwal</h2>
+                    <p>"Modest, hard working and I consistently set firm goals."</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.instagram.com/invites/contact/?i=fnq2ov1odlbx&utm_content=3dxy6pn"><i
+                            class="fab fa-instagram card-icon" style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/gautam-aggarwal-4399071b1/"><i
+                            class="fab fa-linkedin card-icon" style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-1">
+                <div class="card-img himanshu"></div>
+                <div class="card-text">
+                    <h2>Himanshu Saini</h2>
+                    <p>"A blooming techie and expert"</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/himanshu.saini.7355079"><i
+                            class="fab fa-facebook-square card-icon" style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/himanshu_27_k/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/himanshu-saini-0b8b9b201/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://github.com/Scout27aug"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://twitter.com/Himansh94658168"><i class="fab fa-twitter card-icon"
+                            style="color: #1DA1F2;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-1">
+                <div class="card-img vinay"></div>
+                <div class="card-text">
+                    <h2>Battula Vinay</h2>
+                    <p>"Epic excitement explorer, Great learner, Narcissist. "</p>
+                </div>
+                <div class="social">
+                    <a href="http://instagram.com/vinay_and_vinay?utm_source=qr"><i
+                            class="fab fa-facebook-square card-icon" style="color: #4267B3;"></i></a>
+                            <a href="https://github.com/Vinay0700"><i class="fab fa-github card-icon"
+                                style="color: black;"></i></a>        
+                    <a href="https://www.linkedin.com/in/vinay-battula-35b545200"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-1">
+                <div class="card-img manjot"></div>
+                <div class="card-text">
+                    <h2>Manjot Singh</h2>
+                    <p>"Always eager to learn and explore."</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.instagram.com/invites/contact/?i=34a4vtksxey9&utm_content=k6rjhz2"><i
+                            class="fab fa-instagram card-icon" style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/manjot-singh-71060a20b"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://github.com/m-njot-singh"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-1">
+                <div class="card-img rahul"></div>
+                <div class="card-text">
+                    <h2>N Rahul</h2>
+                    <p>"Will become as potential as indiabix, Zeal for Vesratility.</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.instagram.com/raahul._.57/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </section>
+
+    <section class="name-cards">
+        <div class="container-3">
+
+            <div class="item item-one">
+                <div class="card-img rani"></div>
+                <div class="card-text">
+                    <h2>Rituja Rani</h2>
+                    <p>"Practical, logical and hard working."</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/rituja.rani.3"><i class="fab fa-facebook-square card-icon"
+                            style="color: #4267B3;"></i></a>
+                    <a href="instagram.com/ritujarani"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/rituja-rani-374628207"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-two">
+                <div class="card-img aditya"></div>
+                <div class="card-text">
+                    <h2>Aditya Oberoi</h2>
+                    <p>"Passion is energy. Feel the energy. "</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.instagram.com/adi_oberoi17/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/aditya-oberoi-b432981bb/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+        
+        
+         <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+
+</html>

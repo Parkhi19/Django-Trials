@@ -1,0 +1,37 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Dancing+Script:wght@700&family=Domine:wght@400;600&family=Pacifico&display=swap');
+:root{
+    --color: rgb(14, 61, 105);
+}
+
+.t_align{
+    text-align: center;
+}
+.maxwidth1{
+    width: 80%;
+}
+.maxwidth2{
+    width: 60%;
+}
+.m_auto{
+    margin: auto;
+}
+.my1{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.font1{
+    font-family: 'Dancing Script', cursive;
+}
+.font2{
+    font-family: 'Pacifico', cursive;
+}
+.font3{
+    font-family: 'Caveat', cursive;
+}
+.font4{
+    font-family: 'Domine', serif;
+}
+.fsize{
+    font-size: 30px;
+}

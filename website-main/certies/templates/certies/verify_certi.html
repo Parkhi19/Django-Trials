@@ -1,0 +1,68 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificate Generator</title>
+
+    <link rel="stylesheet" href="{% static 'certies/certi_style.css'%}" />
+
+    <script src="https://cdn.bootcss.com/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+    <script src="{% static 'certies/certi_down.js'%}"></script>
+</head>
+
+<body>
+    <div class="outer-div">
+        <div class="container" id="main-div">
+            <img src="{% static 'certies/certificate.jpg' %}" alt="error" />
+
+            <div class="date">
+                {{it.date_issued}}
+                <!-- <script>
+                    let format = (d, a = d.toString().split` `) =>
+                        a[2] + " " + a[1] + " " + a[3];
+                    document.write(format(Date()));
+                </script> -->
+            </div>
+
+            <div class="between">
+                We hereby certify that <b>{{it.name}}</b> has worked with us as a
+                <b>{{it.team_worked}}</b> from {{it.date_joined}} to {{it.date_left}}. During  {%if it.isMale == true %}his{%else%}her{%endif%} tenure of service we
+                found {%if it.isMale == true%}his{%else%}her{%endif%} character and conduct are to be satisfactory.
+                <br />
+                <br />
+                We wish all success in his future.
+            </div>
+
+            <div class="verification">
+                This certificate cen be verified at
+                <a href="https://www.aim2crack.in/certies/verify-certi/{{it.code}}" class="verify-link" target="_blank">
+                    https://www.aim2crack.in/certies/verify-certi/{{it.code}}</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button id="download-btn">Download as PNG</button>
+        <button id="download-btn2">Download as PDF</button>
+    </div>
+
+    <script>
+        var node = document.getElementById("main-div");
+        var btn = document.getElementById("download-btn");
+        btn.onclick = function () {
+            domtoimage
+                .toBlob(document.getElementById("main-div"))
+                .then(function (blob) {
+                    window.saveAs(blob, "certificate.png");
+                });
+        };
+    </script>
+</body>
+
+</html>

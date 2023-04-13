@@ -1,0 +1,54 @@
+.mx1{
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  .maxwidth1{
+      width: 70%;
+  }
+  .m_auto{
+      margin: auto;
+  }
+  .t_auto{
+      text-align: center;
+  }
+  .helpbtn{
+      border: 2px solid black;
+      border-radius: 10px;
+      width: 100px;
+      margin-left: 5%;
+      padding: 3px 4px;
+      text-align: center;
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: bold;
+      /* background-color: teal; */
+  }
+  .helpbtn a{
+      text-decoration: none;
+  }
+  .helpbtn:hover {
+     
+      background-color: teal
+  }
+  .helpbtn:hover a {
+      color: white;
+  }
+  .time{
+      display: flex;
+      justify-content: space-between;
+  }
+  .time h2{
+      padding: 0.5rem;
+      color: #333;
+      font-size: 18px;
+  }
+  .colorbar{
+      background: hsla(181, 100%, 20%, 1);
+  
+  background: linear-gradient(90deg, hsla(181, 100%, 20%, 1) 0%, hsla(184, 88%, 20%, 1) 11.11111111111111%, hsla(187, 78%, 20%, 1) 22.22222222222222%, hsla(193, 61%, 20%, 1) 33.33333333333333%, hsla(201, 47%, 20%, 1) 61%, hsla(242, 25%, 20%, 1) 91%, hsla(217, 35%, 20%, 1) 96%, hsla(287, 39%, 20%, 1) 99%, hsla(266, 33%, 20%, 1) 100%, hsla(300, 51%, 20%, 1) 100%);
+  
+  background: -moz-linear-gradient(90deg, hsla(181, 100%, 20%, 1) 0%, hsla(184, 88%, 20%, 1) 11.11111111111111%, hsla(187, 78%, 20%, 1) 22.22222222222222%, hsla(193, 61%, 20%, 1) 33.33333333333333%, hsla(201, 47%, 20%, 1) 61%, hsla(242, 25%, 20%, 1) 91%, hsla(217, 35%, 20%, 1) 96%, hsla(287, 39%, 20%, 1) 99%, hsla(266, 33%, 20%, 1) 100%, hsla(300, 51%, 20%, 1) 100%);
+  
+  background: -webkit-linear-gradient(90deg, hsla(181, 100%, 20%, 1) 0%, hsla(184, 88%, 20%, 1) 11.11111111111111%, hsla(187, 78%, 20%, 1) 22.22222222222222%, hsla(193, 61%, 20%, 1) 33.33333333333333%, hsla(201, 47%, 20%, 1) 61%, hsla(242, 25%, 20%, 1) 91%, hsla(217, 35%, 20%, 1) 96%, hsla(287, 39%, 20%, 1) 99%, hsla(266, 33%, 20%, 1) 100%, hsla(300, 51%, 20%, 1) 100%);
+  
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#006466", endColorstr="#065a60", GradientType=1 );
+  }

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St_data</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+    
+    *{
+        color: white;
+        padding: 10px;
+        font-family: 'Source Sans Pro', sans-serif;
+        text-align: center;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.904);
+        flex-direction: column;
+    }
+    table{
+        border-collapse: collapse;
+    }
+    table,tr,th,td{
+        border: 1px solid white;
+    }
+    th,td{
+        padding: 16px;
+    }
+</style>
+<body>
+    <h1>STUDENT DATA</h1>
+    <table>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                link_id
+            </th>
+            <th>
+                Questions
+            </th>
+            <th>
+                Answers
+            </th>
+            <th>
+                User_id
+            </th>
+        </tr>
+        {%for each in stdata%}
+        <tr>
+            <th>
+                {{each.id}}
+            </th>
+            <th>
+                {{each.link_id}}
+            </th>
+            <th>
+                {{each.questions}}
+            </th>
+            <th>
+                {{each.answer}}
+            </th>
+            <th>
+                {{each.username}}
+            </th>
+        </tr>
+        {%endfor%}
+    </table>
+    <h1>RESULT DATA</h1>
+    <table>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Student data id
+            </th>
+            <th>
+                Scores
+            </th>
+        </tr>
+        {%for each in res%}
+        <tr>
+            <th>
+                {{each.id}}
+            </th>
+            <th>
+                {{each.stans_id_id}}
+            </th>
+            <th>
+                {{each.scores}}
+            </th>
+        </tr>
+        {%endfor%}
+    </table>
+</body>
+</html>

@@ -1,0 +1,301 @@
+.footer{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    background: linear-gradient(#2A485C,#000000);
+    /* background:  linear-gradient(316deg,#2a2323  0%, #50d8d7 130%); */
+   color: white;  
+   padding: 40px 0px;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+.footer-one,.footer-one div,.footer-two,.footer-three{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.footer-one,.footer-two,.footer-three{
+    width: 400px;
+    
+}
+.footer-two{
+    padding-left: 40px;
+}
+.footer-two div{
+    display: flex;
+    align-items: center;
+    margin:5px;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+}
+.foo-icon{
+    font-size: 20px;
+    padding: 8px 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: inline-block;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+.footer-two div p:first-child{
+    font-size: 20px;
+    padding: 8px 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    transition: 0.5s ease;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 15px;
+}
+.foo-icon:hover{
+    background-color: white;
+    color: black;
+}
+.footer-text h1,.footer-text p,.footer-one h1{
+    margin-bottom: 15px;
+}
+.footer-one div a{
+    margin-bottom: 7px;
+}
+.footer-one div a:hover{
+text-decoration: underline;
+
+}
+.copyright{
+    background-color: black;
+    color: rgb(211, 206, 206);
+    text-align: center;
+    padding: 6px 0px;
+}
+@media screen and (max-width:800px){
+    .footer-one,.footer-two,.footer-three{
+        text-align: left;
+    }
+    .footer-one div{
+        text-align: left;
+    }
+    .footer-two{
+        padding-left: 0px;
+    }
+    footer{
+        justify-content: flex-start;
+        padding:40px 45px 0px 45px;
+    }
+}
+
+
+
+
+/* footer of the page  */
+
+
+
+
+
+
+
+
+
+.footer-distributed{
+	/* background: whitesmoke; */
+    /* background-color: #f5f7fa; */
+    /* background: white; */
+    /* background:  linear-gradient(316deg,#2a2323  -23%, #50d8d7 198%); */
+    background: linear-gradient(#2A485C,#000000);
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding: 55px 50px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+	/* color:  #2A485C; */
+    color: white;
+	font: normal 36px 'Open Sans', cursive;
+	margin: 0;
+}
+
+.footer-distributed h3 span{
+
+    color: white;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+	/* color:  #2A485C; */
+    color: white;
+	margin: 20px 0 12px;
+	padding: 0;
+}
+
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+  font-weight:400;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+	color:  white;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 35%;
+}
+
+.footer-distributed .footer-center i{
+	background-color:  WHITE;
+	color: #2A485C;
+    /* color: white; */
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+	display: inline-block;
+	/* color: #2A485C; */
+    color: white;
+  font-weight:400;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+	/* color:  #50d8d7; */
+    color: white;
+	text-decoration: none;;
+}
+
+.footer-distributed .footer-links a:before {
+  content: "|";
+  font-weight:300;
+  font-size: 20px;
+  left: 0;
+  /* color: #50d8d7; */
+  color: white;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+  content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	/* color:  rgb(42, 35, 35); */
+    color: white;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+	display: block;
+	/* color:  #50d8d7; */
+    color: white;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	/* width: 50px;
+	height: 50px; */
+	cursor: pointer;
+	font-size: 2rem;
+	/* color: #50d8d7; */
+    color: white;
+	text-align: center;
+	line-height: 35px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+    transition: all 0.5s ease;
+}
+.footer-icons a:hover{
+    /* color: black; */
+    transform:scale(1.2,1.2);
+}
+h3{
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+
+}
+

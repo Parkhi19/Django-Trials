@@ -1,0 +1,735 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" href="{%static 'exam/favicon.ico'%}" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4d0c408dff.js" crossorigin="anonymous"></script>
+
+    
+     <script src="https://kit.fontawesome.com/4d0c408dff.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{%static 'exam/navbar.css'%}">
+    <title>About Aim2Crack</title>
+<!--     new added -->
+   
+   
+    
+    <link rel="stylesheet" href="{%static 'exam/about_css/home.css'%}">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- about us css -->
+    <link rel="stylesheet" href="{%static 'exam/about_css/about.css'%}">
+<!--     <link rel="stylesheet" href="{%static 'exam/about_css/about-intern.css'%}"> -->
+    <!-- footer css -->
+    <link rel="stylesheet" href="{%static 'exam/about_css/footer.css'%}">
+     <link rel="stylesheet" href="{%static 'exam/about_css/style.css'%}">
+  
+</head>
+<style>
+    .about-wrap{
+        background:linear-gradient(to bottom,rgb(42,72,92,0.7),rgba(0,0,0,0.9)), url("{% static 'about_imgs/about-bg.jpeg'%}") no-repeat center center/cover;
+    }
+    #selected_btn{
+        color: #50d8d7;
+    }
+    #selected_btn::before{
+    width: 100%;
+    }
+</style>
+<body>
+
+    <!-- navbar of the site  -->
+      <header>
+        <img class="logo" src="{% static 'exam/Aim2Crack-logo-1.png'%}" alt="logo" title="home" >
+
+        <nav class="main-menu">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+{% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content">
+                        <a href="https://www.aim2crack.in/c/some/">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+ {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content">
+                         <a href="{%url 'placement'%}" >
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                       
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'team'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}">
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="#" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid!</small>
+                        </a>
+                    </div>
+                </li>
+
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+        <div class="click-dropdown profile-dropdown">
+            <button onclick="myFunction()" class="click-dropbtn">
+                <a>
+                    <span class="material-icons md-24">
+                        person
+                    </span>
+                    {% if user.is_authenticated %}
+                    <p class="profile">
+                        Profile
+                    </p>
+                     {%else%}
+                     <p class="profile">
+                        Signup
+                    </p>
+                    {%endif%}
+                    <span class="material-icons-outlined">
+                        expand_more
+                    </span>
+                </a>
+            </button>
+            <div id="myDropdown" class="click-dropdown-content">
+ {% if user.is_authenticated %}
+                <a href="{%url 'profile' request.user.profile.id %}" >
+                    <span class="btn-txt">Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'logout'%}" >
+                    <span class="btn-txt">Logout</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%else%}
+<a href="{%url 'register'%}" >
+                    <span class="btn-txt">Create Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'login'%}" >
+                    <span class="btn-txt">LogIn</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%endif%}
+            </div>
+        </div>
+
+        <span class="ham" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </header>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <nav class="main-menu-1">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+ {% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'quizzes'%}">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+   {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'about'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid</small>
+                        </a>
+                    </div>
+                </li>
+{% if user.is_authenticated %}
+                <li><a href="{%url 'profile' request.user.profile.id %}">Account</a></li>
+                <li><a href="{%url 'logout'%}">Logout</a></li>
+  {%else%}
+                <li><a href="{%url 'register'%}">Create Account</a></li>
+                <li><a href="{%url 'login'%}">LogIn</a></li>
+{%endif%}
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+
+    </div>
+
+
+
+ <!-- PAGE START -->
+
+    <div class="page-head">
+        <h1>About Us</h1>
+        <p>One coach for all your AIMs</p>
+    </div>
+
+    <div class="about-text">
+        <div class="about-container">
+            <div class="about-item about-item1">
+                <div class="about-para">
+                    <h2>Motivation Behind Our Startup</h2>
+                    <p>
+                        During this covid time, it was really challenging to assess the students through available
+                        platforms. Most of them are pretty useless! After trying out different techniques like random
+                        variables to each students, using their date of birth as variables etc, it is found that these
+                        methods drastically increased faculty load rather than achieving the desired result! Students
+                        are coming up with many innovative coding to crack it! Hence, there is an urge to develop an
+                        better platform (a cheat proof one) which can be accessed by all educators!
+                    </p>
+                    <div class="about-btn">
+                        <a href="https://aim2crack.in/contact/" class="about-btn-2">Contact Us →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="about-item about-item2 compo1">
+                <div class="about-illustration">
+                    <img src="{% static 'about_img/ill1.jpg'%}" alt="ill1" class="ill1 composition__photo composition__photo--p1">
+                    <img src="{% static 'about_img/ill2.jpg'%}" alt="ill1" class="ill1 composition__photo composition__photo--p2">
+                    <img src="{% static 'about_img/ill3.jpg'%}" alt="ill1" class="ill1 composition__photo composition__photo--p3">
+                </div>
+            </div>
+            <div class="about-item about-item2 compo1">
+                <div class="about-illustration">
+                    <img src="{% static 'about_img/Company-cuate.png'%}" alt="ill1" class="ill1 composition__photo composition__photo--p1">
+                    <img src="{% static 'about_img/ill8.jpg'%}" alt="ill1" class="ill1 composition__photo composition__photo--p2">
+                    <img src="{% static 'about_img/ill6.jpg'%}" alt="ill1" class="ill1 composition__photo composition__photo--p3">
+                </div>
+            </div>
+            <div class="about-item about-item1">
+                <div class="about-para">
+                    <h2>What We Do</h2>
+                    <p>
+                        It all started with a way of assessment platform and we found the similar techniques are used by
+                        recruiters during the online drive. Hence, in addition to student assessment for their course
+                        work, we have decided to open it to institutions to use our platform to train their students!
+                        <br>
+                        <br>
+                        Even though many of the available platforms provide a similar experience to students, none of
+                        them gives access to institutions to set their own test at free of cost!
+                        <br>
+                        <br>
+                        We also found many training institutions charge a hefty amount in the form of placement
+                        training. Most of the contents related to placement are open source but poorly organised. Hence,
+                        we decided to use the same open-source content with the better organization along with providing
+                        students with the real experience of placement drive such as timed questions, prevention of tab
+                        changing, only one attempt for each question etc. Written being one component, we try to help
+                        students to prepare for the interview as well!!
+                    </p>
+                    <div class="about-btn">
+                        <a href="#services-section" class="about-btn-2">Our Services →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="about-item about-item1">
+                <div class="about-para">
+                    <h2>Current Plans & Future Opportunities</h2>
+                    <p>
+                        We are currently testing Al-based monitoring for lecture sessions as well as exam! It's
+                        impossible to monitor the student during lecture hours as faculty will be sharing the screen
+                        with students! The upcoming Al system will monitor students which are expected to aid faculty!
+                        <br>
+                        <br>
+                        Our long-term goal is to provide a full-fledged platform that provides free services to all
+                        competitive exams as well!
+                        <br>
+                        <br>
+                        We the engineers from the aim2crack team strongly believe in solving real-life problem.
+                    </p>
+                    <div class="about-btn">
+                        <a href="https://aim2crack.in/contact/" class="about-btn-2">Join Us →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="about-item about-item2 compo2">
+                <div class="about-illustration">
+                    <img src="{% static 'about_img/3545767.jpg'%}" alt="ill1" class="ill1 composition__photo composition__photo--p1">
+                    <img src="{% static 'about_img/ill11.jpg'%}" alt="ill1" class="ill1 composition__photo composition__photo--p2">
+                    <img src="{% static 'about_img/ill1.jpg'%}" alt="ill1" class="ill1 composition__photo composition__photo--p3">
+                </div>
+            </div>
+        </div>
+    </div>
+<!--     <div class="divider-div-1">
+        <div class="divider-div"></div>
+    </div> -->
+
+    <!-- MEET OUR TEAM -->
+
+    <div id="bhavya" class="page-head">
+        <h1>Our Team</h1>
+        <p>Meet the key people of our team.</p>
+    </div>
+
+    <section class="name-cards">
+        <div class="container">
+            <div class="item item-1">
+                <div class="card-img hari"></div>
+                <div class="card-text">
+                    <h2>Dr Harimurugan</h2>
+                    <span>Director</span>
+                    <p>"Passionate towards dissimation of knowledge and enhancing skills."</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/harimurugannitk"><i class="fab fa-facebook-square card-icon"
+                            style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/hari__murugan/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://www.linkedin.com/in/harimurugan-devarajan-31475215/"><i
+                            class="fab fa-linkedin card-icon" style="color: #2867B2;"></i></a>
+                    <a href="https://www.nitj.ac.in/index.php/nitj_cinfo/Faculty/194"><i
+                            class="far fa-envelope card-icon" style="color: red;"></i></a>
+                </div>
+            </div>
+            <div class="item item-1">
+                <div class="card-img love"></div>
+                <div class="card-text">
+                    <h2>Love Bansal</h2>
+                    <span>Front-end Lead</span>
+                    <p>"Frontend developer who loves to design beautiful interfaces for a better UX"</p>
+                </div>
+                <div class="social">
+                    <a href="https://m.facebook.com/lavish.bansal.330"><i class="fab fa-facebook-square card-icon"
+                            style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/lavish.bansal.330/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                </div>
+            </div>
+            <div class="item item-1">
+                <div class="card-img manish"></div>
+                <div class="card-text">
+                    <h2>Manish Kumar</h2>
+                    <span>Back-end Lead</span>
+
+                    <p>"A passionate engineer, eager to develop great things for society."</p>
+
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/manishsu1001"><i class="fab fa-facebook-square card-icon"
+                            style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/manish___1001/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://github.com/Manishsu1001"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://www.linkedin.com/in/manish-kumar-60a443197/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+            <div class="item item-1">
+                <div class="card-img muskaan"></div>
+                <div class="card-text">
+                    <h2>Muskaan Chaturvedi</h2>
+                    <span>Design Lead</span>
+
+                    <p>"I always believe that the only limits in life are the ones we make"</p>
+                </div>
+                <div class="social">
+                    <a href=""><i class="fab fa-facebook-square card-icon" style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/muskaanchaturvedi/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://github.com/Muskaanchaturvedi"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://www.linkedin.com/in/muskaan-chaturvedi-3089291a7/"><i
+                            class="fab fa-linkedin card-icon" style="color: #2867B2;"></i></a>
+                    <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter card-icon"
+                            style="color: #1DA1F2;"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="name-cards">
+        <div class="container-2">
+            <div class="item item-2">
+                <div class="card-img priyanshu"></div>
+                <div class="card-text">
+                    <h2>Priyanshu Sahu</h2>
+                    <span>Design Lead</span>
+                    <p>"A creative engineer, entrepreneurial, savvy and a fast learner"</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/priyanshu.sahu.555"><i class="fab fa-facebook-square card-icon"
+                            style="color: #4267B3;"></i></a>
+                    <a href="https://instagram.com/sahu._.priyanshu?utm_medium=copy_link"><i
+                            class="fab fa-instagram card-icon" style="color: #E1306C;"></i></a>
+                    <a href="https://github.com/HADES717"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://www.linkedin.com/in/priyanshu-sahu"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+            <div class="item item-3">
+                <div class="card-img tanvi"></div>
+                <div class="card-text">
+                    <h2>Tanvi Singla</h2>
+                    <span>Back-end Lead</span>
+                    <p>"Perseverance and Tactfulness are the superpowers that will serve you well."</p>
+                </div>
+
+                <div class="social">
+                    <a href="https://www.facebook.com/profile.php?id=100012368741111"><i
+                            class="fab fa-facebook-square card-icon" style="color: #4267B3;"></i></a>
+                    <a href="https://www.instagram.com/tunewdtanu/"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://github.com/"><i class="fab fa-github card-icon" style="color: black;"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                    <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter card-icon"
+                            style="color: #1DA1F2;"></i></a>
+                </div>
+            </div>
+
+            <div class="item item-4">
+                <div class="card-img vaibhav"></div>
+                <div class="card-text">
+                    <h2>Vaibhav Verma</h2>
+                    <span>Front-end Lead</span>
+                    <p>"There is no shame in falling down! True shame is to not stand up again."</p>
+                </div>
+                <div class="social">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-square card-icon"
+                            style="color: #4267B3;"></i></a>
+                    <a href="www.instagram.com/lucky__vaibhav"><i class="fab fa-instagram card-icon"
+                            style="color: #E1306C;"></i></a>
+                    <a href="https://github.com/TheStar-Tanvi"><i class="fab fa-github card-icon"
+                            style="color: black;"></i></a>
+                    <a href="https://www.linkedin.com/in/tanvi-singla-04a5811b2/"><i class="fab fa-linkedin card-icon"
+                            style="color: #2867B2;"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="team-ill-1">
+        <img src="{% static 'about_img/ill4.jpg'%}" alt="team" class="team-ill">
+    </div>
+    <div class="team-btn">
+        <a href="./team" class="team-btn-2">Meet all our Superheros →</a>
+    </div>
+    <div class="divider-div-1">
+        <div class="divider-div"></div>
+    </div>
+
+
+    <!-- SERVICES -->
+
+    
+        <div class="page-head">
+            <h1>Our Services</h1>
+        </div>
+    
+
+    <div class="service-text">
+        <div class="s-item service-img-1">
+            <img src="{% static 'about_img/At the office-pana.png'%}" alt="">
+        </div>
+        <div class="s-item service-1">
+            <h2>
+                Quizzing Module
+            </h2>
+            <p>
+               A cheat proof system to conduct quizzes! A never before experience for students. Well balanced features to prevent any malpractice. Opening to all educators, private tutors and training institutions.
+            </p>
+        </div>
+        <div class="s-item service-2">
+            <h2>
+                Quants and Coding Preparation
+            </h2>
+            <p>
+                Preparing for competitive exams requires consistency and practice. Aim2Crack will help you to understand
+                where you are lagging and will provide you in depth analysis. Manage all your quizzes at one place.
+            </p>
+        </div>
+        <div class="s-item service-img-1 compo1">
+            <img src="{% static 'about_img/3659193.jpg'%}" alt="">
+        </div>
+        <div class="s-item service-img-1 compo1">
+            <img src="{% static 'about_img/ill2.jpg'%}" alt="">
+        </div>
+        <div class="s-item service-1">
+            <h2>
+                Interview Preparation
+            </h2>
+            <p>
+                Make placement training and preparation more effective and interesting for the students with Aim2Crack.
+                It's a great way to train students for placement rounds and prepare them for the final battle. Our
+                modules are inline with the recent methodologies and are constantly updated based on the student
+                feedback.
+            </p>
+        </div>
+        <div class="s-item service-2">
+            <h2>
+                Intern Alerts & Off Campus Drive
+            </h2>
+            <p>
+                Get updated with latest news alerts about internships and placement offers just at Aim2Crack and be part
+                of mock placement drives which makes you familiar with the process and prepares you for any challenge
+                under the guidance of Experts.
+            </p>
+        </div>
+        <div class="s-item service-img-1">
+            <img src="{% static 'about_img/ill2.jpg'%}" alt="">
+        </div>
+    </div>
+
+    
+        <div class="page-head">
+            <h1>Upcoming Services</h1>
+        </div>
+    <div class="services-cards" id="services-section">
+        <div class="services-container">
+            <div class="item-s card-1">
+                <span class="material-icons-outlined md-60 feature-box__icon">
+                    webhook
+                </span>
+                <h4>Interview Bots</h4>
+                <p>Take mock interviews with our AI HR Bot</p>
+            </div>
+            <div class="item-s card-2">
+                <span class="material-icons-outlined md-60 feature-box__icon">
+                   cable
+                </span>
+                <h4>AI Based Monitoring System</h4>
+                <p>Attendence & student monitoring technology for faculties.</p>
+            </div>
+            <div class="item-s card-3">
+                <span class="material-icons-outlined md-60 feature-box__icon">
+                    precision_manufacturing
+                    </span>
+                <h4>Machine Learning Projects</h4>
+                <p>Get the latest ML/DL projects for free!</p>
+            </div>
+            <div class="item-s card-4">
+                <span class="material-icons-outlined md-60 feature-box__icon">
+                    groups
+                </span>
+                <h4>Live Seminars</h4>
+                <p>Get guided by the industry experts through live seminars & sessions.</p>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+  <!-- footer of the page -->
+
+<footer class="footer-distributed">
+    
+    <div class="footer-left">
+
+        <h3>AIM<SPAN>2</SPAN>CRACK</h3>
+
+        <p class="footer-links">
+            
+            
+           <a href="{%url 'exam-home'%}" class="link-1">Home</a>
+            
+            <a href="{%url 'placement'%}">Placement</a>
+                
+            <a href="{%url 'about'%}">About</a>
+            
+            
+            <a href="{%url 'contact'%}">Contact</a>
+        </p>
+
+        <p class="footer-company-name">Aim2Crack © 2021</p>
+    </div>
+
+    <div class="footer-center">
+
+        <div>
+            <a href="mailto:support@aim2crack.com"><i class="fa fa-envelope"></i></a>
+            <p class="mailto"><a href="mailto: aim2crack@gmail.com">aim2crack@gmail.com</a></p>
+            
+       
+        </div>
+        <div class="footer-icons">
+
+            <div class="social">
+                <a href="https://youtube.com/channel/UC5RXgwwRVcJDCdxRLD-69kg"><i class="icon bx bxl-youtube"></i></a>
+                <a href="https://instagram.com/aim2crack?utm_medium=copy_link"><i class="icon bx bxl-instagram-alt"></i></a>
+                <a href="https://www.linkedin.com/company/aim2crack"><i class="icon bx bxl-linkedin"></i></a>
+                <a href="https://www.facebook.com/Aim2Crack-106726185067538/"><i class="icon bx bxl-facebook-circle"></i></a>
+            </div>
+                    </div>
+            
+    </div>
+    
+
+    <div class="footer-right">
+        <p class="footer-company-about">
+            <span>About the company</span>
+            Aim2crack is a non-profit, crowd sourced organization which provides free services to students and faculty.          
+        </p>
+
+
+    </div>
+
+</footer>
+  
+    <!-- navbar js -->
+<!--     <script src="{% static 'exam/about_js/Navbar.js'%}"></script> -->
+    <script>
+           /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        
+      
+    </script>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- swiper script -->
+    <script src="{% static 'exam/about_js/teamSlide.js'%}"></script>
+    <script>
+        AOS.init();
+    </script>
+    
+</body>
+
+</html>

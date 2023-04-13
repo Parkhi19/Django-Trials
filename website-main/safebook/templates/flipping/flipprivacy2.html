@@ -1,0 +1,103 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{%load static%}
+
+<body>  
+<form method="POST" enctype="multipart/form-data"  name="myForm" onsubmit="return validateForm()" required>  
+        {% csrf_token %}  
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        <p>Please select your Privacy settings</p>
+        <input type="radio" id="1" name="fprivacy" value="a" {% if qp.fprivacy == "a" %}checked="checked"{% endif %}/>
+         <label for="a">Public</label><br>
+         <input type="radio" id="2" name="fprivacy" value="b" {% if qp.fprivacy == "b" %}checked="checked"{% endif %}/>
+         <label for="b">A2c login required</label><br>
+         <input type="radio" id="3" name="fprivacy" value="c" {% if qp.fprivacy == "c" %}checked="checked"{% endif %}/>
+         <label for="c">Institute Domain login required</label><br>
+         <input type="radio" id="4" name="fprivacy" value="d" {% if qp.fprivacy == "d" %}checked="checked"{% endif %}/>
+         <label for="d">Password protected</label><br>
+         <input type="radio" id="5" name="fprivacy" value="e" {% if qp.fprivacy == "e" %}checked="checked"{% endif %}/>
+         <label for="e">Private</label>
+          <br>
+          <tr>
+              <br>
+              <span id="ch">
+
+              {%if qp.fprivacy == 'd'%}
+              <td>Enter the password</td>
+              <td><input name="fpass" type="text" class="question" id="question" placeholder="Enter your password here" rows="1" cols="10" value="{{qp.fpass}}"></td>
+              {%endif%}
+
+              {%if qp.fprivacy == 'c'%}
+              <td>Domain Name</td>
+              <td><input name="fdomain" type="text" class="question" id="question" placeholder="@domain.ac.in" rows="1" cols="10" value="{{qp.fdomain}}"></td>
+              {%endif%}
+
+              </span>
+              <br>
+              <button type="submit" class="save btn btn-default">Save</button>
+              <a class="btc botonc" id="back_btn" href="../../view"><i class='bx bx-x'></i> Back</a>
+
+</form>  
+</body>  
+
+<script>
+    var rad = document.getElementsByName("fprivacy");
+    var pass = 0;
+    var dom = 0;
+    for (i in rad) {
+        rad[i].addEventListener("click", function () {
+            console.log(this.value);
+            if (this.value == "d") {
+                pass = 1;
+                dom = 0;
+                document.getElementById("ch").innerHTML =
+                    '<td>Enter the password</td><td><input name="fpass" type="text" class="question" id="question" placeholder="Enter your password here"rows="1" cols="10" value="{{qp.fpass}}"></td>'
+            }
+            else if (this.value == "c") {
+                dom = 1;
+                pass=0;
+                document.getElementById("ch").innerHTML =
+                    '<td>Domain Name</td><td><input name="fdomain" type="text" class="question" id="question" placeholder="@domain.ac.in"rows="1" cols="10" value="{{qp.fdomain}}"></td>'
+            }
+            else {
+                dom = 0;
+                pass = 0;
+                document.getElementById("ch").innerHTML = '';
+            }
+        })
+    }
+    function validateForm() {
+        if (pass == 1) {
+            var x = document.forms["myForm"]["fpass"].value;
+            if (x == "" || x == null) {
+                alert("Password must be filled out");
+                return false;
+            }
+        }
+        else if (dom == 1) {
+            var x = document.forms["myForm"]["fdomain"].value;
+            if (x == "" || x == null) {
+                alert("Domain must be filled out");
+                return false;
+            }
+        }
+        else{
+            return true;
+        }
+    }
+</script>
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,163 @@
+body {
+    margin: 0;
+    margin-top: 0;
+    /* background: linear-gradient(316deg,#2a2323 -23%, #15dedd 198%); */
+    background-color: #149696;
+    /* background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png"); */
+    /* background-image: url("https://www.transparenttextures.com/patterns/cubes.png"); */
+    /* background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png"); */
+    /* background-color: #5c008a; */
+    background-image: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
+  }
+h1 {
+    text-align: center;
+    margin-top: 0;
+  }
+.firstconatinner{
+margin-left: 350px;
+}
+.secondconatinner{
+      margin-top: 300px;
+}
+.image{
+    width: 260px;
+   float: left;
+}
+.right{
+    float: right;
+    margin-right: 410px;
+}
+.explanation{
+    color: #faffa5;
+    display: inline-block;
+    height: 10px;
+    width: 30%;
+    position: absolute;
+    /* left: 15px; */
+    /* font-weight: 700; */
+    font-size: 16px;
+    margin-top: 30px;
+    line-height: normal;
+    /* font-family: inherit; */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.content{
+     display: none; 
+     width: 270px;
+     color: #faffa5;
+    background: transparent;
+}
+.collapsible{
+    background-color: rgb(21, 148, 148);
+     color: #000;
+     cursor: pointer;
+     border: none;
+     text-align: center;
+     outline: none;
+     border-radius: 4px;
+}
+.active,.collapsible:hover{
+    background-color: rgb(36, 230, 204);
+}
+.side{
+    position: absolute;
+    display: flex;
+    margin-left: 900px;
+    margin-top:100px ;
+}
+.slide{
+    position: absolute;
+    display: flex;
+    margin-top: 370px;
+    margin-left: 410px;
+}
+.logo{
+    height: 80px;
+    width: 80px;
+    margin-top: 280px;
+    margin-left: 410px;
+    display: flex;
+    position:absolute;
+}
+.log{
+    height: 80px;
+    width: 80px;
+    display: flex;
+    position:absolute;
+    margin-left: 900px;
+    margin-top: 10px;
+}
+
+.button{
+    background: transparent;
+    border: none;
+}
+.fa{
+    size: 40px;
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.red:hover{
+    color:rgba(241, 8, 8, 0.678);
+    opacity: 1;
+}
+.black:hover{
+    color:rgba(5, 5, 5, 0.678);
+    opacity: 1;
+}
+.changeHeartColor{
+    color: red;
+  }
+  
+  .changeBrokenHeartColor{
+    color: black;
+  }
+
+.box{
+ width: 100px;
+ float: right;
+ margin-right:800px ;
+}
+.boxright{
+    margin-left: 540px;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 800px) {
+    .firstconatinner{
+        margin-left: 10px;
+    }
+    .box{
+        margin-right: 370px;
+        margin-left: 10px;
+    }
+    .boxright{
+        margin-left: 200px;
+    }
+    .right{
+        margin-right: 5px;
+    }
+    .fa{
+        margin-bottom: 5;
+    }
+    .logo{
+        margin-left: 100px;
+    }
+    .log{
+        margin-left: 550px;
+    }
+    .side{
+        margin-left: 550px;
+    }
+    .slide{
+        margin-left: 100px;
+    }
+  }

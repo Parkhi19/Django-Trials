@@ -1,0 +1,86 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aim2Crack</title>
+    <link rel="stylesheet" href="{%static 'student/alignment.css'%}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+</head>
+<!-- <style>
+    table {
+        border: 2px solid black;
+        border-collapse: collapse;
+        width: fit-content;
+        margin: 100px auto;
+    }
+    .odd{
+        background-color: #50cece;
+    }
+    .even{
+        background-color: rgb(188 244 244);
+    }
+
+    th,
+    td {
+        border: 1px solid rgb(0, 0, 0);
+        margin: 0px;
+        min-width: 100px;
+        padding: 0px 14px;
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+    }
+  .com{
+    display: none;
+  }
+  .charts{
+    display: none;
+  }
+  .hide{
+    display: none;
+  }
+</style> -->
+<script src="{%static 'cmbn/table2excel.js'%}"></script>
+
+<body>
+    <!-- <div>
+        <a href="./">Go to Quiz</a>
+    </div> -->
+
+    <button id="downloadit" class="download-btn" type="BUTTON">
+        Download Result 
+    </button>
+    <button id="downloadfeed" class="download-btn" type="BUTTON">
+        Download feedback 
+    </button>
+    <div id="tables"></div>
+
+</body>
+<script>
+    array = {{ main | safe }};
+    data = {{ feed.ans | safe }};
+    feed = {{ feed.que | safe }};
+</script>
+<script src="{%static 'student/table.js'%}"></script>
+<script>
+    document.getElementById("downloadit").addEventListener("click", () => {
+        document.getElementById("resultBtn").click()
+        var table2ex = new Table2Excel();
+        table2ex.export(document.querySelectorAll('.xa'), "{{tot}}-Result");
+    })
+    document.getElementById("downloadfeed").addEventListener("click", () => {
+        document.getElementsByClassName("feedback")[0].type = "BUTTON";
+        document.getElementsByClassName("feedback")[0].click()
+        var table2ex = new Table2Excel();
+        table2ex.export(document.querySelectorAll('.fee'), "{{tot}}-Feedback");
+    })
+</script>
+
+</html>

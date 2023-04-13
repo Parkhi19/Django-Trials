@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit_it</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+<style>
+    .announce {
+        overflow: hidden;
+        margin: 0px 30px;
+        margin-bottom: 30px;
+    }
+
+    .single {
+        display: flex;
+        width: 40%;
+        position: relative;
+        background-color: white;
+        margin: 20px auto;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }   
+
+    .single-date {
+
+        background-image: linear-gradient(316deg, #50d8d7 0%, #2a2323 74%);
+        color: white;
+        padding: 20px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .date {
+        font-size: 30px;
+    }
+
+    .date,
+    .month {
+        margin: 3px;
+    }
+
+    .single-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin:0px auto;
+    }
+
+    .single-heading {
+        text-align: center;
+        margin-bottom: 7px;
+    }
+
+    .single-text {
+        line-height: 23px;
+    }
+    .some{
+        font-size: 21px;
+        color: green;
+    }
+    .delete{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    .rt{
+        padding: 8px 0px ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <section id="adding">
+        <form action="announce-add" method="post">
+            {%csrf_token%}
+            <input type="number" required name="date" placeholder="Date">
+            <input type="text" required maxlength="5" name="month" placeholder="Month">
+            <input type="text" required name="title" placeholder="Title">
+            <input type="text" required name="info" placeholder="Description">
+            <input type="text" required name="link" placeholder="Relative Link">
+            <input type="submit" value="SUBMIT">
+        </form>
+    </section>
+    <section id="show">
+        <div class = "announce">
+            {%for each in tab%}
+            <div class="single">
+                <div class="single-date">
+                    <h3 class="date">{{each.date}}</h3>
+                    <p class="month">{{each.month}}</p>
+                </div>
+                <div class="single-info">
+                    <h3 class="single-heading"> {{each.title}}
+                    </h3>
+                    <p class="single-">{{each.info}} </p>
+                </div>
+                <div class = rt>
+                    <a class = "edit" href = "./announce-change/{{each.id}}"><i class="fas some fa-edit"></i></a>
+                    <form action="./announce-del/{{each.id}}" method="post">
+                        {%csrf_token%}
+                        <button type ="submit" class = "delete" href = "./announce-del/{{each.id}}"><i class="fas some fa-trash-alt"></i></button>
+                    </form>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </section>
+</body>
+
+</html>

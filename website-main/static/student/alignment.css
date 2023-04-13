@@ -1,0 +1,358 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #eaf6f4;
+  background-image: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
+}
+
+table {
+  border: 2px solid black;
+  border-collapse: collapse;
+  width: fit-content;
+  margin: 100px auto;
+}
+
+tr:nth-child(odd) {
+  background-color: #50cece;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(188 244 244);
+}
+
+th,
+td {
+  border: 1px solid rgb(0, 0, 0);
+  margin: 0px;
+  min-width: 100px;
+  padding: 0px 14px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin: auto;
+}
+
+hr {
+  margin-top: 50px;
+  margin-bottom: 60px;
+  width: 80%;
+  border: 1px solid black;
+}
+
+#main-heading {
+  font-family: 'Oleo Script', cursive;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+#cmbn, #fee {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#quiz-btn {
+  display: inline-block;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.com {
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.chart-section {
+  margin: auto;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+.all-charts {
+  margin: auto;
+  color: black;
+  margin-bottom: 30px;
+}
+
+.btn-css {
+  text-align: center;
+  margin-top: 50px;
+  font-family: none;
+  padding: 10px 15px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(316deg, #50d8d7 0%, #2a2323 130%);
+  border-radius: 30px;
+  border: none;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  background: linear-gradient( 
+316deg, #50d8d7 0%, #2a2323 74%);
+    color: white;
+    text-shadow: rgb(0 0 0 / 40%) 0px 4px 3px, rgb(0 0 0 / 10%) 0px 8px 13px, rgb(0 0 0 / 10%) 0px 18px 23px;
+}
+
+.btn-css:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.feedback {
+  margin-left: 30%;
+}
+
+.feedback-table {
+  margin: 0 20px;
+}
+
+#feedback-heading {
+  margin: auto;
+}
+
+#resultBtn {
+  margin: 0 5%;
+}
+
+#score-section {
+  display: inline-block;
+  margin-left: 23%;
+}
+
+#analysis-section {
+  display: inline-block;
+  margin: 0 5%;
+}
+
+#feedback-section {
+  display: inline-block;
+}
+
+.download-btn {
+  display: inline-block;
+  position: relative;
+  padding: 10px 25px;
+  margin: 50px auto 10px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+  text-decoration: none;
+  font-size: 1em;
+  text-align: center;
+  text-indent: 15px;
+}
+
+.download-btn:hover {
+  background-color: #50cece;
+  color: white;
+  cursor: pointer;
+}
+
+.download-btn:before, .download-btn:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 15px;
+  top: 52%;
+}
+
+/* Download box shape  */
+.download-btn:before {
+  border-color: #50cece;
+  width: 10px;
+  height: 2px;
+  border-style: solid;
+  border-width: 0 2px 2px;
+}
+
+/* Download arrow shape */
+.download-btn:after {
+  width: 0;
+  height: 0;
+  margin-left: 3px;
+  margin-top: -7px;
+  border-style: solid;
+  border-width: 4px 4px 0 4px;
+  border-color: transparent;
+  border-top-color: #50cece;
+  animation: downloadArrow 2s linear infinite;
+  animation-play-state: running;
+}
+
+.download-btn:hover:before {
+  border-color: white;
+}
+
+.download-btn:hover:after {
+  border-top-color: white;
+  animation-play-state: running;
+}
+
+/* keyframes for the download icon animation */
+@keyframes downloadArrow {
+  0% {
+    margin-top: -7px;
+    opacity: 1;
+  }
+
+  0.001% {
+    margin-top: -15px;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    margin-top: 0;
+    opacity: 0;
+  }
+}
+
+#downloadit {
+  margin-left: 35%;
+  margin-right: 5%;
+}
+
+.resultBtn, .chart-btn {
+  margin-top: 50px;
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s, transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+.chart-btn {
+  display: none;
+  margin: auto;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.resultBtn:focus, .chart-btn:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.resultBtn:hover, .chart-btn:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.resultBtn:active, .chart-btn:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+/* responsiveness */
+@media screen and (max-width: 1150px) {
+  .feedback {
+    margin-left: 25%;
+  }
+
+  #downloadit {
+    margin-left: 30%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .feedback {
+    margin-left: 20%;
+  }
+
+  #downloadit {
+    margin-left: 25%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .feedback {
+    margin-left: 15%;
+  }
+
+  #downloadit {
+    margin-left: 20%;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .feedback {
+    margin-left: 10%;
+  }
+
+  #downloadit {
+    margin-left: 15%;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .feedback {
+    margin-left: 5%;
+  }
+
+  #downloadit {
+    margin-left: 10%;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .feedback {
+    display: block;
+    margin: 3% auto;
+  }
+
+  #resultBtn {
+    display: block;
+    margin: 3% auto;
+  }
+
+  #showChart {
+    display: block;
+    margin: 3% auto;
+  }
+
+  #downloadit {
+    margin-left: 5%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #downloadit {
+    display: block;
+    margin: 4% auto 5%;
+  }
+
+  #downloadfeed {
+    display: block;
+    margin: 4% auto 5%;
+  }
+}
+

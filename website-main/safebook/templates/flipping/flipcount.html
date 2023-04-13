@@ -1,0 +1,117 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+    <style>
+    p,
+    label {
+        font: 1rem 'Fira Sans', sans-serif;
+    }
+    
+    input {
+        margin: .4rem;
+    }
+    </style>
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{%load static%}
+
+    
+<form method="POST" enctype="multipart/form-data" >  
+        {% csrf_token %}  
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% for each in dates %}<br>
+        {{each.fdate}}
+        {% endfor %}
+        
+
+    </form>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <label for="graph">Choose the time period:</label>
+    <select id="graph" name="graph">
+      <option value="Daily">Daily</option>
+      <option value="Weekly">Weekly</option>
+      <option value="Annualy">Annualy</option>
+    </select>
+    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+    </body>
+    <script>
+      document.getElementById('graph').addEventListener('change',()=>{
+      if(document.getElementById('graph').value=="Daily"){
+        document.getElementById('myChart').style.display="block";
+      }
+      else{
+        document.getElementById('myChart').style.display="none";
+      }
+      })
+        var timestamp = 
+        [
+          {% for date in dates %}
+
+            "{{date.fdate}}",
+            
+            
+            {%endfor%}
+            "Sept.30,2022,2:11p.m.",
+            "Sept.30,2022,2:11p.m."
+
+        ];
+
+        for(let i = 0;i<timestamp.length;i++){
+          timestamp[i] = timestamp[i].replaceAll(' ','')
+          console.log(timestamp[i]);
+        }
+
+        console.log(timestamp)
+           
+        function countInRangedaily(part, low, high,d) {
+            var count = 0;
+            var partNames = {month:0, day:1, year:2, hour:3, min:4};
+            var n = partNames[part];
+            for(let j=0;j<timestamp.length;j++){
+                let b = timestamp[j].split(".").join(",").split(":").join(",").split(" ").join(",").split(",");
+                //console.log(b);
+                if (b[1]==d && b[n] >= low && b[n] < high) {
+                    count++;
+                }
+            }
+            return count;
+        }
+        const tdate=new Date();
+        var date_day=tdate.getDate();
+        var per_hour=[];
+        var hour=[];
+        for(let i=0;i<24;i++){
+            per_hour.push(countInRangedaily('hour',i,i+1,date_day));
+            hour.push(i+1);
+        }
+        new Chart("myChart", {
+          type: "bar",
+          data: {
+            labels: hour,
+            datasets: [{
+              backgroundColor: "black",
+              data: per_hour
+            }]
+          },
+          options: {
+            legend: {display: false},
+            title: {
+              display: true,
+              text: "Views per hour"
+            }
+          }
+        });
+    </script>
+ <a class="btc botonc" id = "back_btn" href="../../view"><i class='bx bx-x'></i> Back</a>
+{% endblock %}
+
+
+
+

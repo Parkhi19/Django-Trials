@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+
+
+
+    <body>
+
+        {% if pass  == 'd' %}
+            <input type="text" id="password" name = 'password' placeholder="Password">
+            <button class="pass" type="button">Submit</button>
+        {%else%}
+
+        <!-- <iframe src="./../../../../media/{{address}}" frameborder="0"></iframe> -->
+            <embed src="./../../../../media/{{address}}" type="pdf"> 
+                
+                {% endif %}
+            <img src="./../../../../media/{{address}}" alt="">
+        
+        <p id ="matched"></p>
+        <div class="do">
+
+        </div>
+        <button class="addit" type="button">{{btn}}</button>
+      
+          
+
+    </body>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        $('.addit').click(function () {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "./saveflip/",
+                    data: {
+
+                        'csrfmiddlewaretoken': '{{ csrf_token }}',
+                    },
+                    success: function (data) {
+                        data = JSON.parse(data)
+                        if (data.status == false) { 
+                            $('.addit').text("Add to Collection");
+                         }else{
+                            $('.addit').text("Remove from collection");
+                        }
+                    }
+                })
+        });
+
+        
+        $('.pass').click(function () {
+            console.log($('#password').val());
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "./pass-check/",
+                    data: {
+
+
+                        'password': String($('#password').val()),
+                        'csrfmiddlewaretoken': '{{ csrf_token }}',
+                    },
+                    success: function (data) {
+                        data = JSON.parse(data)
+                        console.log(data)
+                        if (data.result == true) { 
+                            location.reload()
+                            $('#matched').text('Matched');
+                         }else{
+                            if(data.msg){
+                                $('#matched').text(data.msg);
+                            }else{
+                                $('#matched').text('Not Matched');
+                            }
+                        }
+                    }
+                })
+        });
+    </script>
+    <script type="text/javascript">
+        window.onload = startInterval;
+        function startInterval()
+        {
+            setInterval("startTime();",1000);
+        }
+        
+        function startTime()
+        {
+            document.getElementById('time').innerHTML = Date();  
+        }
+      </script>
+      
+      <noscript>
+        <meta http-equiv="refresh" content="0; url=https://aim2crack.in/login/" />
+    </noscript>
+      
+     
+</html>
+
+
+
+
+

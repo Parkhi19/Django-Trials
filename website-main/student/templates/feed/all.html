@@ -1,0 +1,135 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--     <link rel="stylesheet" href="{% static 'feedback/style.css'%}"> -->
+    <link rel="icon" href="{%static 'exam/favicon.ico'%}" type="image/x-icon">
+    
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Aim2Crack-Feedback</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+                overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+        }
+        .quiz-container{
+            width: 100%;
+            
+            display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 8px;
+        }
+        .quiz-container img{
+            width: 160px;
+        }
+        .quiz-container h2{
+            text-transform: uppercase;
+    font-weight: bold;
+    margin: 12px;
+    font-family: sans-serif;
+    color: #248162;
+        }
+        .form-some{
+            display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+        }
+        textarea{
+                margin: 0px;
+    width: 85%;
+    height: 100px;
+    background: #f0f0f0;
+    border: none;
+    text-align: center;
+            outline: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-bottom: 3px solid #248162;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+        }
+        .submitb{
+            background-color: #248162;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 40px;
+    margin: 11px;
+    cursor: pointer;
+            text-decoration: none;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+}
+    .submitb:hover{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        .home-btn{
+            position: absolute;
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    background: none;
+    border: none;
+    outline: none;
+    color: #248162;
+    transition: all 0.5s ease;
+        }
+        .home-btn:hover{
+            transform: translateY(-50%) scale(1.2,1.2);
+        }
+        @media(max-width: 750px){
+            .home-btn{
+                top: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!--     <div class="image" >
+       <img src="{%static 'feedback/WhatsApp Image 2022-01-04 at 16.05.19.jpeg'%}" alt="">
+  </div> -->
+    <a href="./" class="home-btn">  <i class='bx bxs-left-arrow-circle'></i></a>
+    
+    <div class = "quiz-container">
+<img src="{% static 'exam/Logo enlarged-03.png'%}" alt="">
+        <h2>ADD Instructions</h2>
+        <form method="POST" action = "./instruction_update" class="form-some">
+            {%csrf_token%}
+        
+            <textarea name="instructions" id="inst" cols="30" rows="10" placeholder ="Write instructions here ..." >{{inst.instructions}}</textarea>    
+            <button type="submit" class="submitb">Update Instructions</button>
+             <a href="./preview-instructions" class="submitb" >Preview</a>
+        </form>
+    </div>
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+@media screen and (max-width:850px) {
+    .box{
+        width: 80%;
+    }
+
+}
+@media screen and (max-width:450px){
+    .box{
+        width: 92%;
+    }
+    .inst{
+        width:90%;
+    }
+    .remember{
+        width: 90%;
+    }
+}

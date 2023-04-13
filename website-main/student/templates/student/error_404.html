@@ -1,0 +1,103 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aim2Crack: Error 404</title>
+    
+    <link rel="icon" href="{%static 'exam/favicon.ico'%}" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+        }
+        .error{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          
+        }
+        #page{
+            height: 200px;
+            margin-right: 85px;
+        }
+        #logo{
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .info{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .click{
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-evenly;
+        }
+        i{
+            color: #248162;
+            transition: all 0.5s ease;
+            font-size: 1.5rem;
+            margin-left: 8px;
+        }
+        i:hover{
+            transform: scale(1.2,1.2);
+        }
+        @media(max-width:730px){
+#page{
+    height: 100px;
+}
+#logo{
+    height: 40px;
+}
+h2{
+font-size: 1rem;
+}
+a{
+    margin-left: 5px;
+}
+i{
+    font-size: 1rem;
+
+}
+        }
+        @media(max-width:446px){
+            .error{
+                flex-direction: column;
+            }
+            #page{
+                margin-right: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error">
+        <img src="{% static 'errors/undraw_page_not_found_su7k.svg'%}" alt="" id="page">
+<div class="info">
+    <img src="{%static 'errors/Logo enlarged-03.png'%}" alt="" id="logo">
+    <h2>
+       OOPS!!Page Not Found.
+    </h2>
+    <div class="click">
+        <p>Go Back To Aim2Crack</p>
+        <a href="{%url 'exam-home'%}"><i class='bx bxs-home'></i></a>
+    </div>
+</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="60">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+    </head>
+        <body>
+
+            
+<div class="dome">
+    <img src="./../../media/{{ request.user.branding.blogo }}" alt="">
+</div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+                {% endif %}
+                <a href='../addflip' id="addquestion">
+                    <i class='bx bxs-edit-alt'></i>
+                    <p>Add Material</p>
+                </a>
+
+                <h1>Safebook uploaded</h1> <a href="../flipcollection" class="bt boton"> SAFEBOOK collections</a> <br>
+                <br>
+
+
+                <table>
+                    <tr> <th>SafeBook Name</th> <th>Subject name</th> <th> Last modified </th><th> Views </th> <th>Delete</th><th>Update</th><th>Privacy</th> <th>Customize</th><th>Refresh</th><th>Share</th></tr>
+                    {% for each in simple %}
+                    <tr>
+                        <td><a href="../{{each.link}}/sview/" class="bt boton3">{{each.fname}}</a></td>
+                        <td>{{each.fsub}}</td>
+                        <td>{{each.ftime}}</td>
+                        <td><a href="../{{each.link}}/viewcounts/" class="bt boton3">{{each.times}}</a></td>
+                        <td><a href="../{{each.link}}/deleteflip/" class="bt boton">Delete</a></td>
+                        <td><a href="../{{each.link}}/editflip/" class="bt boton2">Edit</a></td>
+                        <td><a href="../{{each.link}}/flipprivacy/" class="bt boton3">settings</a></td>
+                        <td><a href="../{{each.link}}/customflip/" class="bt boton3">Customize</a></td>
+                        <td><a href="../{{each.link}}/refreshflip/" class="bt boton3">Refresh</a></td>
+                        <td>
+                            <input type="text" ip="myInput" autocomplete="off" tabindex="0"
+                            aria-label="Link for sharing" readonly=""
+                            data-initial-value="aim2crack.in/f/{{each.link}}/sview" value="aim2crack.in/f/{{each.link}}/sview" badinput="false" dir="ltr">
+                            
+                        </td>
+                        <!-- <td><button onclick="myFunction()">Copy link</button></td> -->
+                        
+
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </form>
+
+             <!-- <div id="sharing" class="modal-container">
+            <section class="modal">
+                <header class="modal-header">
+                    <h2 class="modal-title">Sharable link</h2>
+                    <a href="#" class="modal-close">Close</a>
+                </header>
+
+                <div class="modal-content">
+
+                    <input type="text" ip="myInput" autocomplete="off" tabindex="0"
+                           aria-label="Link for sharing" readonly=""
+                           data-initial-value="aim2crack.in/f/{{each.link}}/sview" value="aim2crack.in/f/{{each.link}}/sview" badinput="false" dir="ltr">
+
+
+
+                    < The button used to copy the text -->
+             <!-- <button onclick="myFunction()">Copy text</button>
+            </div> -->
+
+        </body>
+
+        <!-- <script>
+
+            function myFunction(let x) {
+                /* Get the text field */
+                var copyText = document.getElementByClassName("myInput")[x];
+
+                /* Select the text field */
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+                /* Copy the text inside the text field */
+                navigator.clipboard.writeText(copyText.value);
+
+                /* Alert the copied text */
+                alert("Copied the link: " + copyText.value);
+            }
+        </script> -->
+
+        <!-- <style>
+
+            .button:hover {
+                background-color: #2d566b;
+            }
+
+            .modal-container {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 1000;
+                display: flex;
+                opacity: 0;
+                pointer-events: none;
+                background-color: rgba(0,0,0,0.75);
+                transition: opacity 250ms ease
+            }
+
+                .modal-container:target {
+                    opacity: 0.5;
+                    pointer-events: all;
+                }
+
+
+            .modal {
+                margin: auto;
+                width: 90%;
+                max-width: 40rem;
+                background-color: white;
+                border-radius: 1.5rem;
+            }
+
+            .modal-header,
+            .modal-content {
+                padding: 1.5rem;
+            }
+        </style> -->
+{% endblock %}
+
+
+
+
+
+<!--
+    [
+    'exf-plqp-lba',
+    'fyu-jidq-ucr',
+    'exf-pdqp-lba',
+    'fyu-jiaq-ucr',
+    ]
+
+
+-->

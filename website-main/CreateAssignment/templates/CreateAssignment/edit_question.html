@@ -1,0 +1,494 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Question</title>
+    <style>
+        form{
+            margin: 10px;
+    display: flex;
+    background: #f0f0f0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+        }
+        .center-block {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        button {
+            margin: auto;
+    display: block;
+    border: none;
+    background: green;
+    color: white;
+    margin: 3px auto;
+    padding: 7px 15px;
+        }
+
+        textarea,
+        input, select {
+            display: block;
+            background: none;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid green;
+    margin: 10px;
+}
+textarea{
+    width: 90%;
+}
+
+        
+
+        img {
+            margin: auto;
+        }
+
+        .sec {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .random {
+            display: flex;
+        }
+        #subquestions{
+            width: 100%;
+        }
+        .subquestion{
+            width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+        }
+        .question{
+            width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+        }
+        .tb{
+            width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+        .btn-cnt{
+            display: flex;
+    width: 19%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+        }
+        .btn-cnt button{
+            margin: 0;
+        }
+        .btn-cnt a{
+            text-decoration: none;
+    background: green;
+    color: white;
+    padding: 6px 15px;
+        }
+        .alert{
+        text-align: center;
+        font-weight: bold;
+    }
+    .alert-error{
+        color: red;
+
+    }
+    .alert-success{
+        color: green;
+    }
+    </style>
+</head>
+
+<body>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="question">
+            <hr>
+            {%for each in questions%}
+            <div class="tb">
+                {{each|safe}}
+                <br>
+            </div>
+            {%endfor%}
+            <br>
+        </div>
+        <div>
+            Marks: <span id="score" style="font-size: large;font-family: fantasy;color:red"></span>
+        </div>
+        <br>
+
+
+
+        <div class="random_section">
+            <span id="msg_ran"></span>
+            <div class="sec">
+                <input type="text" name="min_val" placeholder="min_val">
+                <input type="text" name="max_val" placeholder="max_val">
+                <select name="integer_only" id="">
+                    <option value="0" selected>Decimal</option>
+                    <option value="1">Integer</option>
+                </select>
+                <button type="button" id="generate_random">
+                    Generate Random
+                </button>
+            </div>
+            <div class="randoms">
+                {%for random in randoms%}
+                <div class="random">
+                    var_num : <span class="var-num">{{random.var_number}} </span>
+                    <input type="text" name="minVal" placeholder="min_val" value={{random.min_num}}>
+                    <input type="text" name="maxVal" placeholder="max_val" value={{random.max_num}}>
+                    <select name="integerOnly" id="">
+                        <option value="0" {%if random.integers_only == False %} selected {%endif%}>Decimal</option>
+                        <option value="1" {%if random.integers_only == True %} selected {%endif%}>Integer</option>
+                    </select>
+                    <button type="button" class="delete_random">Delete_Variable</button>
+                </div>
+                {%endfor%}
+            </div>
+            <button type="button" id="update_random">Update Variables</button>
+        </div>
+        <button type="button" id='add_text_question'>Add Text in Question</button>
+        <input type="file" name="add_image_question" id="add_img_question" placeholder="Add Image" accept="image/*"
+            enctype="multipart/form-data">
+        <button type="button" id='add_image_question'>Add Image in Question</button>
+        <hr>
+        <button type="button" id='add_sub_question'>Add Sub Question</button>
+
+        <div id=subquestions>
+            {%for subquestion in subquestions %}
+            <div class="subquestion">
+                <input type="hidden" name="sq_id" value="{{subquestion.id}}">
+                <textarea name="text" cols="30" rows="10"
+                    placeholder='Your question here'>{{subquestion.text}}</textarea>
+                <textarea name="answer" cols="30" rows="10"
+                    placeholder='Correct Answer here'>{{subquestion.answer}}</textarea>
+                <textarea name="explanation" cols="30" rows="10"
+                    placeholder='explanation'>{{subquestion.explanation}}</textarea>
+                <input type="number" name="score" value="{{subquestion.score}}" placeholder='score'>
+                <input type="number" name="tollerance" value="{{subquestion.tollerance}}" placeholder='tollerance in %age'>
+                <br>
+            </div>
+
+            {%endfor%}
+        </div>
+        <br>
+
+        <div class="btn-cnt">
+            <button type="button" class="submitb">Save</button>
+
+        <a href="./../../">Back</a>
+        </div>
+    </form>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    $("#update_random").click(function () {
+        let min_val = "", max_val = "",ints_only = "";
+        mins = document.getElementsByName("minVal");
+        maxs = document.getElementsByName("maxVal");
+        intsonly = document.getElementsByName("integerOnly");
+        for (let i = 0; i < mins.length; i++) {
+            min_val += "," + mins[i].value;
+            max_val += "," + maxs[i].value;
+            ints_only += ","+intsonly[i].value;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "./edit-random",
+            data: {
+                "csrfmiddlewaretoken": document.getElementsByName("csrfmiddlewaretoken")[0].value,
+                "min_vals": min_val.substr(1, min_val.length - 1),
+                "max_vals": max_val.substr(1, max_val.length - 1),
+                "integer_only": ints_only.substr(1,ints_only.length-1),
+            },
+            success: function (data) {
+                // console.log(data)
+            }
+        })
+    })
+
+    let dlt_rndm_btns = document.querySelectorAll(".delete_random");
+    for (let i = 0; i < dlt_rndm_btns.length; i++) {
+        dlt_rndm_btns[i].addEventListener("click", (event) => { delete_random(event); });
+    }
+
+    function delete_random(event) {
+        var index = -1
+        var randoms, random;
+        if (event.target.tagName === 'BUTTON') {
+            const button = event.target;
+            random = button.parentNode;
+            randoms = random.parentNode;
+            index = Array.prototype.indexOf.call(randoms.children, random);
+        }
+        $.ajax(
+            {
+                type: "POST",
+                url: "./delete-random",
+                data: {
+                    "csrfmiddlewaretoken": document.getElementsByName("csrfmiddlewaretoken")[0].value,
+                    "var_num": index + 1,
+                },
+                success: function (data) {
+                    if (data["status"] == true) {
+                        randoms.removeChild(random);
+                    }
+                }
+            }
+        )
+    };
+
+    $('#generate_random').click(function () {
+        $.ajax(
+            {
+                type: "POST",
+                url: "./generate-random",
+                data: {
+                    "csrfmiddlewaretoken": document.getElementsByName("csrfmiddlewaretoken")[0].value,
+                    "min_val": document.getElementsByName("min_val")[0].value,
+                    "max_val": document.getElementsByName("max_val")[0].value,
+                    "integer_only": document.getElementsByName("integer_only")[0].value,
+                },
+                success: function (data) {
+                    if (data["status"] == true) {
+                        let randoms = document.getElementsByClassName("randoms")[0].innerHTML
+                        let a_0 = (data["integer_only"] == false) ? "selected" : "";
+                        let b_0 = (data["integer_only"] == true) ? "selected" : "";
+                        let add = `
+                        <div class = "random">
+                            var_num : ${data["var_num"]}
+                            <input type="text" name="min_val" placeholder="min_val" value = ${data["min_val"]} >
+                            <input type="text" name="max_val" placeholder="max_val" value = ${data["max_val"]}>
+                            <select name="integerOnly" id="">
+                                <option value="0" ${a_0} >Decimal</option>
+                                <option value="1" ${b_0} >Integer</option>
+                            </select>
+                            <button type="button" class="delete_random">Delete_Variable</button>   
+                            </div>
+                            `
+                        $(".randoms")[0].innerHTML = randoms + add;
+                        let it = document.getElementsByClassName("delete_random");
+                        for (let i = 0; i < it.length; i++) {
+                            it[i].addEventListener("click", (event) => {
+                                delete_random(event, i);
+                            });
+
+                        }
+
+                    } else {
+                        document.getElementById("msg_ran").innerText = data["msg"]
+                    }
+                }
+            })
+    })
+
+    $('#add_sub_question').click(function () {
+        $.ajax(
+            {
+                type: "GET",
+                url: "./addsubquestion",
+                success: function (data) {
+                    console.log(data, data["status"])
+                    if (data["status"] == true) {
+
+                        let leng = document.getElementsByClassName("subquestion").length
+                        let ids = document.getElementsByName("sq_id");
+                        let text = document.getElementsByName("text");
+                        let answer = document.getElementsByName("answer");
+                        let explanation = document.getElementsByName("explanation");
+                        let score = document.getElementsByName("score");
+                        let tollerance = document.getElementsByName("tollerance");
+                        let arr = [];
+                        for (let i = 0; i < leng; i++) {
+                            ids[i].innerText = ids[i].value;
+                            text[i].innerText = text[i].value;
+                            answer[i].innerText = answer[i].value;
+                            explanation[i].innerText = explanation[i].value;
+                            tollerance[i].innerText = tollerance[i].value;
+                            arr.push(score[i].value);
+                        }
+
+
+
+                        already = document.getElementById("subquestions").innerHTML;
+                        let addone = ` 
+                    <hr>
+                    <div class="subquestion">
+                        <input type="hidden" name = "sq_id" value= "${data.id}">
+                        <textarea name="text"  cols="30" rows="10" placeholder = 'Your question here' ></textarea>
+                        <textarea name="answer"  cols="30" rows="10" placeholder = 'Correct Answer here'></textarea>
+                        <textarea name="explanation"  cols="30" rows="10" placeholder = 'explanation'></textarea>
+                        <input type= "number" name="score" value="1" placeholder = 'score' >
+                        <input type= "number" name="tollerance" value="2.0" placeholder = 'tollerance in %age' >
+                        <br>
+                    </div>`;
+
+                        document.getElementById("subquestions").innerHTML = already + addone
+                        for (let i = 0; i < leng; i++) {
+                            score[i].value = arr[i];
+                        }
+
+                    }
+                }
+            })
+    });
+
+    function delete_it(id, dlt) {
+        $.ajax(
+            {
+                type: "POST",
+                url: "./delete-it",
+                data: {
+                    "csrfmiddlewaretoken": document.getElementsByName("csrfmiddlewaretoken")[0].value,
+                    "id": id,
+                    "type": dlt,
+                },
+                success: function (data) {
+                    // console.log(data);
+                }
+            })
+    }
+
+
+    $(".submitb").click(function () {
+        $.ajax(
+            {
+                type: "POST",
+                url: "./savequestion",
+                data: {
+                    'data': savedata(),
+                    "csrfmiddlewaretoken": document.getElementsByName("csrfmiddlewaretoken")[0].value,
+                },
+                success: function (data) {
+                    if (data["status"]) {
+                        // console.log('updated');
+                    } else {
+                        // console.log("couldn't update");
+                    }
+                }
+            })
+
+    });
+
+    $("#add_text_question").click(function () {
+        $.ajax(
+            {
+                type: "GET",
+                url: "./add-text-box",
+
+                success: function (data) {
+                    if (data["status"]) {
+                        for (let i = 0; i < document.getElementsByName("question").length; i++) {
+                            document.getElementsByName("question")[i].innerText = document.getElementsByName("question")[i].value;
+                        }
+                        document.getElementsByClassName("question")[0].innerHTML += `
+                        <textarea class = 'que' name ='question' data-id = "`+ data["id"] + `"></textarea>
+                        `;
+                    }
+                }
+            })
+    });
+    $("#add_image_question").click(function () {
+
+        const file = document.getElementById('add_img_question').files[0];
+        let formData = new FormData();
+        var token = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+        formData.append('img', file);
+        formData.append('csrfmiddlewaretoken', token);
+        $.ajax(
+            {
+                url: "./add-image-question",
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    // console.log(data["status"]);
+                    document.getElementById("ig").src = "../../../../../media/"+data["address"];
+                }
+            })
+
+        console.log(formData);
+
+    });
+
+
+
+    // function question_save() {
+    // }
+
+
+    function savedata() {
+        subquestions = []
+        let leng = document.getElementsByClassName("subquestion").length
+        let ids = document.getElementsByName("sq_id");
+        let text = document.getElementsByName("text");
+        let answer = document.getElementsByName("answer");
+        let explanation = document.getElementsByName("explanation");
+        let score = document.getElementsByName("score");
+        let tollerance = document.getElementsByName("tollerance");
+
+
+        // subquestion part
+        for (let i = 0; i < leng; i++) {
+            temp = {};
+            temp["id"] = ids[i].value;
+            temp["text"] = text[i].value;
+            temp["answer"] = answer[i].value;
+            temp["explanation"] = explanation[i].value;
+            temp["score"] = score[i].value;
+            temp["tollerance"] = tollerance[i].value;
+            subquestions.push(temp);
+        }
+
+        //question parts
+        let ques = document.getElementsByClassName('que')
+        questions = []
+        for (let i = 0; i < ques.length; i++) {
+            questions.push(ques[i].value)
+        }
+
+        //returning part
+        output = {
+            "subquestions": subquestions,
+            "question": document.getElementsByName("question")[0].value,
+            "boxes": questions,
+        };
+        return JSON.stringify(output);
+    }
+
+    function updateMarks() {
+        let it = 0;
+        let score = document.getElementsByName("score");
+        for (let i = 0; i < score.length; i++) {
+            if (score[i].length != 0) {
+                it += parseInt(score[i].value);
+            }
+
+        }
+        document.getElementById("score").innerText = it;
+    }
+
+    setInterval(updateMarks, 400);
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+db.sqlite3
+__pycache__
+exam/__pycache__/*
+createquiz/__pycache__/*
+migrations
+migrations/
+/migrations
+media/*
+db
+media/
+media
+.pyc

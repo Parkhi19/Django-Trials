@@ -1,0 +1,233 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Aim2Crack-Assignment</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        h1 {
+            text-align: center;
+        }
+
+        .question {
+            margin: auto;
+    width: 100%;
+    border-bottom: 2px solid #acacac;
+        }
+        .left{
+            flex-basis: 80%;
+        }
+        .right{
+            flex-basis: 20%;
+        }
+        .btn {
+            padding: 30px;
+    width: 30px;
+    font-size: 1.2rem;
+    color: white;
+    margin: 5px;
+    display: flex;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background: #3d3d3d;
+        }
+        .alert{
+            padding: 20px;
+            border: 2px solid green;
+            width: max-content;
+            background: white;
+            position: absolute;
+            left: 1%;
+            color: green;
+            font-weight: bold;
+        }
+        .add{
+            border: 2px solid white;
+            width: max-content;
+            padding: 10px 25px;
+            border-radius: 4px;
+            margin: auto 5px;
+        
+        }
+        .add a{
+            text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+        }
+        .instructive_text2{
+            color: red;
+    font-weight: bold;
+        }
+        .question-panel{
+            display: flex;
+    height: 100vh;
+        }
+        .right-side{
+            flex-basis: 80px;
+            background: linear-gradient(316deg, #2a2323 60%, #50d8d7 130%);
+            padding-top: 20px;
+            overflow: scroll;
+        }
+        #tab-btns{
+            display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+        }
+        .left-side{
+            flex-basis: 90%;
+            padding: 25px;
+            overflow: scroll;
+        }
+        .top-heading{
+            background: linear-gradient(316deg, #2a2323 60%, #50d8d7 130%);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px solid #acacac;
+        }
+        .ed-buttons{
+            display: flex;
+            align-items: center;
+        }
+        .ed-btn{
+    width: max-content;
+    margin: 5px;
+        }
+        .ed-btn a{
+            text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #3d3d3d;
+        }
+        ::-webkit-scrollbar{
+            width: 0px;
+        }
+        @media(max-width: 660px){
+            .top-heading{
+                flex-direction: column;
+            }
+            .add{
+                margin: 9px;
+            }
+            .question{
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    {% comment %} <h1>{{assign.assignment_name}}</h1> {% endcomment %}
+    <h1 style="text-align: center;
+    margin: 8px;">{{assign.assignment_name}}</h1>
+    {% comment %} <h2  style="text-align: center;
+    margin: 8px;">Subject Name</h2> {% endcomment %}
+    <div class="top-heading">
+        <div class="add">
+            <a href='instructions/' id="instructions">
+                <p>Add Instruction</p>
+            </a>
+        </div>
+        <div class="add" style="background: green;">
+            <a href='questions/' id="questions">
+                <p>Add Question</p>
+            </a>
+        </div>
+        <div class="add">
+            <a href='edit/' id="edit">
+                <p>Assignment Settings</p>
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="question-panel">
+        <div class="right-side">
+            <div id="tab-btns">
+            </div>
+        </div>
+        
+        <div class="left-side">
+        {%for each in front%}
+        <div class=question>
+    
+            <div class="left">
+                <p>{{each.que|safe}}</p><br>
+            <h4> Subquestions: </h4><br>
+            {%for sq in each.subquestions%}
+            <p>{{sq.text}}</p><br>
+            <p>{{sq.score}}</p> <br>
+            <p>{{sq.explanation}}</p> <br>
+            <p>{{sq.correct}}</p>
+            </div>
+            {%endfor%}
+            <div class="right">
+                <div class="ed-buttons"><div class="ed-btn"><a href="./edit_question/{{each.id}}" style="color:green;"><i class='bx bx-edit-alt'></i></a></div>
+            <div class="ed-btn" ><a href="./delete_question/{{each.id}}" style="color:red;"><i class='bx bxs-trash'></i></a></div></div>
+            </div>
+        </div>
+        {%endfor%}
+        </div>
+    </div>
+
+
+
+</body>
+<script>
+    let questions = document.getElementsByClassName("question");
+    let container = document.getElementById("tab-btns");
+    let txt = "";
+    for (let i = 0; i < questions.length; i++) {
+        txt += "<button type = 'button' class = 'btn' >" +"Q"+ String(i+1) + " </button> \n";
+    }
+    container.innerHTML = txt;
+
+    for (let i = 0; i < questions.length; i++) {
+        questions[i].style.display = "none";
+    }
+
+    let btns = document.getElementsByClassName("btn");
+    questions[0].style.display = "flex";
+    btns[0].style.backgroundColor = "white";
+    btns[0].style.color = "#3d3d3d";
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            // console.log(i); 
+            for (let j = 0; j < questions.length; j++) {
+                questions[j].style.display = "none";
+            }
+            questions[i].style.display = "flex";
+
+            for (let j = 0; j < btns.length; j++) {
+                btns[j].style.backgroundColor = "#3d3d3d";
+    btns[j].style.color = "white";
+            }
+            btns[i].style.backgroundColor = "white";
+    btns[i].style.color = "#3d3d3d";
+
+        });
+    }
+
+</script>
+
+
+{% endblock %}

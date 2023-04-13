@@ -1,0 +1,104 @@
+
+#loader_container{
+    background: #102626;
+    
+     /* background:  linear-gradient(316deg, #50d8d7 0%, #2a2323 130%); */
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999999999999999;
+}
+.logo_comp{
+    position: relative;
+   
+    -webkit-box-reflect: below 1px linear-gradient(#0001,#0004);
+}
+.name{
+    position: absolute;
+    top: 3%;
+    left: -3%;
+    z-index: 99;
+  
+}
+.name img{
+    height: 250px;
+   
+    z-index: 100000000000000000000;
+}
+
+.logo{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: #0d2323;
+    /* background:  linear-gradient(316deg, #50d8d7 0%, #2a2323 130%); */
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    
+    animation: animate 2s linear infinite;
+}
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.logo::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to top,transparent,rgba(0,255,249,0.4));
+    background-size: 150px 270px;
+    background-repeat: no-repeat;
+    border-bottom-left-radius: 150px;
+    border-top-left-radius: 150px;
+    
+}
+.logo::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 25px;
+    background: #00fff9;
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 0 10px #00fff9
+    , 0 0 20px #00fff9
+    , 0 0 30px #00fff9
+    , 0 0 40px #00fff9
+    , 0 0 50px #00fff9
+    , 0 0 60px #00fff9
+    , 0 0 70px #00fff9
+    , 0 0 80px #00fff9
+    , 0 0 90px #00fff9
+    , 0 0 100px #00fff9;
+}
+.logo span{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    bottom:25px;
+    right: 25px;
+    background: #102626;
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 3.5rem;
+    animation: none;
+}

@@ -1,0 +1,436 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aim2Crack-Create Quiz</title>
+     <link rel="icon" href="{%static 'exam/favicon.ico'%}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'exam/create_quiz.css'%}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+    integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    
+     <script src="https://kit.fontawesome.com/4d0c408dff.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{%static 'exam/navbar.css'%}">
+    <style>
+         body{
+        position: relative;
+    }
+   
+    .arrow{
+  position: absolute;
+  left: 1rem;
+  top: 48%;
+  font-size: 4rem;
+  color:white ;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+.arrow:hover{
+  transform: scale(1.2,1.2);
+ 
+}
+    @media(max-width:670px){
+    .arrow{
+      font-size: 3rem;
+    }
+   
+  }
+    @media(max-width:505px){
+    .arrow{
+     left: 0;
+    }
+   
+  }
+  @media(max-width:380px){
+    .arrow{
+      top: 80px;
+      font-size: 1.3rem;
+    }
+  }
+            body{
+
+        background-image:
+        linear-gradient( rgba(4, 9, 30,0.7),rgba(4, 9, 30,0.7) )
+        /* linear-gradient(316deg,#2a2323  60%, #50d8d7 130%) */
+        ,url("{%static 'exam/question-mark-1872665_1920.jpg'%}"); 
+    }
+    .icons a{
+text-decoration: none;
+        }
+    #ttype {
+        background: none;
+        border: none;
+        outline: none;
+        margin-left: 3px;
+        color: white;
+        margin-left: 8px;
+        width: 60%;
+    }
+        .alert{
+            background: white;
+    padding: 9px;
+    color: #0a0e22;
+            border-radius: 0.5rem;}
+    </style>
+</head>
+
+<body>
+       <a  onclick="history.back()" class="arrow"><i class='bx bxs-left-arrow-circle'></i></a>
+    
+ <!-- navbar of the site  -->
+      <header style="background: #0a0e22;">
+        <img class="logo" src="{% static 'exam/Aim2Crack-logo-1.png'%}" alt="logo" title="home" >
+
+        <nav class="main-menu">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+{% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content" style="background: #0a0e22;">
+                        <a href="https://www.aim2crack.in/c/some/">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+ {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content" style="background: #0a0e22;">
+                         <a href="{%url 'placement'%}" >
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                       
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content" style="background: #0a0e22;">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'team'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}">
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="#" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid!</small>
+                        </a>
+                    </div>
+                </li>
+
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+        <div class="click-dropdown profile-dropdown">
+            <button onclick="myFunction()" class="click-dropbtn">
+                <a style="background: #0a0e22;">
+                    <span class="material-icons md-24">
+                        person
+                    </span>
+                    {% if user.is_authenticated %}
+                    <p class="profile">
+                        Profile
+                    </p>
+                     {%else%}
+                     <p class="profile">
+                        Signup
+                    </p>
+                    {%endif%}
+                    <span class="material-icons-outlined">
+                        expand_more
+                    </span>
+                </a>
+            </button>
+            <div id="myDropdown" class="click-dropdown-content" style="background: #0a0e22;">
+ {% if user.is_authenticated %}
+                <a href="{%url 'profile' request.user.profile.id %}" >
+                    <span class="btn-txt">Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'logout'%}" >
+                    <span class="btn-txt">Logout</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%else%}
+<a href="{%url 'register'%}" >
+                    <span class="btn-txt">Create Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'login'%}" >
+                    <span class="btn-txt">LogIn</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%endif%}
+            </div>
+        </div>
+
+        <span class="ham" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </header>
+
+    <div id="mySidenav" class="sidenav" style="background: #0a0e22;">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <nav class="main-menu-1">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+ {% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'quizzes'%}">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+   {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'about'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid</small>
+                        </a>
+                    </div>
+                </li>
+{% if user.is_authenticated %}
+                <li><a href="{%url 'profile' request.user.profile.id %}">Account</a></li>
+                <li><a href="{%url 'logout'%}">Logout</a></li>
+  {%else%}
+                <li><a href="{%url 'register'%}">Create Account</a></li>
+                <li><a href="{%url 'login'%}">LogIn</a></li>
+{%endif%}
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+
+    </div>
+    
+    <form method = 'POST' class="create_quiz" >
+           {% if messages %}
+        {% for message in messages%}
+        <h3 class="alert alert-{{messages.tags}}">
+            {{message}}
+        </h3>
+        {% endfor %}
+        {% endif %}
+        <h1>Create Your Own Quiz</h1>
+
+        <div class="in">
+
+            {%csrf_token%}
+            <div class="Type">
+
+                Type Of Quiz:
+                <select name="qtype" id="type_of_question">
+                    <option value="s">Simple Quiz</option>
+                    <option value="p">Placement Quiz</option>
+                </select>
+            </div>
+            <div class="course">
+                <p id="course_lab">Course Name:</p>
+                <i class='bx bx-library'></i>
+                <input type="text" name="course_name" placeholder="COURSE NAME">
+            </div>
+            <div class="topic">
+                <p id="topic_lab">Topic Name:</p>
+                <i class='bx bxs-book-reader'></i>
+                <input type="text" name="topic_name" placeholder="TOPIC NAME">
+            </div>
+            <p id="note" style="
+    margin-top: -21px;
+    margin-bottom: 11px;
+    font-family: system-ui;
+    font-size: 13px;
+">NOTE: '-' will be considered as spaces.</p>
+            <div class="start_time">
+                Start Time:
+                <!-- <i class='bx bxs-stopwatch'></i> -->
+                <input type="datetime-local" name="start" placeholder="START TIME">
+                
+            </div>
+            <div class="margin_time">
+                
+                Last login Time:
+                <!-- <i class='bx bxs-stopwatch'></i> -->
+                <input type="datetime-local" name="margin" placeholder="MARGIN TIME">
+            </div>
+            <div class="start_time">
+                Result Time:
+                <input type="datetime-local" name="result" placeholder="START TIME">
+            </div>
+            <div class="start_time">
+                Question Timer:
+                <select name="ttype" id="ttype">
+                    <option value="i">Individual Question Timer</option>
+                    <option value="s">Section/Full Quiz Timer</option>
+                </select>
+            </div>
+            
+            <div class="submit">
+                <input type="submit" value="Create quiz">
+            </div>
+        </div>
+    </form>
+</body>
+<script>
+    
+    //JS for Type of quiz
+        m = document.getElementById("type_of_question")
+    m.addEventListener("change", () => {
+        if (document.getElementById("type_of_question").value == "s") {
+            document.getElementsByName("course_name")[0].placeholder = "COURSE NAME"
+            document.getElementById("course_lab").innerText = "Course Name"
+            document.getElementsByName("topic_name")[0].placeholder = "TOPIC NAME"
+            document.getElementById("topic_lab").innerText = "Topic Name"
+        }
+        if (document.getElementById("type_of_question").value == "p") {
+            document.getElementsByName("course_name")[0].placeholder = "COMPANY NAME"
+            document.getElementById("course_lab").innerText = "Company Name"
+            document.getElementsByName("topic_name")[0].placeholder = "FIRST SECTION NAME"
+            document.getElementById("topic_lab").innerText = "First Section name"
+        }
+    })
+    
+    
+    
+    
+    // Javascript for navbar 
+  /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+const topic = document.querySelectorAll(".topic");
+    const note = document.querySelector("#note");
+    const topicinput = topic[0].querySelector("input");
+      note.style.display = "none";
+    topicinput.addEventListener("focus", function () {
+      note.style.display = "block";
+    });
+    topicinput.addEventListener("focusout", function () {
+      note.style.display = "none";
+    });
+</script>
+</html>

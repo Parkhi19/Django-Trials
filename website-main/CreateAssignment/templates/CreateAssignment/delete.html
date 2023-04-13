@@ -1,0 +1,53 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+<title>Delete</title>
+<style>
+    .question_box{
+        display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    background: #f0f0f0;
+    width: max-content;
+    padding: 45px;
+    margin: 50px auto;
+    }
+    .top{
+        font-size: 1.3rem;
+    color: #c91a1a;
+    font-family: math;
+    font-weight: bold;
+    margin-bottom: 5px;
+    }
+    .choose{
+        display: flex;
+    justify-content: space-between;
+    width: 100%;
+    }
+    .choose button, .choose a{
+        text-decoration: none;
+        background: green;
+    color: white;
+    padding: 7px 30px;
+    border: none;
+    margin: 10px 0px;
+    }
+    .choose button{
+        background: #c91a1a;
+    }
+</style>
+<div id="question_box1" class=question_box>
+    <div class="top">Delete Question </div>
+    <div class="main_box" id="main_box">
+        <p class="question">Are you sure you want to delete this question?</p>
+        <form method="POST" class="form_group">
+            {% csrf_token %}
+                <div class="options_section">
+                    <div class="choose">
+                    <button class="btc botonc" type="submit"><i class='bx bxs-trash-alt'></i> Delete</button>
+                    <a class="btc botonc" id = "back_btn" href="../"><i class='bx bx-x'></i> Cancel</a>
+                         </div>
+                </div>
+        </form>
+    </div>
+    {% endblock%}

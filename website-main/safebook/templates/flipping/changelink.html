@@ -1,0 +1,104 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+<head>
+
+<style>
+.videos{
+    display: flex;
+align-items: center;
+margin: auto;
+width: 80%;
+justify-content: space-evenly;
+flex-wrap: wrap;
+margin-top: 20px;
+ }
+ .videos iframe{
+   min-width: 250px;
+min-height: 180px;
+width: auto;
+height: auto;
+margin-bottom: 20px;
+     border-radius: 10px;
+box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+ }
+ .logo_head{
+            /* margin-bottom: 20px;
+            width: 175px;
+            margin-top: 10%;
+            align-content: center; */
+            margin-top: 10%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 175px;
+        }
+</style>
+</head>
+<body>
+
+<div>
+    <img src="{%static 'commonimages/attention.png'%}" class="logo_head">
+</div>
+<div class="main_box">
+    <div class="heading">
+        <h2>{{msg}}</h2>
+    </div>
+</div>
+<form method="POST" enctype="multipart/form-data" >
+    {% csrf_token %}  
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}     
+        Refreshing the link leads to following changes:  
+        <p class="line">
+            <i class='bx bxs-right-arrow'></i>
+            New link will be generated for the sharing this safebook
+        </p>
+      <p class="line">
+          <i class='bx bxs-right-arrow'></i>
+          All existing user access will be revoked
+      </p> 
+      <p class="line">
+          <i class='bx bxs-right-arrow'></i>
+          All view counts deleted will be deleted
+      </p>
+     
+      <p class="line">
+          <i class='bx bxs-right-arrow'></i>
+          Be sure! There is no way to retrive the previous link and their corresponding details
+      </p>
+     The safebook you are refreshing:
+     <p class="line">
+       Safebook Name:{{flink.fname}}
+    </p> 
+    <p class="line">
+        Safebook Subject Name:{{flink.fsub}}
+     </p> 
+     <p class="line">
+        Safebook Subject Name:{{flink.fsub}}
+     </p> 
+     <p class="line">
+        Safebook views:{{flink.times}}
+     </p> 
+     
+          </div>
+
+{{flink.fname}}<br>
+<!-- {%if request.user.profile.type  == 't'%}
+{%else%}
+<div class ="videos">
+
+    {%for each in videos%}
+        {{each|safe}}
+      
+    {%endfor%}
+</div>
+{%endif%} -->
+<button type="submit" class="save btn btn-default">Refresh</button>  
+<a class="btc botonc" id = "back_btn" href="../../view"><i class='bx bx-x'></i> Cancel</a>
+</form>
+</body>
+
+{% endblock %}

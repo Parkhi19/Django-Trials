@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="adding">
+        <form method="post">
+            {%csrf_token%}
+            <input type="number" required name="date" value ="{{give.date}}" placeholder="Date">
+            <input type="text" required maxlength="5" value ="{{give.month}}" name="month" placeholder="Month">
+            <input type="text" required name="title" value ="{{give.title}}" placeholder="Title">
+            <input type="text" required name="info" value ="{{give.info}}" placeholder="Description">
+            <input type="text" required name="link" value ="{{give.link}}" placeholder="Link">
+            <input type="submit" value="SUBMIT">
+        </form>
+    </section>
+</body>
+</html>

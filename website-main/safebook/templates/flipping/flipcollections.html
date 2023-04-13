@@ -1,0 +1,47 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{%load static%}
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+
+<body>  
+<form method="POST" enctype="multipart/form-data" >  
+    {% csrf_token %}  
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+     
+        
+    <h1>List of Safebook Collections</h1>
+    <table>
+    <tr> <th>SafeBook Name</th> <th>Subject name</th><th>Owner</th> <th> Last viewed </th> <th>link</th><th>Delete</th> </tr>
+    {% for each in simple %}
+    <tr>
+        <td>{{each.fname}}</td>
+        <td>{{each.fsub}}</td>
+        <td>{{each.fcreator}}</td>
+        <td>{{each.ftime}}</td>
+        <td>{{each.flink}}</td>
+        <td><a href="./removeflip/{{each.num}}" class="bt boton">Delete</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+    
+</form>  
+</body>  
+{% endblock %}
+
+
+
+
+

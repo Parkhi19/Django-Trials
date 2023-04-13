@@ -1,0 +1,107 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="icon" href="{static 'exam/favicon.ico'}" type="image/x-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>
+    Aim2Crack-Quiz
+  </title>
+  <link rel="stylesheet" href="{% static 'public/utils.css' %}">
+  <link rel="stylesheet" href="{% static 'public/giver.css' %}">
+   <style>
+    .quiz-header h4{
+font-size: 1.7rem;
+    }
+  
+  </style>
+</head>
+
+
+<body>
+  <div class="box">
+   <div class="quiz-container" id="quiz">
+    <div class="wrapper">
+      <div class="logo"></div>
+      <br>
+      <h1 id="subject" class="designh1">{{course}}</h1>
+     </div>
+     
+      <section id="nav">
+      <div id="chance">
+          <h5 class="whichtypeof">Relax Timer <span style="color:rgb(1, 122, 124);" 
+                                                    id="reltime">00:10</span></h5>
+        <h5 class="whichtypeof1" align=left>Choose the Section :</h5>
+      </div>
+
+      <div id="hide1">
+        <div class="time maxwidth1 m_auto">
+          <h2>Section Time Left : <span id="timeLeft">00:00</span></h2>
+          <h2>Question Time Left : <span id="questionTimeLeft">00:00</span></h2>
+        </div>
+
+        <div id="help" class="maxwidth1 m_auto t_auto">
+          <span id="green">Attempted <span id="attempted"> 0 </span></span>
+           &nbsp; <span id="red">Missed <span
+              id="missed">
+              0 </span></span> &nbsp; Left <span id="left"></span>
+        </div>
+   </section>
+       <div id="hide"> 
+        <div id="progressBar" class=" m_auto">
+          <div id="progressBarFull" class="colorbar"></div>
+        </div>
+        <div id="singleCorrect" class="colorbar">
+          <h2><span  id="quizType">Objective Type Questions</span></h2>
+          <div class="quiz-header">
+            <div class="dont">
+               <h4 id="question1">Question text</h4>
+               <img src="" alt="" class="que_img"  style="width:400px; margin:auto;">
+            </div>
+            <ul id=list>
+            </ul>
+          </div>
+        </div>
+        <div id="numerical">
+          <h2><span id="quizType">Numerical Type Question</span></h2>
+          <div class="quiz-header">
+            <div class="dont">
+              <h4 id="question2">Question text</h4>
+              <img src="" alt="" class="que_img"  style="width:400px; margin:auto;">
+            </div>
+            <form autocomplete="off" onkeydown="return event.key != 'Enter';">
+              <h3><input id="numericalAns" type="text"><br></h3>
+            </form>
+          </div>
+        </div>
+        <div id="multiCorrect">
+          <h2><span id="quizType">Multi Correct Question</span></h2>
+          <div class="quiz-header">
+            <div class="dont">
+            <h4 id="question3">Question text</h4>
+            <img src="" alt="" class="que_img" style="width:400px; margin:auto;">
+            </div>
+            <ul id="listmul">
+            </ul>
+          </div>
+        </div>
+        <button id="submit">Next</button>
+      </div>
+
+    </div>
+  </div>
+  <form method='POST'>
+    {% csrf_token%}
+    <textarea name="answer" class="hide" id=ans style="display: none;"></textarea><br>
+    <textarea name="questions" class="hide" id=all_questions_in_string style="display: none;"></textarea>
+    <input type="submit" class="hide" style="display: none;" id='quiz_submit_button' value='submit test' id=submit>
+  </form>
+      <script>
+    document.getElementById('hide1').style.display = "none";
+  </script>
+  <script src="{%static 'public/qapp.js'%}"></script>
+</body>
+
+</html>

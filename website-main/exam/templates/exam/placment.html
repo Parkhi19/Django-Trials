@@ -1,0 +1,537 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" href="{%static 'exam/favicon.ico'%}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'placement/placement.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+    integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="{%static 'exam/navbar.css'%}">
+	
+	
+	<script src="https://kit.fontawesome.com/4d0c408dff.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Aim2Crack Placement Kit</title>
+    <style>
+      #selected_btn{
+        
+        color: #50d8d7;
+    }
+	       .column{
+        text-align: center;
+      }
+      .column a{
+text-decoration: none;
+color: black;
+font-weight: bold;
+text-align: center;
+      }
+	      #dell{
+        margin-top: 20px;
+      }
+	      #scb{
+        font-size: 2rem;
+      }
+	      @media(max-width:450px){
+        .column{
+          font-size: 0.5rem;
+        }
+        th, td{
+          padding: 10px;
+        }
+      }
+:root {
+  --shadow-color: #50d8d7;
+  --shadow-color-light: white;
+}
+
+.logo-1 {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-family: "Archivo Black", "Archivo", sans-serif;
+  font-weight: normal;
+  height: auto;
+  text-align: center;
+  color: #298a8a;
+	 text-decoration: none;
+  animation: neon 3s infinite;
+}
+
+@keyframes neon {
+  50% {
+    text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+    0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+    0 0 7px var(--shadow-color), 0 0 10px var(--shadow-color), 0 0 12px var(--shadow-color), 0 0 17px var(--shadow-color), 0 0 25px var(--shadow-color), 0 0 50px var(--shadow-color);
+  }
+  50% {
+    text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+    0 0 5px var(--shadow-color-light), 0 0 7px var(--shadow-color-light), 0 0 25px var(--shadow-color-light),
+    0 0 10px var(--shadow-color), 0 0 25px var(--shadow-color), 0 0 15px var(--shadow-color), 0 0 20px var(--shadow-color), 0 0 25px var(--shadow-color), 0 0 50px var(--shadow-color);
+  }
+  50% {
+    text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+    0 0 3px var(--shadow-color-light), 0 0 5px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+    0 0 7px var(--shadow-color), 0 0 10px var(--shadow-color), 0 0 12px var(--shadow-color), 0 0 17px var(--shadow-color), 0 0 25px var(--shadow-color), 0 0 50px var(--shadow-color);
+  }
+}
+    </style>
+</head>
+<body>
+          <!-- navbar of the site  -->
+      <header>
+        <img class="logo" src="{% static 'exam/Aim2Crack-logo-1.png'%}" alt="logo" title="home" >
+
+        <nav class="main-menu">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+{% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content">
+                        <a href="https://www.aim2crack.in/c/some/">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+ {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content">
+                         <a href="{%url 'placement'%}" >
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                       
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'team'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}">
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="#" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid!</small>
+                        </a>
+                    </div>
+                </li>
+
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+        <div class="click-dropdown profile-dropdown">
+            <button onclick="myFunction()" class="click-dropbtn">
+                <a>
+                    <span class="material-icons md-24">
+                        person
+                    </span>
+                    {% if user.is_authenticated %}
+                    <p class="profile">
+                        Profile
+                    </p>
+                     {%else%}
+                     <p class="profile">
+                        Signup
+                    </p>
+                    {%endif%}
+                    <span class="material-icons-outlined">
+                        expand_more
+                    </span>
+                </a>
+            </button>
+            <div id="myDropdown" class="click-dropdown-content">
+ {% if user.is_authenticated %}
+                <a href="{%url 'profile' request.user.profile.id %}" >
+                    <span class="btn-txt">Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'logout'%}" >
+                    <span class="btn-txt">Logout</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%else%}
+<a href="{%url 'register'%}" >
+                    <span class="btn-txt">Create Account</span>
+                    <span class="material-icons-outlined md-18">
+                        manage_accounts
+                    </span>
+                </a>
+                <a href="{%url 'login'%}" >
+                    <span class="btn-txt">LogIn</span>
+                    <span class="material-icons-outlined md-18">
+                        logout
+                    </span>
+                </a>
+ {%endif%}
+            </div>
+        </div>
+
+        <span class="ham" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </header>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <nav class="main-menu-1">
+            <ul class="nav_links">
+                <li><a href="{%url 'exam-home'%}">Home</a></li>
+ {% if user.is_authenticated%}
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Quizzes</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'quizzes'%}">
+                            <span>Create Quiz</span>
+                            <small>Analyze results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Subjective Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                        <a href="{%url 'quizzes'%}" >
+                            <span>Placement Quiz</span>
+                            <small>View past results</small>
+                        </a>
+                    </div>
+                </li>
+   {%endif%}
+                <!-- DROPDOWN - HR, Interviews, Aptitude -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Placements</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'placement'%}" >
+                            <span>HR Questions</span>
+                            <small>Commonly asked interview questions</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Guesstimates</span>
+                            <small>Try your reasoning skills</small>
+                        </a>
+                        <a href="{%url 'placement'%}" >
+                            <span>Puzzles</span>
+                            <small>Test your logical thinking</small>
+                        </a>
+                        <a href="{%url 'placement'%}">
+                            <span>Apt Crack</span>
+                            <small>Test your quants knowledge</small>
+                        </a>
+                    </div>
+                </li>
+
+
+                <li><a href="{% url 'placement-talks'%}">Talks</a></li>
+
+                <!-- DROPDOWN - About Us, Meet Our Team, Contact Us -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="{%url 'about'%}" >
+                            <span>About Us</span>
+                            <small>Know our story</small>
+                        </a>
+                        <a href="{%url 'about'%}">
+                            <span>Team</span>
+                            <small>Meet our superheroes</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Contact</span>
+                            <small>Join us/Reach us</small>
+                        </a>
+                        <a href="{%url 'contact'%}" >
+                            <span>Resources</span>
+                            <small>Tutorials to aid</small>
+                        </a>
+                    </div>
+                </li>
+{% if user.is_authenticated %}
+                <li><a href="{%url 'profile' request.user.profile.id %}">Account</a></li>
+                <li><a href="{%url 'logout'%}">Logout</a></li>
+  {%else%}
+                <li><a href="{%url 'register'%}">Create Account</a></li>
+                <li><a href="{%url 'login'%}">LogIn</a></li>
+{%endif%}
+                <!-- SEARCH BAR on CLICKING SEARCH ICON -->
+            </ul>
+        </nav>
+
+
+    </div>
+
+
+ 
+
+
+    <div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <img src="{% static 'placement/START (2).png'%}" style="width:100%">
+    </div>
+
+  
+
+    </div>
+    <br>
+
+    <div style="text-align:center">
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+    </div>
+<link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+    <h2 style="text-align: center;   margin: 25px auto 25px auto;">
+     To learn from interview experience, visit: <a class="logo-1" href="{% url 'placement-talks'%}"> &nbsp; "Placement Talks"</a>
+    </h2>
+    <hr style="border: 1px solid #4ebebe;background-color: #4ebebe;border-radius: 5px;width: 90%;margin: auto;margin-bottom: 30px;">
+  
+    <div class='caption'>Apt-crack : Quantitative</div>
+    <hr class="separate">
+
+  <table class="topic_table">
+	<tr>
+		<td class="column"><a href="../c/jmq-poxy-hyu/test">Age Problems</a></td>
+		<td class="column"><a href="../c/vif-aamu-qkz/test">Allegations and Mixtures</a></td>
+		<td class="column"><a href="../c/xnz-bplq-jcj/test">Number Series</a></td>
+	</tr>
+	<tr>
+		<td class="column"><a href="../c/vib-plqf-sml/test">Percentage</a></td>
+		<td class="column"><a href="../c/lnd-ypeh-cdx/test">Permutations</a></td>
+		<td class="column"><a href="../c/msa-eojg-idt/test">Pipes and Cistern</a></td>
+	</tr>
+	  <tr>
+    <td class="column"><a href="../c/ssy-owvd-akr/test">Chain rule</a></td>
+		<td class="column"><a href="../c/adh-akvb-ast/test">Profit and loss</a></td>
+		<td class="column"><a href="../c/eyj-skfw-isy/test">Combinations</a></td>
+	</tr>
+	<tr>
+    <td class="column"><a href="../c/xdc-irno-muw/test">Blood relations</a></td>
+		<td class="column"><a href="../c/vnq-amge-mpg/test">Clocks and angles</a></td>
+		<td class="column"><a href="../c/jlz-yfiy-pnv/test">Games and Races</a></td>
+	</tr>
+	<tr>
+    <td class="column"><a href="../c/qcd-arqk-vbs/test">Fractions</a></td>
+		<td class="column"><a href="../c/dqn-rbvf-pxv/test">Boats: Speed and Distance</a></td>
+		<td class="column"><a href="../c/vqb-cetu-lpz/test">Compound interest</a></td>
+	</tr>
+
+</table> 
+	   <div class='caption'>Apt-crack : Logical</div>
+    <hr class="separate">
+
+  <table class="topic_table">
+	<tr>
+		<td class="column"><a href="../c/chz-sxbk-kvj/test">Venn diagram (Level-1) </a></td>
+		<td class="column"><a href="../c/jgr-irfl-qkg/test">Venn diagram (Level-2) </a></td>
+		<td class="column"><a href="../c/zbk-elva-onz/test">Linear arrangement</a></td>
+	</tr>
+	<tr>
+		<td class="column"><a href="../c/rim-fdcs-dbt/test">Ordering and sequence</a></td>
+		<td class="column"><a href="../c/xyb-udap-fla/test">Double distribution</a></td>
+		<td class="column"><a href="../c/hxt-zkfo-fkr/test">Cubes</a></td>
+	</tr>
+	  <tr>
+    <td class="column"><a href="../c/hxt-zkfo-fkr/test">Cubes</a></td>
+		<td class="column"><a href="../c/pii-whzj-ipu/test">Routes and Networks</a></td>
+		<td class="column"><a href="../c/xyb-udap-fla/test">Double distribution</a></td>
+	</tr>
+	
+
+</table> 
+    <div class='caption'>Prepare By Companies</div>
+    <hr class="separate">
+    <div class='main_box'>
+      <div class='package quiz-box'>
+        <img src="{%static 'placement/zs logo.jpeg'%}" class="logo">
+          <div class='name'>ZS Associates</div>
+          <a href="../c/kgv-bson-xxn/test">
+          <button class="buttonstart" style="vertical-align:middle"><span class="spanstart">Start Quiz </span></button>          
+          </a>
+        </div>
+        <div class='package quiz-box' >
+          <img src="{%static 'placement/dell.jpg'%}" class="logo" >
+
+            <div class='name' id="dell">Deloitte</div>
+            <a href="../c/fmx-ivuu-yev/test">
+                <button class="buttonstart" style="vertical-align:middle"><span class="spanstart">Start Quiz </span></button>          
+                </a>
+                </div>
+          <div class='package quiz-box'>
+            <img src="{%static 'placement/oracle logo.png'%}" class="logo">
+
+            <div class='name'>Oracle</div>
+            <a href="../c/rkn-ejlb-bux/test">
+                <button class="buttonstart" style="vertical-align:middle"><span class="spanstart">Start Quiz </span></button>          
+                </a>
+                </div>
+	     <div class='package quiz-box'>
+            <img src="{%static 'placement/sc_lock-up_english_grey_rgb.jpg'%}" class="logo">
+
+            <div class='name' id="scb">Standard Chartered</div>
+            <a href="../c/bgs-arso-rho/test">
+                <button class="buttonstart" style="vertical-align:middle"><span class="spanstart">Start Quiz </span></button>          
+                </a>
+                </div>
+	     <div class='package quiz-box'>
+            <img src="{%static 'placement/1200px-Capgemini_201x_logo.svg.png'%}" class="logo" style="margin-top: 26px;">
+
+            <div class='name' id="scb" style="margin-top: 14px;">Capgemini</div>
+            <a href="../c/ewm-paji-avu/test">
+                <button class="buttonstart"  style="margin-top: 55px; vertical-align:middle;"><span class="spanstart">Start Quiz </span></button>          
+                </a>
+                </div>
+    </div>  
+
+ <!-- footer of the page -->
+
+ 
+<footer class="footer-distributed">
+    
+    <div class="footer-left">
+
+        <h3>AIM<SPAN>2</SPAN>CRACK</h3>
+
+        <p class="footer-links">
+            <a href="{%url 'exam-home'%}" class="link-1">Home</a>
+            
+            <a href="{%url 'placement'%}">Placement</a>
+                
+            <a href="{%url 'about'%}">About</a>
+            
+            
+            <a href="{%url 'contact'%}">Contact</a>
+        </p>
+
+        <p class="footer-company-name">Aim2Crack © 2021</p>
+    </div>
+
+    <div class="footer-center">
+
+        <div>
+            <a href="mailto:support@aim2crack.com"><i class="fa fa-envelope"></i></a>
+            <p class="mailto"><a href="mailto:support@aim2crack.com">aim2crack@gmail.com</a></p>
+        </div>
+        <div class="footer-icons">
+
+            <div class="social">
+                <a href="https://youtube.com/channel/UC5RXgwwRVcJDCdxRLD-69kg"><i class="icon bx bxl-youtube"></i></a>
+                <a href="https://instagram.com/aim2crack?utm_medium=copy_link"><i class="icon bx bxl-instagram-alt"></i></a>
+                <a href="https://www.linkedin.com/company/aim2crack"><i class="icon bx bxl-linkedin"></i></a>
+                <a href="https://www.facebook.com/Aim2Crack-106726185067538/"><i class="icon bx bxl-facebook-circle"></i></a>
+            </div>
+                    </div>
+            
+    </div>
+    
+
+    <div class="footer-right">
+        <p class="footer-company-about">
+            <span>About the company</span>
+            Aim2crack is a non-profit, crowd sourced organization which provides free services to students and faculty.          
+        </p>
+
+
+    </div>
+
+</footer>
+
+<script>
+
+
+  var slideIndex = 0;
+  showSlides();
+  
+  function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 5000); // Change image every 2 seconds
+  }
+  </script>
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+  
+</body>
+</html>

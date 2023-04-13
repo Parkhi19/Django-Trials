@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  caret-color: transparent;
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+  /* width: 80%; */
+  margin: 2% auto 0 auto;
+  background-color: #34a4a3;
+}
+
+.simple_btn {
+  font-family: inherit;
+  margin-left: 10px;
+  margin-top: 10px;
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 1.7rem;
+  /* padding: 30px 20px; */
+  padding: 1.3% 1%;
+  font-weight: bold;
+  transition: all 0.5s ease;
+}
+
+.simple_btn:hover {
+  cursor: pointer;
+  color: white;
+  font-size: 1.9rem;
+}
+
+.main-div {
+  margin-bottom: 5%;
+  background-color: #f0f0f0;
+  /* width: 80%; */
+  padding-top: 4%;
+  padding-bottom: 5%;
+}
+
+.addStyle {
+  background-color: white;
+  font-weight: bold;
+  color: #34a4a3 !important;
+  font-size: 1.9rem;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: none;
+}
+
+#first-btn {
+  margin-left: 0.625em;
+  margin-top: 0.625em;
+  /* margin-left: 10px;
+  margin-top: 10px; */
+}
+
+#second-btn {
+  margin-top: 0.625em;
+  /* margin-top: 10px; */
+}
+
+#first-div {
+  display: block;
+}
+
+#second-div {
+  display: none;
+}
+
+#third-div {
+  display: block;
+}
+
+#fourth-div {
+  display: none;
+}
+
+#fifth-div {
+  display: none;
+}
+
+#sixth-div {
+  display: none;
+}
+
+#seventh-div {
+  display: none;
+}
+
+#selected_btn {
+  color: #50d8d7;
+}

@@ -1,0 +1,154 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aim2Crack HR </title>
+    <link rel="stylesheet" href="re.css">
+    <link rel="stylesheet" href="{%static 'exam/puzzle.css'%}">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  -->
+    <script src="https://kit.fontawesome.com/8a5c569243.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+  .add-btn{
+            text-decoration: none;
+    background: white;
+    color: #46a3a3;
+    font-size: 1.5rem;
+    display: flex;
+    font-weight: bold;
+    padding: 15px 1.4rem;
+    align-items: center;
+    width: 168px;
+    margin: auto;
+    border-radius: 66px;
+    transition: 0.5s;
+        }
+    .add-btn:hover{
+      box-shadow: rgb(0 0 0 / 30%) 0px 19px 38px, rgb(0 0 0 / 22%) 0px 15px 12px;
+    }
+    </style>
+</head>
+
+<body>
+    {%if request.user.is_staff or request.user.is_superuser%}
+    <a style="margin-top: 300px;" href="{%url 'addpuzzle' %}">Add Puzzle or HR Ques</a>
+    {%endif%}
+    <h1>HR Ques</h1>
+    <a href="https://www.aim2crack.in/addpuzzle/" class="add-btn">
+        <i class='bx bx-plus'></i>
+        <span>Add Question</span>
+    </a>
+    {%for puzzle in hrq%}
+    <div class="firstconatinner">
+        {% if puzzle.l %}
+        <img src='../../../media/{{puzzle.l}}' class="log">
+        {%endif%}
+        {% if puzzle.pic %}
+        <img class="image" src='../../../media/{{puzzle.pic}}' alt="error">
+        {%endif%}
+        <h2>Question:{{puzzle.pzl}} </h2>
+        <div class="side">
+            <button type="button" class="collapsible">See answer</button>
+            <div class="content">{{puzzle.s}}</div>
+        </div>
+        <div class="box">
+            <div>
+                <button type="button" class="collapsible">Explanation</button>
+                <div class="explanation content">{{puzzle.a}}</div>
+                <!-- <button data-catid='{{puzzle.id}}' class='likebutton' style="visibility: visible;" name='react'
+                    value='l'>
+                    <i class="fa fa-heart heart-left red " id="heart" onclick="func1(this)"></i>
+                </button> -->
+                
+    <button type="radio" data-catid='{{puzzle.i}}' class='likebutton' style="visibility: visible;"name='react' value='l'>
+        LIKE</button>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+
+
+    <!-- <br>
+  <br>
+  <h1 >HR Questions</h1>
+  {%for puzzle in hrq%}
+  <p>Question:{{puzzle.pzl}}</p>
+  <hr>
+  <p>Explanation : {{puzzle.a}}</p>
+  {% if puzzle.pic %}
+  <p>Image : {{puzzle.pic}}</p>
+  {% endif%}
+   <form method="POST" action="./like/{{pzl.i}}/">
+    {% csrf_token %} -->
+    <!-- like
+      <br>
+    dislike
+    <button type="radio" data-catid='{{puzzle.i}}' class='dislikebutton'style="visibility: visible;" name='react' value='r'>DISLIKE
+    </button>
+    <br>
+     {{pzl.i}} -->
+    <!-- </form>     -->
+    <!-- {%endfor%} -->
+    <script type="text/javascript">
+        $('.likebutton').click(function () {
+            var catid;
+            catid = $(this).attr("data-catid");
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "./like/" + catid ,
+                    data: {
+                        'react': $(this).attr("value"),
+                        'csrfmiddlewaretoken': '{{ csrf_token }}',
+
+                    },
+                    success: function (data) {
+                        console.log('yes')
+                    }
+
+                }
+            )
+        });
+    </script>
+    
+
+
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                }
+                else {
+                    content.style.display = "block";
+                }
+            });
+        }
+        function func1(elt) {
+            var element = document.getElementById(elt.id);
+            element.classList.toggle("changeHeartColor");
+        }
+
+        function func2(elt) {
+            var element = document.getElementById(elt.id);
+            element.classList.toggle("changeBrokenHeartColor");
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

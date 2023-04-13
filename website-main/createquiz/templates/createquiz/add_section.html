@@ -1,0 +1,67 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" href="{%static 'exam/favicon.ico'%}" type="image/x-icon">
+    <title>Aim2Crack-Add Section</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="{% static 'exam/cquiz.css'%}" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<style>
+   <style>
+    input{
+        width:200px;
+        margin: 40px auto;
+        display: block;
+
+    }
+    body{
+        position: relative;
+    }
+    .arrow{
+        position: absolute;
+    }
+</style>
+</style>
+<body>
+    <a href="./../" class="arrow"><i class='bx bxs-left-arrow-circle'></i></a>
+    {% if messages %}
+               {% for message in messages%}
+                   <div class="alert alert-{{messages.tags}}">
+                      {{message}}
+                   </div>
+               {% endfor %}
+          {% endif %}
+    <div class="box">
+    <form  method="post">
+        
+    <img class="mb-4" src="{%static 'exam/about-logo.png'%}" alt="" width="100" height="100">
+        {%csrf_token%}
+            <p class="text">
+                Enter your section name: <input class="input edge"  type="text" name = "topic_name" placeholder="Section Name">
+            </p>
+                {%ifequal msg 's'%}
+                  <p class="text">  Enter your sectional time:<input class="input edge" type="time" value ="00:30:00" id = "ttime" placeholder="HH:MM:SS" step = "2"></p>
+                    <input type ="text" name ="ttime" style ="display: none;">
+                {%endifequal%}
+
+              <button class="buttonstart" id ="save_btn1" style="vertical-align:middle" ><span class="spanstart">Create section</span></button>
+
+    </form>
+    </div>
+</body>
+<script>
+    document.getElementById("save_btn1").addEventListener("click",()=>{
+        document.getElementsByName("ttime")[0].value = String(document.getElementById("ttime").value);
+    })
+</script>
+</html>

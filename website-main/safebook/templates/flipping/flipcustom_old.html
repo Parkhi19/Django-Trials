@@ -1,0 +1,151 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+<style>
+    p,
+    label {
+        font: 1rem 'Fira Sans', sans-serif;
+    }
+
+    input {
+        margin: .4rem;
+    }
+</style>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+
+<body>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        <h1>Customization and Branding</h1>
+
+        <tr>
+            <td>Skin Color</td>
+            <input type="color" id="color5" name="fskin" value="{{quest.fskin}}">
+
+        </tr>
+
+        <div>
+            <tr>
+                <td>Panel color</td>
+                <input type="color" id="color" name="fcpanel" value="{{quest.fcpanel}}">
+                <label for="color"></label>
+        </div>
+        <div>
+            <tr>
+                <td>Panel bg color</td>
+                <input type="color" id="color2" name="fcbg" value="{{quest.fcbg}}">
+        </div>
+        <div>
+            <tr>
+                <td>Hyperlink color</td>
+                <input type="color" id="color3" name="fclink" value="{{quest.fclink}}">
+        </div>
+
+        <div>
+            <td>Upload logo</td>
+            <input type="file" name="flogo" placeholder="Add Logo"
+                style="margin-bottom: 15px; background: #3b7474; color: white; padding: 5px 0.4rem;">
+            <span id="flog_add">
+                {{quest.flogo}}
+            </span>
+        </div>
+
+        <div>
+            <td>Upload background picture</td>
+            <input type="file" name="fbg" placeholder="Add background"
+                style="margin-bottom: 15px; background: #3b7474; color: white; padding: 5px 0.4rem;">
+            <span id="fbg_add">
+                {{quest.fbg}}
+            </span>
+        </div>
+
+
+        <div>
+            <td>Upload favicon</td>
+            <input type="file" name="ffavicon" placeholder="Add favicon"
+                style="margin-bottom: 15px; background: #3b7474; color: white; padding: 5px 0.4rem;">
+
+            <span id="ffav_add">
+                {{quest.ffavicon}}
+            </span>
+
+        </div>
+
+        <!-- <td>Enter URL of the website</td> -->
+        <label for="url">Enter an URL:</label>
+
+        <input type="url" name="fweb" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required
+            value="{{quest.fweb}}">
+
+        <button type="submit" class="save btn btn-default">Save</button>
+        <a class="btc botonc" id="back_btn" href="../../view"><i class='bx bx-x'></i> Cancel</a>
+
+
+    </form>
+    <button id='clrlogo'>clear logo</button>
+    <button id='clrbg'>clear Background</button>
+    <button id='clrfav'>clear Favicon</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <script>
+
+        function doit(num) {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "./{{id}}/delete-branding/",
+                    data: {
+                        'what': num,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}',
+                    },
+                    success: function (data) {
+                        data = JSON.parse(data)
+                        if (num == 1) {
+                            document.getElementById("flog_add").innerText = "";
+                        } else if (num == 2) {
+                            document.getElementById("fbg_add").innerText = "";
+                        } else if (num == 3) {
+                            document.getElementById("ffav_add").innerText = "";
+                        }
+                    }
+                })
+        }
+
+        $("#clrlogo").click(()=>{doit(1)});
+        $("#clrbg").click(()=>{doit(2)});
+        $("#clrfav").click(()=>{doit(3)});
+
+
+        var bac = document.getElementById("color5").value;
+        document.getElementById("color5").onchange = function () {
+            bac = this.value;
+        }
+        var bac = document.getElementById("color").value;
+        document.getElementById("color").onchange = function () {
+            bac = this.value;
+        }
+        var bac = document.getElementById("color2").value;
+        document.getElementById("color2").onchange = function () {
+            bac = this.value;
+        }
+        var bac = document.getElementById("color3").value;
+        document.getElementById("color3").onchange = function () {
+            bac = this.value;
+        }
+
+
+    </script>
+</body>
+{% endblock %}

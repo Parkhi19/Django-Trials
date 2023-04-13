@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{%load static%}
+<style>
+
+.button:hover {
+  background-color: #2d566b;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  opacity:0;
+  pointer-events: none;
+  background-color: rgba(0,0,0,0.75);
+  transition: opacity 250ms ease
+}
+
+.modal-container:target {
+  opacity: 0.5;
+  pointer-events: all;
+}
+
+
+.modal {
+  margin: auto;
+  width: 90%;
+  max-width: 40rem;
+  background-color: white;
+  border-radius: 1.5rem;
+}
+
+.modal-header,
+.modal-content {
+  padding: 1.5rem;
+}
+
+
+</style>
+<body>  
+<form method="POST" enctype="multipart/form-data" >  
+        {% csrf_token %}  
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        <td><input  type="text" id="myInput" placeholder="link"
+            rows="1" cols="10" value="aim2crack.in/f/{{do.link}}/sview"></td>
+
+<!-- The button used to copy the text -->
+<button onclick="myFunction()">Share</button>
+<a href="#sharing" class="button">copy link</a>
+      <div id="sharing" class="modal-container">
+        <section class="modal">
+          <header class="modal-header">
+            <h2 class="modal-title">Sharable link</h2>
+            <a href="#" class="modal-close">Close</a>
+          </header>
+          <div class="modal-content">
+            <td><input  type="text" id="myInput" placeholder="link"
+              rows="1" cols="10" value="aim2crack.in/f/{{do.link}}/sview"></td>
+  
+  <!-- The button used to copy the text -->
+  <button onclick="myFunction()">Copy text</button>
+   </div>
+       
+
+
+
+</form>  
+</body>  
+<script>
+function myFunction() {
+    /* Get the text field */
+    var copyText = document.getElementById("myInput");
+  
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  
+     /* Copy the text inside the text field */
+    navigator.clipboard.writeText(copyText.value);
+  
+    /* Alert the copied text */
+    alert("Copied the link: " + copyText.value);
+  }
+</script>
+
+
+</html>
+
+
+
+
+

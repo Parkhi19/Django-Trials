@@ -1,0 +1,351 @@
+
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+<style>
+    p,
+    label {
+        font: 1rem 'Fira Sans', sans-serif;
+    }
+
+    input {
+        margin: .4rem;
+    }
+</style>
+<head>
+    <script src="https://kit.fontawesome.com/210b6d5911.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aim2Crack</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Lato:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+/* ************* MAIN BODY STYLING ************* */
+body{
+    background-image: url("{%static 'commonimages/back.png'%}");
+    min-width: 1280px;
+}
+ul { padding:0 }
+.undraw {
+    border-top-left-radius: 40%;
+    border-top-right-radius: 40%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+.undraw:hover {
+    -webkit-box-shadow: 0px 2px 41px 4px rgba(75,183,219,0.68);
+-moz-box-shadow: 0px 2px 41px 4px rgba(75,183,219,0.68);
+box-shadow: 0px 2px 41px 4px rgba(75,183,219,0.68);
+    transform: scale(1.03);
+    transition: all 1s ease;
+}
+.custom {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+    width: fit-content;
+    margin: 40px auto auto auto;
+    
+}
+form {
+    background-color:linear-gradient(316deg, #2a2323 0%, #50d8d7 140%);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+/* ----h1 styling---- */
+.heading {
+    color: whitesmoke;
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(316deg, #2a2323 0%, #50d8d7 140%);
+    border: 1px solid #000000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: smaller;
+}
+table {
+    margin: 0px 10px 0px 10px;
+    border-spacing: 0px 5px;
+    table-layout: auto;
+}
+tr.entryfield { 
+background: white;
+font-family: "Montserrat", sans-serif;
+height: 50px;
+position: relative;
+}
+tr.entryfield:hover{
+    transform: scale(1.02);
+    color:#173333;
+    background: linear-gradient(316deg, #afe49f 0%, #d0e0e0 140%);
+} 
+td {
+    text-align: center;
+}
+.fa-solid {
+  font-size: 24px;
+  color: #0337279e;
+  padding-top: 5px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  text-align: left;
+}
+td.left_side {
+    text-align: left;
+    font-size: 18px;
+    padding-left: 5px;
+    
+}
+td.right_side {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-left: 70PX;
+    text-align: center;
+}
+
+.colorpicker{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.colorpicker::-webkit-color-swatch {
+    border-radius: 100%;
+}
+.colorpicker::-moz-appearance {
+    border-radius: 100%;
+}
+.savecncl {
+    display: inline-block;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 280px;
+    margin-left: 60px;
+}
+.btton {
+    color: whitesmoke;
+    font-weight: 600;
+    font-size:medium;
+    border-color: rgb(245, 240, 240);
+    padding: 5px 1.5rem; 
+    border-radius: 28px; 
+}
+.save {
+    background-color: #3EC70B;
+    border-color:  #3EC70B;
+}
+.cancel{
+    background-color:#fe2121;
+}
+.save:hover {
+    color: #3EC70B;
+    font-size: 15px;
+    cursor: pointer;
+    /* transform: scale(1.03); */
+    /* transition: all 0.5s ease; */
+}
+.cancel:hover {
+    background: whitesmoke;
+    color: #fe2121;
+    font-size: 15px;
+    cursor: pointer;
+    /* transform: scale(1.03); */
+    /* transition: all 0.5s ease; */
+}
+input {
+    /* font-size: 1.2rem; */
+    padding: 0.2em 0.3em;
+    margin: 0.8rem;
+    border-radius: 8px;
+}
+.btn {
+  background-color: transparent;
+  border: none;
+  padding: 16px 16px; 
+  font-size: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+.btn:hover{
+    transform: scale(1.1);
+}
+.fa-solid.dlt{
+    font-size: 24px;
+  padding-top: 5px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  text-align: left;
+  color: #fe2121;
+}
+
+</style>
+    </head>
+
+
+
+<body>
+
+<div class="custom">
+        <form method="POST" enctype="multipart/form-data">  
+            {% csrf_token %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+            <div class="heading">
+            <h1>Customization and Branding</h1>
+            </div>
+            <table class="centre">
+                <tbody>
+                    <tr class="entryfield">
+                        <td class="icons"><i class="fa-solid fa-eye-dropper"></i></td>
+                        <td class="left_side">Skin Color</td>
+                        <td class="right_side"><input class="colorpicker" type="color" id="color5" name="fskin" value="{{quest.fskin}}"></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr class="entryfield">
+                        <td class="icons"><i class="fa-solid fa-droplet"></i></i></i></td>
+                        <td class="left_side">Background Color</td>
+                        <td class="right_side"><input class="colorpicker" type="color" id="color2" name="fcbg" value="{{quest.fcbg}}"></td>
+                        <td></td>
+                    </tr>
+                    <tr class="entryfield">   
+                        <td class="icons"><i class="fa-solid fa-palette"></i></td> 
+                        <td class="left_side">Side Panel Color</td>
+                        <td class="right_side"><input class="colorpicker" type="color" id="color" name="fcpanel" value="{{quest.fcpanel}}">
+                        <td></td>
+                        </tr>
+                    <tr class="entryfield">
+                        <td class="icons"><i class="fa-solid fa-highlighter"></i></td>
+                        <td class="left_side">Hyperlink Color</td>
+                        <td class="right_side"><input class="colorpicker" type="color" id="color3" name="fclink" value="{{quest.fclink}}"></td>
+                        <td></td>
+                    </tr> 
+                    <tr class="entryfield">
+                        <td class="icons"><i class="fa-solid fa-cloud-arrow-up"></i></td>
+                        <td class="left_side">Upload Logo</td>
+                        <td class="right_side"><input type="file" name="flogo" placeholder="Add Logo" style=" background: linear-gradient(316deg, #2a2323 0%, #50d8d7 140%); color: white; padding: 4px; border-radius: 5px;">
+                            <br>    <span id="flog_add">
+                                {{quest.flogo}}
+                            </span></td>
+                            <td><button id='clrlogo' class="btn"><i class="fa-solid dlt fa-trash-can" ></i></button>
+                          
+                    </tr>
+                    <tr class="entryfield"> 
+                        <td class="icons"><i class="fa-solid fa-image"></i></td>
+                        <td class="left_side">Upload Background Picture</td>
+                        <td class="right_side"><input type="file" name="fbg" placeholder="Add background" style=" background: linear-gradient(316deg, #2a2323 0%, #50d8d7 140%); color: white; padding: 4px; border-radius: 5px;">
+                          <br>  <span id="fbg_add">
+                                {{quest.fbg}}
+                            </span></td>
+                            <td><button id='clrbg' class="btn"><i class="fa-solid dlt fa-trash-can"></i></button> 
+                            
+                    </tr>
+                    <tr class="entryfield"> 
+                        <td class="icons"><i class="fa-sharp fa-solid fa-bars"></i></td>
+                        <td class="left_side">Upload Favicon</td>
+                        <td class="right_side"><input type="file" name="ffavicon" placeholder="Add favicon" style=" background: linear-gradient(316deg, #2a2323 0%, #50d8d7 140%); color: white; padding: 4px ; border-radius: 5px;">
+                            <br> <span id="ffav_add">
+                                {{quest.ffavicon}}
+                            </span></td>
+                            <td><button id='clrfav' class="btn"><i class="fa-solid dlt fa-trash-can"></i></button>  
+                            
+                    </tr>
+                    <tr class="entryfield">
+                        <td class="icons"><i class="fa-solid fa-link"></i></td>
+                        <td class="left_side"><label for="url">Enter an URL:</label></td>
+                        <td class="right_side"><input type="url" name="fweb" id="url" placeholder="https://example.com" pattern="https://.*" size="33" style="height: 30px;cursor: pointer; padding-left: 10px;" required=""  value="{{quest.fweb}}" td>
+                        <td><button id='clrurl' class="btn"><i class=""></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+          
+            <div class="savecncl">
+                <button type="submit" class="btton save">Save</button>
+            </div>
+            <div class="savecncl">
+                <button type="submit" class="btton cancel" id="back_btn" href="../../../view">Back</button>
+            </div>
+        </form>
+</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    function doit(num) {
+        $.ajax(
+            {
+                type: "POST",
+                url: "./{{id}}/delete-branding/",
+                data: {
+                    'what': num,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',
+                },
+                success: function (data) {
+                    data = JSON.parse(data)
+                    if (num == 1) {
+                        document.getElementById("flog_add").innerText = "";
+                    } else if (num == 2) {
+                        document.getElementById("fbg_add").innerText = "";
+                    } else if (num == 3) {
+                        document.getElementById("ffav_add").innerText = "";
+                    }
+                }
+            })
+    }
+
+    $("#clrlogo").click(()=>{doit(1)});
+    $("#clrbg").click(()=>{doit(2)});
+    $("#clrfav").click(()=>{doit(3)});
+
+
+    var bac = document.getElementById("color5").value;
+    document.getElementById("color5").onchange = function () {
+        bac = this.value;
+    }
+    var bac = document.getElementById("color").value;
+    document.getElementById("color").onchange = function () {
+        bac = this.value;
+    }
+    var bac = document.getElementById("color2").value;
+    document.getElementById("color2").onchange = function () {
+        bac = this.value;
+    }
+    var bac = document.getElementById("color3").value;
+    document.getElementById("color3").onchange = function () {
+        bac = this.value;
+    }
+
+
+</script>
+</body>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete</title>
+<body>
+    <a href="../">Back</a>
+    <div id="question_box1" class=question_box>
+    <br><div class="top">Delete Quiz </div>
+    <div class="main_box" id="main_box">
+        <p class="question">Are you sure you want to delete this quiz?</p>
+        <form method="POST" class="form_group">
+            {% csrf_token %}
+                <div class="options_section">
+                    <div class="choose">
+                    <button class="btc botonc" type="submit"><i class='bx bxs-trash-alt'></i> Delete</button>
+                    <a class="btc botonc" id = "back_btn" href="../../"><i class='bx bx-x'></i> Cancel</a>
+                    </div>
+                </div>
+        </form>
+    </div>
+
+</body>
+
+{% endblock %}
+
+
+
+
+

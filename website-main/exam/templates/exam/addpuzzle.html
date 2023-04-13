@@ -1,0 +1,63 @@
+{% extends "public/base.html" %}
+{% load static %}
+{%block styles%}
+<link rel="stylesheet" href="{% static 'public/New.css'%}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+{%endblock%}
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data" style="margin: 120px auto;">
+    {% csrf_token %}
+    
+        <div class="tostrip">
+           Add Puzzle
+        </div>
+    <div class="main_box">
+        {% if messages %}
+            {% for message in messages%}
+            <div class="alert alert-{{message.tags}}">
+              {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+        <div class="type_box">
+            <div class="tipe">
+                Type:
+                <select id="type" name="kind">
+                    <option id="hr" value="h">HR Question</option>
+                    <option id="P" value="p">Puzzle</option>
+                    
+                </select>
+            </div>
+        </div>
+        <textarea name="que" type="text" class="question" id="question" placeholder="Write the question here"
+            rows="2" cols="50">{{que}}</textarea>
+        <div>
+            <input type="file" name="img" id="image-option" placeholder="Add Image" accept="image/*"  style="margin-bottom: 15px; background: #3b7474; color: white; padding: 5px 0.4rem;">
+        </div>
+        <div>
+            <input type="file" name="logo" id="image-option" placeholder="Add Image" accept="image/*"  style="margin-bottom: 15px; background: #3b7474; color: white; padding: 5px 0.4rem;">
+        </div>
+        <div class="answer">
+           
+            <textarea type="text" id="exp" class="resize fix" name="soln"
+                min="1" max="1000" placeholder="answer">{{soln}}</textarea>
+        </div> 
+    
+        <div class="explanation">
+           
+            <textarea type="text" id="exp" class="resize fix" name="ans"
+                min="1" max="1000" placeholder="explanation">{{ans}}</textarea>
+        </div>     
+        <div class="last">
+            <input class="btn" id='save_btn' type="submit" value='Save' placeholder="save">
+        </div>
+
+</form>
+
+</div>
+
+{% endblock content %}

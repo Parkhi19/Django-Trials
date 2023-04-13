@@ -1,0 +1,108 @@
+{% extends "public/base.html" %}
+{% load static %}
+<title>Aim2Crack-Result</title>
+{%block style%}
+
+{%endblock%}
+{%block taker%}
+<style>
+    /* #link{
+    display: none; 
+        } */
+    .que_img{
+    max-height: 200px;
+        max-width:400px;
+        min-width: 300px;
+        width:60%;
+        
+    }
+    .marks{
+    
+    margin-top: 91px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: Times;
+    }
+    .videos{
+        display: flex;
+    align-items: center;
+    margin: auto;
+    width: 80%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    }
+        .videos iframe{
+            min-width: 250px;
+    min-height: 180px;
+    width: auto;
+    height: auto;
+    margin-bottom: 20px;
+            border-radius: 10px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+        }
+</style>
+<link rel="stylesheet" href="{% static 'exam/home1.css' %}">
+<p style="display:none">{{stu_data_id}}</p>
+
+<h3 class = "marks"> Total Score: {{total_marks}}/{{tot_ques}} </h3>
+ 
+<div class ="videos">
+
+        {%for each in videos%}
+            {{each|safe}}
+          
+        {%endfor%}
+    </div>
+<section id="quizsection">
+    {% csrf_token %}
+    <div id="question_box1" class="question_box">
+        {% for question in ques %}
+        <div class="qbox">
+
+            <div class="top colorpanel">
+                Question {{question.que_num}} <p class=timelevel> Score: {{question.score}} </p>
+            </div>
+            <div class="main_box" id="main_box{{question.id}}">
+                <p class="question">{{question.question}}</p>
+                {%if question.img%}
+                    <img src = "../../../media/{{question.img}}" class = "que_img">
+                {%endif%}
+                <div class="options_section">
+                    {% ifequal 's' question.type %}
+                    {% for key, option in question.options.items %}
+                    <p name='answer_{{question.id}}' class="options"><input type="radio" disabled>{{ option }}<span></span></p>
+                    {% endfor %}
+                    {% endifequal %}
+                    {% ifequal 'm' question.type %}
+                    {% for key, option in question.options.items %}
+                    <p name='answer_{{question.id}}' class="options"><input type="radio" disabled>{{ option }}<span></span></p>
+                    {% endfor %}
+                    {% endifequal %}
+                   
+                    {% ifequal 'i' question.type %}
+<!--                     <input type="number" name="answer_{{question.id}}" class="num-box"
+                        placeholder="Write the integer here"> -->
+                     Your Answer: 
+                    {% endifequal %}
+                   
+                    <div class="correct">{{question.your}}</div>
+                    <div class="correct">{{question.correct}}</div>
+                    <details class="explanation">
+                        <summary>Explanation </summary>
+                        {%for all in question.explanation%}
+                        <div class="explanation-text">
+                        <p>{{all}}</p>
+                            </div>
+                        {%endfor%}
+
+                    </details>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<script src ="{%static 'public/script2.js'%}"></script>
+{% endblock taker %}

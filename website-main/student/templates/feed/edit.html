@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    form>*{
+        width: 40%;
+        display: block;
+        margin: 10px auto;
+    }
+</style>
+<body>
+    <form method="post">
+        {%csrf_token%}
+        <select name="type_que">
+            <option value="s" selected>Stars</option>
+            <option value="t">Text</option>
+            <option value="o">Options</option>
+        </select>
+        <input type="text" name="question" value="{{it.question}}">
+        <input type="text" name="options" value="{{it.options}}">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+<script>
+    if("{{it.type_que}}" == "s"){
+        document.getElementsByName("type_que")[0].selectedIndex = 0;
+        document.getElementsByName("options")[0].style.display = "none";
+    }else if("{{it.type_que}}" == "t"){
+        document.getElementsByName("type_que")[0].selectedIndex = 1;
+        document.getElementsByName("options")[0].style.display = "none";
+    }else{
+        document.getElementsByName("type_que")[0].selectedIndex = 2;
+        document.getElementsByName("options")[0].style.display = "block";
+    }    
+    setInterval(() => {
+        if(document.getElementsByName("type_que")[0].selectedIndex == 0){
+        document.getElementsByName("options")[0].style.display = "none";
+    }else if(document.getElementsByName("type_que")[0].selectedIndex == 1){
+        document.getElementsByName("options")[0].style.display = "none";
+    }else{
+        document.getElementsByName("options")[0].style.display = "block";
+    }    
+    }, 200);
+    
+</script>
+</html>

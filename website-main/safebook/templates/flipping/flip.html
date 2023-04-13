@@ -1,0 +1,66 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+
+
+<form method="POST" enctype="multipart/form-data" >  
+        {% csrf_token %}  
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        <h1>Upload your course material</h1>
+     
+            <tr>
+                <td>File Name</td>
+                <textarea name="fname" type="text" class="question" id="question" placeholder="File name"
+            rows="1" cols="10">{{quest.fname}}</textarea>
+            </tr>
+            <br>
+            <tr>
+                <td>Subject Name</td>
+                <textarea name="fsub" type="text" class="question" id="question" placeholder="Subject name"
+            rows="1" cols="10">{{quest.fsub}}</textarea>
+            </tr>
+             <!-- <img src="/media/brand_favicon/hari.png"  alt="Italian Trulli">  -->
+             <!-- <img src="logo.png"  alt="Italian Trulli">  -->
+             <!-- CreateAssignment/templates/flipping/logo.png -->
+            <div> 
+                <td>Upload PDF:</td>
+                <input type="file" name="fileu"  placeholder="Add file"   style="margin-bottom: 15px; background: #3b7474; color: white; padding: 5px 0.4rem;">{{file}}
+                </div>
+                <label for="dtime">Disable link at:</label>
+                <input type="datetime-local" id="dtime" name="dtime" value={{endtime}}><br>
+
+
+        <button type="submit" class="save btn btn-default">Save</button>  
+        <a class="btc botonc" id = "back_btn" href="../../../f/view"><i class='bx bx-x'></i> Cancel</a>
+        <!-- <img src="/media/{{userr.bfavicon}}"  style="width:48px; height:45px; float:left;" alt="logo2" > -->
+
+</form>  
+<body onload="myfavicon()">
+
+<script>
+    // var use="../../media/{{user.bfavicon}}"
+  
+    var chkfavi= "{{userr.bfavicon}}"
+    var chklogo= "{{userr.blogo}}"
+    function myfavicon() {
+//   document.getElementById("favicon").href= use;
+if (chkfavi){
+document.getElementById('favicon').setAttribute('href',"/media/{{userr.bfavicon}}")
+console.log(chkfavi)
+} 
+if (chklogo){
+ document.getElementById("brandtext").innerHTML ='<h2 style="color:white "> with</h2>'
+
+document.getElementById("brandlogo").innerHTML =
+                    '<a href="{{userr.bweb}}" target="_blank"> <img src="/media/{{userr.blogo}}"  style="width:48px; height:45px; float:left;" alt="logo2" > </a>'
+}  
+    }    
+
+</script>
+
+{% endblock %}
+
+

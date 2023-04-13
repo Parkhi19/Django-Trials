@@ -1,0 +1,160 @@
+ *{
+      margin: 0;
+      padding: 0;
+  }
+  body{
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  .question_box{
+      
+      width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+  }
+  .top{
+    opacity: 0.9;
+    color: white;
+    font-size: 25px;
+    padding: 5px 0;
+    text-align: center;
+  width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    background: linear-gradient(
+316deg
+, #50d8d7 0%, #2a2323 74%);
+  }
+  .main_box{
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    height: 220px;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .main_box p{
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 20px 0 5px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    margin: auto;
+  }
+  .form_group{
+    height: 50%;
+    margin-top: 20px;
+}
+  .options_section{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+.options_section select{
+    font-size: 1.1rem;
+    padding: 6px 1rem;
+    background: #f0f0f0;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+.choose{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.choose button{
+    color: green;
+    font-size: 1.3rem;
+    background: none;
+    border: none;
+    outline: none;
+    font-weight: bold;
+   transition: all 0.5s ease;
+
+}
+.choose button:hover{
+ transform: scale(1.15,1.15);
+}
+.choose a{
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: red;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    transition: all 0.5s ease;
+
+}
+.choose a:hover{
+ transform: scale(1.15,1.15);
+}
+.choose a i{
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-top: 2px;
+}
+@media(max-width:690px){
+    .question_box{
+        width: 400px;
+    }
+    .main_box p{
+        font-size: 1.2rem;
+    }
+    .form_group{
+        height: 40%;
+    }
+}
+@media(max-width:430px){
+    .question_box{
+        width: 300px;
+    }
+    .main_box{
+        height: 200px;
+    }
+    .main_box p{
+        font-size: 1rem;
+    }
+    .choose button{
+        font-size: 1rem;
+    }
+    .choose a{
+        font-size: 1rem;
+    }
+   
+}
+.back_arrow{
+        position: absolute;
+        top: 40%;
+        left: 1rem;
+        font-size: 4rem;
+        color: #5bb7b6;
+        transition: all 0.5s ease;
+    }
+    .back_arrow:hover{
+        transform: scale(1.2,1.2);
+        color: #5bb7b6;
+        
+    }
+    @media(max-width:790px){
+        .back_arrow{
+            font-size: 3rem;
+        }
+    }
+    @media(max-width:750px){
+        .back_arrow{
+            font-size: 3rem;
+            top: 25px;
+        }
+    }

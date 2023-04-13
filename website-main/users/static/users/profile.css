@@ -1,0 +1,539 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.container{
+    /* height: 500px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+ /* navbar of site  */
+
+
+
+
+
+
+#navbar{
+    z-index: 9999;
+    color:white;
+    background-color: #2eb7b6;
+    /* background:  linear-gradient(316deg,#2a2323  60%, #50d8d7 130%); */
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0px;
+    flex-wrap: wrap;
+
+    height: 60px;
+}
+
+/* site logo and its name  */
+
+
+/* site logo  */
+
+.logo_image{
+    width: 52px;
+    margin-bottom: 5px;
+   
+}
+.logo_image img{
+    width: 100%;
+    height: 100%;
+}
+
+/* site name  */
+
+#domain{
+    font-size: 20px;
+    font-family: 'Baloo Bhai 2', cursive;
+    font-weight: bolder;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+#domain-name{
+    display: inline-block;
+    font-size: 2rem;
+    /* font-size: 40px; */
+    margin:auto;
+    font-family: 'Rubik', sans-serif;
+    /* color:black; */
+    color: white;
+   
+    margin-left: 5px;
+    pointer-events: none;
+}
+.blue{
+    display: inline-block;
+    color:#50d8d7;
+}
+
+
+/* navbar urls   */
+
+.mainMenu {
+    display: flex;
+    list-style: none;
+    width: 67%;
+    /* width: 62%; */
+}
+.mainMenu li a {
+    display: inline-block;
+    padding: 5px;
+    padding-top: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    /* color: black; */
+    color: white;
+    font-size: 1.2rem;
+}
+
+
+.openMenu {
+    font-size: 2rem;
+    margin: 20px;
+    display: none;
+    cursor: pointer;
+}
+.mainMenu .closeMenu , .icons i {
+    font-size: 2rem;
+    display: none;
+    cursor: pointer;
+}
+.fa-facebook:hover {color: rgb(0, 110, 255);}
+.fa-twitter:hover {color: rgb(86, 154, 243);}
+.fa-instagram:hover {color: rgb(255, 0, 191);}
+.fa-github:hover {color: rgb(255, 123, 0);}
+
+.logo {
+    margin: 6px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+.middle{
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+}
+.ul{
+    display: flex;
+    
+     font-weight: 600;
+}
+.ul li{
+    position: relative;
+    margin: 0px 5px;
+}
+.ul li::after{
+    content:'';
+    height: 4px;
+    width: 0;
+    background: #50d8d7;
+    left:0;
+    bottom: 0px;
+    
+    position: absolute;
+    transition: 0.5s;
+}
+.ul li:hover::after{
+    width: 100%;
+}
+.ul li:hover a {
+  color: #50d8d7;
+}
+
+/* login button in navbar  */
+
+.login{
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+}
+.login a{
+    
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 9px;
+    /* padding: 9px 20px; */
+    /* margin: 0px 10px; */
+    color: #50d8d7;
+    border-radius: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    position: relative;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.login a:hover{
+    color:white;
+    
+    cursor: pointer;
+}
+.login a::before{
+    border-radius: 30px;
+    transition: all 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    background-color: #50d8d7;
+}
+
+.login a:hover::before{
+    transition: all 0.5s ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
+} 
+
+
+/* media queries for navbar  */
+
+@media(max-width:1140px){
+    .login{
+        margin-right: 0px;
+    }
+}
+@media (max-width: 1065px){
+    .ul li{
+        margin: 0;
+    }
+}
+@media(max-width: 1000px){
+    #navbar{
+        height: 85px;
+    }
+   .mainMenu {
+       height: 100vh;
+       position: fixed;
+       top: 0;
+       right: 0;
+       left: 0;
+       z-index: 10;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+        background: #000;
+        transition: top 1s ease;
+        display: none;
+        width: 100%;
+        
+    }
+   .mainMenu li a{
+       color: white;
+   }
+    .mainMenu .closeMenu {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white;
+      
+        
+    }
+    .openMenu {
+        display: block;
+       
+       
+    }
+    .mainMenu li a:hover {
+        background: none;
+        color: #50d8d7;
+        font-size: 1.6rem;
+    }
+    .icons i {
+        display: inline-block;
+        padding: 12px;
+        color: white;
+      
+    }
+    .middle{
+        flex-direction: column;
+        align-items: center;
+      
+    }
+    .ul{
+        flex-direction: column;
+        align-items: center;
+    }
+    .login{
+        margin-right: 0px;
+        margin-left: 3px;
+        flex-direction: column;
+    }
+  
+}
+@media(max-width:390px){
+    #navbar{
+
+       height: 75px;
+   } 
+    #domain{
+        margin-left: 5px;
+    }
+    .name_site{
+        font-size: 0.5rem;
+    }
+    .logo_site{
+        width: 40px;
+        height: 40px;
+      
+    }
+   
+    .logo_site::before{
+      
+        border-bottom-left-radius: 20px;
+        border-top-left-radius: 20px;
+        
+    }
+    .logo_site::after{
+      
+        width: 5px;
+        height: 5px;
+     
+    }
+    .logo_site span{
+      
+        top: 4px;
+        left: 4px;
+        bottom: 4px;
+        right: 4px;
+       
+    }
+    
+    
+    #domain-name{
+        font-size: 27px;
+    }
+    .openMenu{
+        font-size: 1.2rem;
+        margin: 5px;
+    }
+}
+
+/*WORKING ON PROFILES */
+.show-modal {
+    font-size:30px;
+    border: none;
+    background: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 1.2rem;
+    right: 2rem;
+    font-size: 5rem;
+    color: white;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  .hidden {
+    display: none;
+  }
+  
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;  
+    background-color: #00000082;
+    padding: 6rem;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 5;
+  }
+  .button-empty{
+    border: none;
+    /* background-color: #fff; */
+    cursor: pointer;
+    background: none;
+  }
+
+  .active{
+      background-color: rgb(188, 233, 218);
+  }
+
+
+
+
+
+.container img{
+    height: 200px;
+    margin-top: 50px;
+}
+.profile{
+    width: 100%;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.musk_mail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7px;
+    font-size: 1.5rem;
+    color: #2eb7b6;
+}
+.detail_save{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    
+}
+.form-group{
+    border: none;
+}
+
+
+.info{
+    
+    display: flex;
+    align-items: center;
+    padding: 12px 1.4rem;
+    background: #f0f0f0;
+    border-radius: 58px;
+    margin-top: 10px;
+}
+.call{
+    margin-right: 5px;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.info input , .info select{
+    outline: none;
+    border: none;
+    background: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 2px;
+    width: 100%;
+    appearance: none;
+    
+}
+#roll_input{
+    width: 50%;
+}
+option{
+    background: #f0f0f0;
+}
+.button_save{
+    margin-top: 15px;
+    /* background: #2eb7b6;
+     */
+     background:  linear-gradient(316deg, #50d8d7 0%, #2a2323 140%);
+    padding: 10px 2.4rem;
+    border-radius: 28px;
+}
+.btn{
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+    font-weight: 600;
+}
+.button_save:hover{
+    background:  linear-gradient(316deg, #2a2323 0%, #50d8d7 140%);
+}
+
+
+/* media queries  */
+
+
+
+
+@media(max-width:510px){
+    .container img{
+        height: 150px;
+    }
+    .profile{
+        font-size: 2rem;
+    }
+    .musk_mail{
+        font-size: 1.2rem;
+    }
+    .detail_save{
+        width: 350px;
+    }
+}
+@media(max-width:370px){
+   
+    .detail_save{
+        width: 278px;
+    }
+}
+
+lord-icon{
+    height: 250px;
+    width: 250px;
+    color: white;
+}
+@media(max-width:1140px){
+    lord-icon{
+        height: 180px;
+        width: 180px;
+       
+    } 
+}
+@media(max-width:810px){
+    .modal{
+        padding: 4rem;
+    }
+    lord-icon{
+        height: 130px;
+        width: 130px;
+       
+    } 
+}
+@media(max-width:500px){
+    .modal{
+        padding: 2rem;
+    }
+    lord-icon{
+        height: 100px;
+        width: 100px;
+       
+    } 
+}

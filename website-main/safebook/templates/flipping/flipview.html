@@ -1,0 +1,430 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+  {%load static%}
+  <style type="text/css">
+    #iframe {
+        zoom: 0.9;
+        -moz-transform:scale(0.75);
+        -moz-transform-origin: 0 0;
+        -o-transform: scale(0.75);
+        -o-transform-origin: 0 0;
+        -webkit-transform: scale(0.75);
+        -webkit-transform-origin: 0 0;
+    }
+    </style>
+    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'styles/dash_panel.css'%}" />
+    <link rel="stylesheet" href="{% static 'styles/dash_style.css'%}" />
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/795d42cca3.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+
+  <body>
+    
+    <div class="h-100 w-100">
+      <div class="navbar-container"></div>
+      <div class="panel-container">
+        <div class="side-bar">
+          <h1>Dashboard</h1>
+
+          <button class="dropdown-btn">
+            Quiz
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a id="btn-subjective-quiz" href="#">Subjective Quiz</a>
+            <a id="btn-placement-quiz" href="#">Placement Quiz</a>
+          </div>
+          <button class="dropdown-btn">
+            Book
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a id="btn-your-books" href="#">Your Books</a>
+            <a id="btn-your-collections" href="#">Your Collections</a>
+          </div>
+          <button class="sidebar-btn">Assignment</button>
+
+          <button class="sidebar-btn">Tutorial</button>
+        </div>
+        <div class="panel">
+          <!-- Default Panel -->
+
+          <div class="panel-item" id="panel-default">
+            <div class="upload">
+              <p class="uploaded">SAFEBOOK - Safest way to share your material</p>
+            </div>
+            <div class="btn">
+              <button  class="upload-button">
+                <a href='../addflip' id="addquestion" class="fa fa-upload remove-text-decoration visited" aria-hidden="true"> Upload file</a>
+              </button>
+            </div>
+            {% csrf_token %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+            <div class="heading-row">
+              <div class="w-23 safebook">SAFEBOOK</div>
+              <div class="w-16 o-title">SUBJECT</div>
+              <div class="w-16 o-title">LAST MODIFIED</div>
+              <div class="w-8 o-title">VIEWS</div>
+              <div class="w-8 o-title">DELETE</div>
+              <div class="w-8 o-title">EDIT</div>
+              <div class="w-8 o-title">PRIVACY</div>
+              <div class="w-8 o-title">CUSTOMIZE</div>
+              <div class="w-8 o-title">REFRESH</div>
+              <div class="w-8 o-title">SHARE</div>
+            </div>
+            {% for each in simple %}
+            <div class="uploaded-files">
+              <div class="books-row">
+                <div class="w-33 flex-f-row">
+                  <div class="pdf-icon"> <iframe src="{% static 'navbar/Aim2Crack-logo-1.png' %}" id="iframe" scrolling="no" overflow: hidden; width="75px" height="50px">
+                  </iframe></div>
+                  <div class="name-box flex-f-col">
+                    <a href="../{{each.link}}/sview/"  class="file-name">{{each.fname}}</a>
+                    <div class="flex-f-row">
+                      <i class="fa-solid fa-file"></i>
+                      <i class="file-size">{{each.times}} pages</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-16 flex-f-row subject-name">
+                  <p>{{each.fsub}}</p>
+                </div>
+                <div class="w-16 flex-f-row m-date">
+                  <p>{{each.ftime}}</p>
+                </div>
+                <div class="w-16 flex-f-row m-date">
+                  <a href="../{{each.link}}/viewcounts/" class="bt boton3 remove-text-decoration">{{each.times}}</a>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <a href="../{{each.link}}/deleteflip/" class="fa-solid fa-trash fa-xl icons "></a>
+                </div>
+              
+                <div class="w-8 flex-f-row o-icons">
+                  <a href="../{{each.link}}/editflip/" class='fa fa-pencil remove-text-decoration icons fa-xl' ></a>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <a href="../{{each.link}}/flipprivacy/" class="fas fa-user-shield fa-xl icons" ></a>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <a href="../{{each.link}}/customflip/" class='fa fa-gears remove-text-decoration icons fa-xl'></a>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <a href="../{{each.link}}/refreshflip/" class="fa-solid fa-rotate fa-xl icons remove-text-decoration"></a>
+                </div>
+               
+             
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fas fa-share-alt fa-xl icons"></i>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <!-- Default Panel end -->
+          <!-- Placement Panel -->
+          <div class="panel-item" id="panel-placement-quiz">
+            <div class="upload">
+              <p class="uploaded">PLACEMENT QUIZ</p>
+            </div>
+            <div class="btn">
+              <button class="upload-button">
+                Upload File
+                <i class="fa fa-upload" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="heading-row">
+              <div class="w-33 safebook">SAFEBOOK</div>
+              <div class="w-16 o-title">SUBJECT</div>
+              <div class="w-16 o-title">LAST MODIFIED</div>
+              <div class="w-8 o-title">DELETE</div>
+              <div class="w-8 o-title">UPDATE</div>
+              <div class="w-8 o-title">PRIVACY</div>
+              <div class="w-8 o-title">SHARE</div>
+            </div>
+            <div class="uploaded-files">
+              <div class="books-row">
+                <div class="w-33 flex-f-row">
+                  <div class="pdf-icon"></div>
+                  <div class="name-box flex-f-col">
+                    <p class="file-name">Introduction to Machine Learning</p>
+                    <div class="flex-f-row">
+                      <i class="fa-solid fa-file"></i>
+                      <i class="file-size">159 Pages</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-16 flex-f-row subject-name">
+                  <p>EMF Theory</p>
+                </div>
+                <div class="w-16 flex-f-row m-date">
+                  <p>Aug 23,2022</p>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fa-solid fa-trash fa-xl icons"></i>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class='fa-pencil fa-xl icons'></i>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fas fa-user-shield fa-xl icons"></i>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fas fa-share-alt fa-xl icons"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Placement quiz Panel end -->
+          <!-- Subjective quiz Panel -->
+          <div class="panel-item" id="panel-subjective-quiz">
+            <div class="upload">
+              <p class="uploaded">SUBJECTIVE QUIZ</p>
+            </div>
+            <div class="btn">
+              <button class="upload-button">
+                Upload File
+                <i class="fa fa-upload" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="heading-row">
+              <div class="w-33 safebook">SAFEBOOK</div>
+              <div class="w-16 o-title">SUBJECT</div>
+              <div class="w-16 o-title">LAST MODIFIED</div>
+              <div class="w-8 o-title">DELETE</div>
+              <div class="w-8 o-title">UPDATE</div>
+              <div class="w-8 o-title">PRIVACY</div>
+              <div class="w-8 o-title">SHARE</div>
+            </div>
+            <div class="uploaded-files">
+              <div class="books-row">
+                <div class="w-33 flex-f-row">
+                  <div class="pdf-icon"></div>
+                  <div class="name-box flex-f-col">
+                    <p class="file-name">Introduction to Machine Learning</p>
+                    <div class="flex-f-row">
+                      <i class="fa-solid fa-file"></i>
+                      <i class="file-size">159 Pages</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-16 flex-f-row subject-name">
+                  <p>EMF Theory</p>
+                </div>
+                <div class="w-16 flex-f-row m-date">
+                  <p>Aug 23,2022</p>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fa-solid fa-trash fa-xl icons"></i>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fa-solid fa-rotate fa-xl icons"></i>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fas fa-user-shield fa-xl icons"></i>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fas fa-share-alt fa-xl icons"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Subjective quiz Panel end -->
+
+          <!-- Your Books Panel -->
+          <div class="panel-item" id="panel-your-books">
+            <div class="upload">
+              <p class="uploaded">YOUR BOOKS</p>
+            </div>
+            <div class="btn">
+              <button class="upload-button">
+                Upload File
+                <i class="fa fa-upload" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="heading-row">
+              <div class="w-33 safebook">SAFEBOOK</div>
+              <div class="w-16 o-title">SUBJECT</div>
+              <div class="w-16 o-title">LAST MODIFIED</div>
+              <div class="w-8 o-title">DELETE</div>
+              <div class="w-8 o-title">UPDATE</div>
+              <div class="w-8 o-title">PRIVACY</div>
+              <div class="w-8 o-title">SHARE</div>
+            </div>
+            <div class="uploaded-files">
+              <div class="books-row">
+                <div class="w-33 flex-f-row">
+                  <div class="pdf-icon"></div>
+                  <div class="name-box flex-f-col">
+                    <p class="file-name">Introduction to Machine Learning</p>
+                    <div class="flex-f-row">
+                      <i class="fa-solid fa-file"></i>
+                      <i class="file-size">159 Pages</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-16 flex-f-row subject-name">
+                  <p>EMF Theory</p>
+                </div>
+                <div class="w-16 flex-f-row m-date">
+                  <p>Aug 23,2022</p>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fa-solid fa-trash fa-xl icons"></i>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fa-solid fa-rotate fa-xl icons"></i>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fas fa-user-shield fa-xl icons"></i>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fas fa-share-alt fa-xl icons"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Your Books end -->
+
+          <!-- Your Collections Panel -->
+          <div class="panel-item" id="panel-your-collections">
+            <div class="upload">
+              <p class="uploaded">YOUR COLLECTIONS</p>
+            </div>
+            <div class="btn">
+              <button class="upload-button">
+                Upload File
+                <i class="fa fa-upload" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="heading-row">
+              <div class="w-33 safebook">SAFEBOOK</div>
+              <div class="w-16 o-title">SUBJECT</div>
+              <div class="w-16 o-title">LAST MODIFIED</div>
+              <div class="w-8 o-title">DELETE</div>
+              <div class="w-8 o-title">UPDATE</div>
+              <div class="w-8 o-title">PRIVACY</div>
+              <div class="w-8 o-title">SHARE</div>
+            </div>
+            <div class="uploaded-files">
+              <div class="books-row">
+                <div class="w-33 flex-f-row">
+                  <div class="pdf-icon"></div>
+                  <div class="name-box flex-f-col">
+                    <p class="file-name">Introduction to Machine Learning</p>
+                    <div class="flex-f-row">
+                      <i class="fa-solid fa-file"></i>
+                      <i class="file-size">159 Pages</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-16 flex-f-row subject-name">
+                  <p>EMF Theory</p>
+                </div>
+                <div class="w-16 flex-f-row m-date">
+                  <p>Aug 23,2022</p>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fa-solid fa-trash fa-xl icons"></i>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fa-solid fa-rotate fa-xl icons"></i>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fas fa-user-shield fa-xl icons"></i>
+                </div>
+                <div class="w-8 flex-f-row o-icons">
+                  <i class="fas fa-share-alt fa-xl icons"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Your Collections end -->
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+    $(document).ready(function () {
+      hideAll();
+      $("#panel-default").fadeIn(300);
+
+      $("#btn-subjective-quiz").click(function (e) {
+        e.preventDefault();
+        hideAll();
+        $("#panel-subjective-quiz").fadeIn(300);
+      });
+      $("#btn-placement-quiz").click(function (e) {
+        e.preventDefault();
+        hideAll();
+        $("#panel-placement-quiz").fadeIn(300);
+      });
+      $("#btn-your-books").click(function (e) {
+        e.preventDefault();
+        hideAll();
+        $("#panel-your-books").fadeIn(300);
+       
+      });
+      $("#btn-your-collections").click(function (e) {
+        e.preventDefault();
+        hideAll();
+        $("#panel-your-collections").fadeIn(300);
+      
+      });
+    });
+
+    function hideAll() {
+      $(".panel-item").hide();
+    }
+  </script>
+{% endblock %}
+
+<!-- 
+    <li>
+        <span class="material-icons-outlined md-48 md-light">&#xE88a;</span>
+    </li> 
+-->

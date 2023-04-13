@@ -1,0 +1,444 @@
+{% extends "../navbar/index.html" %}{%load static %}
+
+{% block content %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {%load static%}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/795d42cca3.js" crossorigin="anonymous"></script>
+  <style>
+     /* a:link, a:visited {
+      background-color:None;
+      text-decoration:None;
+      color:none;
+    }
+    
+    a:hover, a:active{
+      text-decoration:None;
+    
+    }  */
+    </style>
+
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="blur"></div>
+  <div class="h-93 w-100">
+    <div class="navbar-container"></div>
+    <div class="panel-container">
+      <div class="side-navigation-container">
+        <div class="side-bar" id="side-navigation">
+          <h1>Dashboard</h1>
+
+          <button class="dropdown-btn side-bar-item">
+            Quiz
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a id="btn-subjective-quiz" href="#">Subjective Quiz</a>
+            <a id="btn-placement-quiz" href="#">Placement Quiz</a>
+          </div>
+          <button class="dropdown-btn side-bar-item">
+            Book
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a id="btn-your-books" href="#">Your Books</a>
+            <a id="btn-your-collections" href="#">Your Collections</a>
+          </div>
+
+          <button class="side-bar-item" id="btn-assignment">
+            Assignments
+
+          </button>
+          <button class="side-bar-item">
+            Tutorials
+          </button>
+        </div>
+        <div id="side-navigation-arrow">
+          <i class="fa-solid fa-angle-right icons" id="side-navigation-arrow "></i>
+        </div>
+        
+      </div>
+
+
+      <div class="panel">
+        <!-- Placement quiz Panel start-->
+        <div class="search-bar-panel">
+          <input type="text" class="search" name="Search..." placeholder="Search....">
+          <input type="image" class="search-button-image" name="search" src="{% static  './images/searchBar.svg' %}" alt="Search">
+        </div>
+
+        <div class="panel-item" id="panel-placement-quiz">
+          <div class="upload">
+            <p class="uploaded">PLACEMENT QUIZ</p>
+          </div>
+          <div class="btn">
+            <button class="upload-button">
+              Upload File
+              <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="cards-container d-flex">
+            <div class="content-card">
+              <div class="upper-container d-flex">
+                <div class="content-card-icon">
+                  <img src="{% static  './images/pdfImage.svg' %}" class="content-card-image" />
+                </div>
+                <div class="name-box flex-f-col">
+                  <p class="file-name">Introduction to Machine Learning</p>
+                  <div class="sub-heading ">
+                    <span class="naam">Subject : </span>
+                    <span class="sub-name">EMF Theory</span>
+                  </div>
+
+                </div>
+
+                <div class="middle-container d-flex">
+                  <div class="last-mod"> Modified : Dec-23-2022</div>
+                  <div class="vie">Views : 5</div>
+                </div>
+
+                <div class="end-container d-flex">
+                  <i class="fa-solid fa-trash icons card-icons"></i>
+                  <i class="fa-sharp fa-solid fa-pencil icons card-icons"></i>
+                  <i class="fa-solid fa-user-shield icons card-icons"></i>
+                  <i class="fa-solid fa-gears icons card-icons"></i>
+                  <i class="fa-sharp fa-solid fa-rotate icons card-icons"></i>
+                  <i class="fa-sharp fa-solid fa-share-nodes icons card-icons"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         <!-- Placement quiz Panel end -->
+      <!-- Subjective quiz Panel start -->
+        <div class="panel-item" id="panel-subjective-quiz">
+          <div class="upload">
+            <p class="uploaded">SUBJECTIVE QUIZ</p>
+          </div>
+          <div class="btn">
+            <button class="upload-button">
+              Upload File
+              <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="cards-container d-flex">
+            <div class="content-card">
+              <div class="upper-container d-flex">
+                <div class="content-card-icon">
+                  <img src="{% static  './images/pdfImage.svg' %}" class="content-card-image" />
+                </div>
+                <div class="name-box flex-f-col">
+                  <p class="file-name">Introduction to Machine Learning</p>
+                  <div class="sub-heading ">
+                    <span class="naam">Subject : </span>
+                    <span class="sub-name">EMF Theory</span>
+                  </div>
+
+                </div>
+
+                <div class="middle-container d-flex">
+                  <div class="last-mod"> Modified : Dec-23-2022</div>
+                  <div class="vie">Views : 5</div>
+                </div>
+
+                <div class="end-container d-flex">
+                  <i class="fa-solid fa-trash icons card-icons"></i>
+                  <i class="fa-sharp fa-solid fa-pencil icons card-icons"></i>
+                  <i class="fa-solid fa-user-shield icons card-icons"></i>
+                  <i class="fa-solid fa-gears icons card-icons"></i>
+                  <i class="fa-sharp fa-solid fa-rotate icons card-icons"></i>
+                  <i class="fa-sharp fa-solid fa-share-nodes icons card-icons"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Subjective quiz panel end -->
+        <!-- Your Books Panel start -->
+        <div class="panel-item" id="panel-your-books">
+          <div class="upload">
+            <p class="uploaded">SAFEBOOK : The safest Way to Share your material</p>
+          </div>
+          <div class="btn">
+            <button class="upload-button">
+              Upload File
+              <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="cards-container d-flex">
+            <div class="content-card">
+              <div class="upper-container d-flex">
+                <div class="content-card-icon">
+                  <img src="{% static  './images/pdfImage.svg' %}"class="content-card-image" />
+                </div>
+                <div class="name-box flex-f-col">
+                  <p class="file-name">Introduction to Machine Learning</p>
+                  <div class="sub-heading ">
+                    <span class="naam">Subject : </span>
+                    <span class="sub-name">EMF Theory</span>
+                  </div>
+
+                </div>
+
+                <div class="middle-container d-flex">
+                  <div class="last-mod"> Modified : Dec-23-2022</div>
+                  <div class="vie">Views : 5</div>
+                </div>
+
+                <div class="end-container d-flex">
+                  <i class="fa-solid fa-trash icons card-icons"></i>
+                  <i class="fa-sharp fa-solid fa-pencil icons card-icons"></i>
+                  <i class="fa-solid fa-user-shield icons card-icons"></i>
+                  <i class="fa-solid fa-gears icons card-icons"></i>
+                  <i class="fa-sharp fa-solid fa-rotate icons card-icons"></i>
+                  <i class="fa-sharp fa-solid fa-share-nodes icons card-icons"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Your Books Panel end -->
+         <!-- Your Collections Panel start-->
+         <div class="panel-item" id="panel-your-collections">
+          <div class="upload">
+            <p class="uploaded">Your Collections</p>
+          </div>
+          <div class="btn">
+            <button class="upload-button">
+              Upload File
+              <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="cards-container d-flex">
+            <div class="content-card">
+              <div class="upper-container d-flex">
+                <div class="content-card-icon">
+                  <img src="{% static  './images/pdfImage.svg' %}" class="content-card-image" />
+                </div>
+                <div class="name-box flex-f-col">
+                  <p class="file-name">Introduction to Machine Learning</p>
+                  <div class="sub-heading ">
+                    <span class="naam">Subject : </span>
+                    <span class="sub-name">EMF Theory</span>
+                  </div>
+
+                </div>
+
+                <div class="middle-container d-flex">
+                  <div class="last-mod"> Modified : Dec-23-2022</div>
+                  <div class="vie">Views : 5</div>
+                </div>
+
+                <div class="end-container d-flex">
+                  <i class="fa-solid fa-trash icons card-icons"></i>
+                  <i class="fa-sharp fa-solid fa-pencil icons card-icons"></i>
+                  <i class="fa-solid fa-user-shield icons card-icons"></i>
+                  <i class="fa-solid fa-gears icons card-icons"></i>
+                  <i class="fa-sharp fa-solid fa-rotate icons card-icons"></i>
+                  <i class="fa-sharp fa-solid fa-share-nodes icons card-icons"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <!-- Your Collections end -->
+          <!-- Assignments start -->
+          <div class="panel-item" id="panel-assignment">
+            <div class="upload">
+              <p class="uploaded">Assignment</p>
+            </div>
+            <!-- <div class="btn">
+              <button class="upload-button">
+                <a href="./create " class="text-color">Create Assignment</a>
+                <i  class="fa fa-upload" aria-hidden="true"></i>
+              </button>
+            </div> -->
+            
+            
+            <div class="cards-container d-flex">
+              {% for each in simple %}
+              <div class="content-card">
+                <div class="upper-container d-flex">
+                  <a >
+                  <div class="content-card-icon"> </a>
+                    <img  src="{% static  './images/assignmentImage.svg' %}" class="content-card-image" />
+                  </div>
+                  <div class="name-box flex-f-col">
+                    <a href="./{{each.link.link}}/view" class="file-name">{{each.link.assignment_name}}</a>
+                    <div class="sub-heading ">
+                      <span class="naam"></span>
+                      <span class="sub-name">{{each.link.course_name}}</span>
+                    </div>
+  
+                  </div>
+  
+                  <div class="middle-container d-flex">
+                    <div class="last-mod"> Submission Date: {{each.link.first_sub_time}}</div>
+                    <div class="vie">Marks:{{each.score}} </div>
+                  </div>
+                   
+                  <!-- <div class="end-container d-flex">
+                    <i class="fa-solid fa-user-shield icons card-icons"></i>
+                    <a href="./{{each.link}}/edit" <i class="fa-solid fa-gears icons card-icons"></i></a>
+                    <a href="./{{each.link}}/deletelink" <i class="fa-solid fa-trash icons card-icons"></i></a> -->
+                    <!-- <i class="fa-sharp fa-solid fa-pencil icons card-icons"></i>-->
+                    <!-- <i class="fa-solid fa-bar-chart icons card-icons"></i> 
+                    <i class="fa-sharp fa-solid fa-rotate icons card-icons"></i>
+                    <i class="fa-sharp fa-solid fa-share-nodes icons card-icons"></i>
+                  </div> -->
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            
+          </div>
+          
+
+          <!-- Assignments-end -->
+      </div>
+    </div>
+  </div>
+  </div>
+
+</body>
+<script>
+  // Navbar
+
+ /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementsByClassName("toggle-dd").classList.toggle("show");
+      }
+  
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function (event) {
+        if (!event.target.matches(".dropbtn")) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains("show")) {
+              openDropdown.classList.remove("show");
+            }
+          }
+        }
+      };
+  
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+      }
+  
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+
+      
+//handles Side nav dropdown
+ var dropdown = document.getElementsByClassName("dropdown-btn");
+ var i;
+
+ for (i = 0; i < dropdown.length; i++) {
+   dropdown[i].addEventListener("click", function () {
+     this.classList.toggle("active");
+     var dropdownContent = this.nextElementSibling;
+     if (dropdownContent.style.display === "block") {
+       dropdownContent.style.display = "none";
+     } else {
+       dropdownContent.style.display = "block";
+     }
+   });
+ }
+
+ // handles click controls of side nav options
+ 
+   // handles click controls of side nav options
+ $(document).ready(function () {
+   const panelIds = [
+     "",
+     "#btn-subjective-quiz",
+     "#btn-placement-quiz",
+     "#btn-your-books",
+     "#btn-your-collections",
+     "#btn-assignment",
+   ];
+   hideAll();
+   $("#panel-default").fadeIn(300);
+
+   $("#btn-subjective-quiz").click(function (e) {
+     e.preventDefault();
+     hideAll();
+     $("#panel-subjective-quiz").fadeIn(300);
+     updateActivePanel(1);
+   });
+   $(".nav-subjective-btn").click(function (e) {
+     e.preventDefault();
+     hideAll();
+     $("#panel-subjective-quiz").fadeIn(300);
+     updateActivePanel(1);
+   });
+   $("#btn-placement-quiz").click(function (e) {
+     e.preventDefault();
+     hideAll();
+     $("#panel-placement-quiz").fadeIn(300);
+     updateActivePanel(2);
+   });
+   $(".nav-placement-btn").click(function (e) {
+     e.preventDefault();
+     hideAll();
+     $("#panel-placement-quiz").fadeIn(300);
+     updateActivePanel(2);
+   });
+   $("#btn-your-books").click(function (e) {
+     e.preventDefault();
+     hideAll();
+     $("#panel-your-books").fadeIn(300);
+     updateActivePanel(3);
+   });
+   $("#btn-your-collections").click(function (e) {
+     e.preventDefault();
+     hideAll();
+     $("#panel-your-collections").fadeIn(300);
+     updateActivePanel(4);
+   });
+   $("#btn-assignment").click(function (e) {
+     e.preventDefault();
+     hideAll();
+     $("#panel-assignment").fadeIn(300);
+     updateActivePanel(5);
+   });
+
+   let activePanel = Number(localStorage.getItem("last-active-panel"));
+   let activePanelId = panelIds[activePanel];
+   $(activePanelId).click();
+ });
+
+ function hideAll() {
+   $(".panel-item").hide();
+ }
+ function updateActivePanel(panelNumber) {
+   localStorage.setItem("last-active-panel", panelNumber);
+ }
+
+ //handle Side nav Toggle in mobile view
+$(document).ready(function(){
+    
+    $('#side-navigation-arrow').click(toggleSideMenu);
+    $('.blur').click(toggleSideMenu)
+});
+const toggleSideMenu = ()=>{
+    $('#side-navigation').animate({width: 'toggle'});
+    $('.blur').toggle();
+}
+</script>
+{% endblock %}

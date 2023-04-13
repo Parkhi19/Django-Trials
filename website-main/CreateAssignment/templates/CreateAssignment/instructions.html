@@ -1,0 +1,80 @@
+{% extends "../navbar/index.html" %}{%load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions</title>
+    <style>
+        form{
+            margin: 30px;
+        }
+       h1 {
+        text-align: center;
+    color: green;
+    margin: 10px;
+    font-family: math;
+    }
+       button {
+    margin:  auto;
+    display: block;
+}
+       textarea {
+        display: block;
+    margin: auto;
+    border: none;
+    background: #f0f0f0;
+    padding: 15px;
+    border-bottom: 2px solid green;
+}
+.alert{
+        text-align: center;
+        font-weight: bold;
+    }
+    .alert-error{
+        color: red;
+
+    }
+    .alert-success{
+        color: green;
+    }
+    .btn-cnt{
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    .btn-cnt button, .btn-cnt a{
+        margin: 10px;
+    margin-left: 0;
+    display: block;
+    background: green;
+    border: none;
+    outline: none;
+    padding: 7px 13px;
+    color: white;
+    text-decoration: none;
+    margin-right: 50px;
+}
+    
+       </style>
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <h1>Add Instructions</h1>
+        
+        <textarea name="instructions" id="inst" cols="100" rows="15" placeholder ="Write instructions here ..." >{{instruction.instructions}}</textarea>    
+        
+        <div class="btn-cnt">
+            <button type="submit" class="submitb">Update Instructions</button>
+        <a href="../">Back</a>
+        </div>
+
+    </form>
+</body>
+{% endblock %}

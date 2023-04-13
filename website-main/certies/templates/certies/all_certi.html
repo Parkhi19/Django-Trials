@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aim2Crack - Add Certificates</title>
+</head>
+<style>
+    h1{
+        text-align: center;
+    }
+    .addone{
+        padding: 10px 40px;
+        font-size: 20px;
+        color: white;
+        border-radius: 8px;
+        background: linear-gradient(60deg,rgb(62, 115, 115),rgb(38, 43, 46)) ;
+        font-family: Verdana, sans-serif;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .btn-cntr{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .each{
+        font-size: 20px;
+        font-family: monospace;
+        border: 1px solid #b6b2b2;
+        padding: 10px 50px;
+        display: block;
+        color: #565454;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .sec{
+        width: 40%;
+        margin: auto;
+        min-width: 300px;
+        padding: 20px;
+    }
+</style>
+<body>
+    <h1>
+        All Certificates Follows
+    </h1>
+    <section class="sec">
+        {%for each in certies%}
+        <a class="each" href="../verify-certi/{{each.code}}">
+
+            {{each.name}}
+        </a>    
+        {%endfor%}
+    </section>
+    <div class="btn-cntr">
+        <a class= "addone" href = "{%url 'add-certi'%}">Add One</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aim2Crack-Feedback Question</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+       *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            align-items: center ;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            background: #f0f0f0;
+        }
+        button{
+            position: absolute;
+            top: 50%;
+            left: 2rem;
+            font-size: 4rem;
+            transform: translateY(-50%);
+            color: #298a8a;
+            background: none;
+            border: none;
+            outline: none;
+            transition: all 0.5s ease;
+        }
+        button:hover{
+            transform: translateY(-50%) scale(1.2,1.2);
+        }
+        .contain_it{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            border-radius: 0.5rem;
+            background: white;
+            box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
+        }
+        .contain_it img{
+            width: 120px;
+            margin-bottom: 25px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+        .container select,.container input{
+                width: 250px;
+                margin-bottom: 15px;
+                padding: 15px 1.5rem;
+                border: none;
+                background: #f0f0f0;
+                font-weight: bold;
+                outline: none;
+                border-bottom: 3px solid #298a8a;
+        }
+        .container select{
+            width: 299px;
+        }
+        #submit_button{
+            width: 100px;
+            padding: 10px 0.4rem;
+            border: none;
+            border-radius: 0.5rem;
+            background: #298a8a;
+            font-weight: bold;
+            outline: none; 
+            color: white;
+            transition: all 0.5s ease;
+        }
+        #submit_button:hover{
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        }
+        @media(max-width:655px){
+            button{
+                top: 5%;
+                font-size: 2.5rem;
+            }
+        }
+        @media(max-width:655px){
+            .contain_it{
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button type="button" onclick="history.back()" class="back_arrow"><i class='bx bxs-left-arrow-circle'></i></button>
+     <div class="contain_it">
+        <img src="{% static 'exam/Logo enlarged-03.png'%}" alt="">
+        <form method="post" class="container">
+            {%csrf_token%}
+             <select name="type_que">
+                <option value="s" selected>Stars</option>
+                <option value="t">Text</option>
+                <option value="o">Options</option>
+            </select>
+           
+            <input type="text" name="question">
+            <input type="text" name="options">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+<script>
+    if("s" == "s"){
+        document.getElementsByName("type_que")[0].selectedIndex = 0;
+        document.getElementsByName("options")[0].style.display = "none";
+    }else if("s" == "t"){
+        document.getElementsByName("type_que")[0].selectedIndex = 1;
+        document.getElementsByName("options")[0].style.display = "none";
+    }else{
+        document.getElementsByName("type_que")[0].selectedIndex = 2;
+        document.getElementsByName("options")[0].style.display = "block";
+    }    
+    setInterval(() => {
+        if(document.getElementsByName("type_que")[0].selectedIndex == 0){
+        document.getElementsByName("options")[0].style.display = "none";
+    }else if(document.getElementsByName("type_que")[0].selectedIndex == 1){
+        document.getElementsByName("options")[0].style.display = "none";
+    }else{
+        document.getElementsByName("options")[0].style.display = "block";
+    }    
+    }, 200);
+    
+</script>
+</html>
