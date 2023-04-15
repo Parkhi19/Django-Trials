@@ -29,10 +29,12 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Application definition
 
 INSTALLED_APPS = [
+    'tutorials.apps.TutorialsConfig',
+    'pytz',
     'certies.apps.CertiesConfig',
     'student.apps.StudentConfig',
     'quiz.apps.QuizConfig',    
