@@ -22,6 +22,7 @@ from exam import views as exam_views
 from users import views as user_views
 from student import views as st_views
 from createquiz import views as createquiz_views
+from tutorials import views as tut_views
 from safebook import urls as safebook_urls
 # from CreateAssignment import urls as assignment_urls
 from django.urls import path, include
@@ -31,6 +32,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('exam.urls')),
     path('assign/',include('CreateAssignment.urls')),
+     path('tut/',include('tutorials.urls')),
     path('f/',include(safebook_urls)),
     path('certies/',include('certies.urls')),
     path('quizzes/',exam_views.yourquizzes,name='quizzes'),
